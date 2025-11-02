@@ -1,0 +1,128 @@
+==============================================================
+            CÁCH DÙNG CỰC KỲ ĐƠN GIẢN
+==============================================================
+
+📝 CHẠY CHƯƠNG TRÌNH TỰ ĐỘNG (KHUYÊN DÙNG)
+===========================================
+
+Chỉ cần 1 lệnh, tất cả tự động:
+
+python pdf_extractor_auto.py "đường_dẫn_PDF.pdf"
+
+Ví dụ:
+python pdf_extractor_auto.py "A1_250Q.pdf"
+
+
+KẾT QUẢ:
+---------
+✓ Tự động tạo thư mục output/
+✓ Extract tất cả hình ảnh vào output/[tên_pdf]_images/
+✓ Tạo file JSON: output/[tên_pdf].json
+✓ TỰ ĐỘNG DETECT đáp án đúng bằng cách tìm text gạch chân!
+
+
+📊 THỐNG KÊ:
+------------
+Từ file A1_250Q.pdf (250 câu):
+- Đã extract: 242 câu hỏi
+- Đã extract: 80 hình ảnh
+- Đã detect đúng: 242/242 đáp án!
+
+
+📁 KẾT QUẢ Ở ĐÂU?
+==================
+
+output/
+├── A1_250Q_images/          ← 80 hình ảnh
+│   ├── question_image_1.jpeg
+│   ├── question_image_2.jpeg
+│   └── ...
+└── A1_250Q.json             ← Dữ liệu câu hỏi
+
+
+🔧 NẾU MUỐN THAY ĐỔI THÔNG TIN ĐỀ THI:
+=======================================
+
+Mở file output/A1_250Q.json và sửa phần "examSet":
+
+{
+  "examSet": {
+    "name": "Đề thi A1 - 2024",        ← Sửa ở đây
+    "description": "250 câu hỏi...",    ← Và đây
+    "isOfficial": true,
+    "category": "A1"                     ← Và đây
+  },
+  "questions": [...]
+}
+
+
+📱 COPY VÀO ANDROID APP:
+========================
+
+Bước 1: Copy file JSON
+Copy: output/A1_250Q.json
+Đến:  ..\app\src\main\assets\questions.json
+
+Bước 2: Copy hình ảnh (nếu cần)
+Copy: output/A1_250Q_images/*
+Đến:  ..\app\src\main\assets\images\
+
+
+✨ ƯU ĐIỂM CỦA BẢN AUTO:
+========================
+
+✓ Không cần nhập thông tin thủ công
+✓ Tự động detect đáp án đúng (bằng cách tìm gạch chân)
+✓ Tên file output tự động theo tên PDF
+✓ Chạy nhanh, không cần tương tác
+
+
+📋 SO SÁNH 2 PHIÊN BẢN:
+========================
+
+pdf_extractor.py:
+  - Cần nhập thông tin đề thi
+  - Phù hợp nếu muốn tùy chỉnh chi tiết
+  - Chạy: python pdf_extractor.py "file.pdf"
+
+pdf_extractor_auto.py: ⭐ KHUYÊN DÙNG
+  - Tự động mọi thứ
+  - Detect đáp án đúng tự động
+  - Nhanh chóng, tiện lợi
+  - Chạy: python pdf_extractor_auto.py "file.pdf"
+
+
+🚀 LƯU Ý QUAN TRỌNG:
+====================
+
+1. PDF phải theo đúng format:
+   - Câu hỏi bắt đầu bằng "Câu 1:", "Câu 2:", ...
+   - Đáp án đánh số 1., 2., 3., 4.
+   - Đáp án đúng được GẠCH CHÂN trong PDF
+
+2. Nếu PDF khác format:
+   - Có thể cần chỉnh sửa regex trong code
+   - Hoặc liên hệ để tôi hỗ trợ
+
+3. Chất lượng extract phụ thuộc vào:
+   - PDF có OCR tốt hay không
+   - PDF có bị scan lệch không
+   - Format có chuẩn không
+
+
+💡 MẸO:
+=======
+
+Để xử lý nhiều PDF cùng lúc:
+  for %f in (*.pdf) do python pdf_extractor_auto.py "%f"
+
+Hoặc tạo file batch:
+  pdf_extractor_auto.py "De_1.pdf"
+  pdf_extractor_auto.py "De_2.pdf"
+  pdf_extractor_auto.py "De_3.pdf"
+
+
+==============================================================
+          CHÚC BẠN THÀNH CÔNG!
+==============================================================
+

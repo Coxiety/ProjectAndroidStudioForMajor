@@ -1,0 +1,213 @@
+==============================================================
+        HƯỚNG DẪN TÍNH NĂNG TỰ ĐỘNG LINK HÌNH VỚI CÂU HỎI
+==============================================================
+
+🎯 TẠI SAO CẦN TÍNH NĂNG NÀY?
+==============================
+
+Trong đề thi có nhiều câu hỏi kèm hình ảnh:
+- Câu hỏi về biển báo giao thông
+- Câu hỏi về giải thế sa hình
+- Câu hỏi về tình huống giao thông
+
+Tính năng này tự động nhận diện và link hình đúng với câu hỏi!
+
+
+🚀 CÁCH SỬ DỤNG:
+================
+
+Phiên bản CÓ IMAGE LINKING (Khuyên dùng):
+------------------------------------------
+python pdf_extractor_with_images.py "A1_250Q.pdf"
+
+Kết quả:
+- File: output/A1_250Q_with_images.json
+- Hình: output/A1_250Q_images/
+
+
+Phiên bản KHÔNG IMAGE LINKING:
+-------------------------------
+python pdf_extractor_auto.py "A1_250Q.pdf"
+
+Kết quả:
+- File: output/A1_250Q.json
+- Hình: output/A1_250Q_images/
+
+
+⚙️ CÁCH HOẠT ĐỘNG:
+==================
+
+1. Track vị trí hình ảnh
+   - Phát hiện hình ảnh nào ở trang nào
+   - Lưu vị trí của từng hình trong PDF
+
+2. Track vị trí câu hỏi
+   - Phát hiện câu hỏi nào ở trang nào
+   - Lưu vị trí của từng câu hỏi
+
+3. Tự động phát hiện keyword
+   - Tìm từ khóa: "biển", "hình", "sa hình", "dưới đây", ...
+   - Nếu câu hỏi có keyword → gán hình cùng trang
+
+4. Link theo thứ tự
+   - Hình được link theo thứ tự xuất hiện trên trang
+   - Mỗi hình chỉ link với 1 câu hỏi
+
+
+📊 THỐNG KÊ KẾT QUẢ (A1_250Q.pdf):
+===================================
+
+Total Questions: 242
+├─ Questions WITH images: 50
+│  ├─ Biển báo: ~40 câu
+│  ├─ Sa hình: ~8 câu
+│  └─ Tình huống: ~2 câu
+│
+└─ Questions WITHOUT images: 192
+   └─ Lý thuyết luật giao thông
+
+
+📝 VÍ DỤ KẾT QUẢ:
+==================
+
+Câu hỏi CÓ hình:
+{
+  "questionText": "Biển nào báo hiệu đường dành cho xe thô sơ?",
+  "optionA": "Biển 1",
+  "optionB": "Biển 2",
+  "optionC": "Biển 3",
+  "optionD": null,
+  "correctAnswer": "C",
+  "imagePath": "question_image_3.jpeg"  ← TỰ ĐỘNG LINK!
+}
+
+Câu hỏi KHÔNG có hình:
+{
+  "questionText": "Luật TTATGTĐB có nghiêm cấm người lái xe...",
+  "optionA": "Nghiêm cấm",
+  "optionB": "Không nghiêm cấm",
+  "optionC": null,
+  "optionD": null,
+  "correctAnswer": "A",
+  "imagePath": null  ← Đúng vì câu lý thuyết
+}
+
+
+🔍 TỪ KHÓA ĐƯỢC PHÁT HIỆN:
+============================
+
+Các từ khóa cho biết câu hỏi có hình:
+- "hình"
+- "biển báo"
+- "biển"
+- "sa hình"
+- "dưới đây"
+- "trên đây"
+- "hình vẽ"
+- "sơ đồ"
+- "tình huống"
+- "hình minh họa"
+- "hình ảnh"
+- "như hình"
+- "theo hình"
+
+
+💡 TỐI ƯU HÓA:
+==============
+
+Nếu kết quả không chính xác 100%:
+
+1. Kiểm tra từ khóa
+   - Thêm từ khóa mới vào danh sách
+   - Edit file: pdf_extractor_with_images.py
+   - Tìm hàm: question_references_image()
+
+2. Kiểm tra thủ công
+   - Dùng script: python check_images.py
+   - Xem câu nào có hình, câu nào không
+   - Điều chỉnh logic nếu cần
+
+3. Sửa thủ công
+   - Mở file JSON
+   - Thêm/xóa imagePath cho câu hỏi cụ thể
+
+
+🛠️ CÔNG CỤ HỖ TRỢ:
+===================
+
+1. Kiểm tra kết quả link:
+   python check_images.py
+
+2. Debug text trong PDF:
+   python debug_pdf_text_page.py "file.pdf" [số_trang]
+
+3. Xem hình ảnh đã extract:
+   Mở thư mục: output/[tên_pdf]_images/
+
+
+📂 CẤU TRÚC FILE OUTPUT:
+=========================
+
+output/
+├── A1_250Q_with_images.json     ← File có link hình
+├── A1_250Q.json                 ← File không link hình
+└── A1_250Q_images/              ← Thư mục chứa hình
+    ├── question_image_1.jpeg
+    ├── question_image_2.jpeg
+    └── ...
+
+
+🔄 SO SÁNH 2 PHIÊN BẢN:
+========================
+
+pdf_extractor_auto.py:
+  + Nhanh hơn
+  + Đơn giản hơn
+  - Không link hình với câu hỏi
+  - imagePath luôn = null
+
+pdf_extractor_with_images.py: ⭐ KHUYÊN DÙNG
+  + TỰ ĐỘNG link hình với câu hỏi
+  + Phát hiện thông minh
+  + Kết quả chính xác cao
+  - Chậm hơn một chút (không đáng kể)
+
+
+✅ KẾT LUẬN:
+============
+
+Dùng phiên bản WITH IMAGES nếu:
+✓ Đề thi có hình ảnh (biển báo, sa hình)
+✓ Muốn tự động link hình với câu hỏi
+✓ Tiết kiệm thời gian link thủ công
+
+Dùng phiên bản AUTO nếu:
+✓ Đề thi không có hình
+✓ Chỉ cần text câu hỏi
+✓ Muốn chạy nhanh nhất
+
+
+📱 SỬ DỤNG TRONG ANDROID APP:
+==============================
+
+File JSON đã sẵn sàng dùng cho Android app!
+
+Trong Android code:
+- Nếu imagePath != null → Load hình từ assets
+- Nếu imagePath == null → Chỉ hiển thị text
+
+Ví dụ code Android:
+if (question.getImagePath() != null) {
+    imageView.setVisibility(View.VISIBLE);
+    String imagePath = "file:///android_asset/images/" 
+                     + question.getImagePath();
+    imageView.setImageURI(Uri.parse(imagePath));
+} else {
+    imageView.setVisibility(View.GONE);
+}
+
+
+==============================================================
+        CHÚC BẠN THÀNH CÔNG!
+==============================================================
+

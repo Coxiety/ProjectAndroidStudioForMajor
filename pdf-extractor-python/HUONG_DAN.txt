@@ -1,0 +1,148 @@
+==============================================================
+        HƯỚNG DẪN SỬ DỤNG - PDF QUESTION EXTRACTOR
+==============================================================
+
+CÁCH CHẠY NHANH NHẤT (WINDOWS):
+================================
+
+1. Mở thư mục pdf-extractor-python
+2. Double-click vào file: setup_and_run.bat
+3. Đợi cài đặt các thư viện (chỉ cần làm 1 lần)
+4. Làm theo hướng dẫn trên màn hình
+
+DONE! Đơn giản như vậy thôi!
+
+
+CÁCH CHẠY THỦ CÔNG:
+====================
+
+Bước 1: Mở PowerShell/CMD
+-------------------------
+Nhấn Win + R, gõ: cmd
+Enter
+
+Bước 2: Di chuyển vào thư mục
+------------------------------
+cd D:\Data\AndroidProject\ProjectMonLapTrinhAndroid\pdf-extractor-python
+
+Bước 3: Cài đặt thư viện (chỉ cần làm 1 lần)
+---------------------------------------------
+pip install -r requirements.txt
+
+Bước 4: Chạy chương trình
+--------------------------
+python pdf_extractor.py
+
+Bước 5: Nhập thông tin theo yêu cầu
+------------------------------------
+- Đường dẫn file PDF
+- Thư mục lưu ảnh (hoặc Enter để dùng mặc định)
+- Đường dẫn file JSON (hoặc Enter để dùng mặc định)
+- Tên đề thi
+- Mô tả
+- Phân loại (B2, A1, etc.)
+
+
+VÍ DỤ CỤ THỂ:
+==============
+
+python pdf_extractor.py
+
+>> Enter PDF file path: ..\app\src\main\assets\1105395282_250 câu hỏi sát hạch xe Mô tô.pdf
+>> Enter output directory for images: .\output\images
+>> Enter output JSON file path: .\output\questions.json
+>> Enter exam set name: Đề thi B2 - Mô tô
+>> Enter exam description: 250 câu hỏi sát hạch xe máy
+>> Enter exam category: B2
+>> Is this an official exam? yes
+
+
+KẾT QUẢ SAU KHI CHẠY:
+======================
+
+Bạn sẽ có 2 thứ:
+
+1. Thư mục output/images/ chứa tất cả hình ảnh
+2. File output/questions.json chứa dữ liệu câu hỏi
+
+
+COPY VÀO ANDROID APP:
+======================
+
+Bước 1: Copy file JSON
+-----------------------
+Copy: output\questions.json
+Đến:  ..\app\src\main\assets\questions.json
+
+Bước 2: Copy hình ảnh
+----------------------
+Copy tất cả file trong: output\images\
+Đến: ..\app\src\main\assets\images\
+
+Bước 3: Chạy Android app
+-------------------------
+Mở Android Studio và chạy app
+Các câu hỏi sẽ tự động hiển thị!
+
+
+KHẮC PHỤC SỰ CỐ:
+=================
+
+Lỗi 1: "python is not recognized"
+----------------------------------
+Giải pháp: Cài Python từ https://www.python.org/
+Lưu ý: Tick vào "Add Python to PATH" khi cài!
+
+Lỗi 2: "pip is not recognized"
+-------------------------------
+Giải pháp: Thử lệnh này thay vì pip:
+python -m pip install -r requirements.txt
+
+Lỗi 3: "No module named PyPDF2"
+--------------------------------
+Giải pháp: Chưa cài thư viện, chạy:
+pip install PyPDF2 PyMuPDF Pillow
+
+Lỗi 4: "PDF file not found"
+----------------------------
+Giải pháp: 
+- Kiểm tra đường dẫn file có đúng không
+- Dùng đường dẫn đầy đủ: D:\...\file.pdf
+- Hoặc dùng dấu .. để lùi thư mục
+
+Lỗi 5: "No questions extracted"
+--------------------------------
+Giải pháp:
+- PDF có thể bị mã hóa
+- PDF không đúng định dạng
+- Thử mở PDF thủ công xem có lỗi không
+
+
+YÊU CẦU HỆ THỐNG:
+==================
+
+✓ Windows 10/11
+✓ Python 3.7+
+✓ Kết nối internet (để tải thư viện lần đầu)
+✓ File PDF cần trích xuất
+
+
+TẠI SAO DÙNG PYTHON VERSION?
+=============================
+
+✓ Không cần cài Maven
+✓ Dễ cài đặt (chỉ cần Python)
+✓ Chạy nhanh
+✓ Kết quả giống y hệt Java version
+✓ Phù hợp cho người mới
+
+
+LIÊN HỆ:
+=========
+
+Nếu vẫn gặp vấn đề, check các file:
+- README.md (hướng dẫn chi tiết)
+- requirements.txt (danh sách thư viện)
+
+==============================================================
+

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Learning App</string>
+    
+    <!-- Onboarding -->
+    <string name="onboarding_title">Chào mừng!</string>
+    <string name="select_goal_title">Chọn mục tiêu học</string>
+    <string name="select_goal_subtitle">Bạn muốn học gì?</string>
+    <string name="goal_driving_test">Ôn thi bằng lái xe</string>
+    <string name="goal_language">Học ngoại ngữ</string>
+    <string name="goal_general">Học tập chung</string>
+    <string name="notification_permission_title">Cho phép thông báo</string>
+    <string name="notification_permission_message">Cho phép thông báo để nhận nhắc nhở học tập</string>
+    <string name="allow_notification">Cho phép</string>
+    <string name="skip">Bỏ qua</string>
+    <string name="import_data_title">Nhập dữ liệu</string>
+    <string name="import_data_subtitle">Bạn có muốn nhập dữ liệu từ file không?</string>
+    <string name="import_now">Nhập ngay</string>
+    <string name="start_learning">Bắt đầu học</string>
+    <string name="next">Tiếp theo</string>
+    
+    <!-- Main -->
+    <string name="home">Trang chủ</string>
+    <string name="flashcard">Flashcard</string>
+    <string name="pomodoro">Pomodoro</string>
+    <string name="view_exams">Xem đề thi</string>
+    <string name="practice_test">Thi thử</string>
+    <string name="history">Lịch sử</string>
+    <string name="settings">Cài đặt</string>
+    
+    <!-- Flashcard -->
+    <string name="flashcard_hub_title">Flashcard Hub</string>
+    <string name="select_topic">Chọn bộ chủ đề</string>
+    <string name="progress">Tiến độ</string>
+    <string name="cards_learned">Thẻ đã học: %1$d/%2$d</string>
+    <string name="start_session">Bắt đầu phiên học</string>
+    <string name="flip_card">Lật thẻ</string>
+    <string name="i_know">Nhớ rồi</string>
+    <string name="not_sure">Chưa rõ</string>
+    <string name="view_explanation">Xem giải thích</string>
+    <string name="session_complete">Hoàn thành phiên học!</string>
+    
+    <!-- Pomodoro -->
+    <string name="pomodoro_hub_title">Pomodoro Timer</string>
+    <string name="preset_25_5_4">Preset: 25/5 (4 chu kỳ)</string>
+    <string name="customize_cycle">Tùy chỉnh chu kỳ</string>
+    <string name="work_duration">Thời gian làm việc (phút)</string>
+    <string name="short_break">Nghỉ ngắn (phút)</string>
+    <string name="long_break">Nghỉ dài (phút)</string>
+    <string name="cycles_count">Số chu kỳ</string>
+    <string name="start_pomodoro">Bắt đầu</string>
+    <string name="pause">Tạm dừng</string>
+    <string name="resume">Tiếp tục</string>
+    <string name="end_session">Kết thúc</string>
+    <string name="work_time">Làm việc</string>
+    <string name="break_time">Nghỉ ngơi</string>
+    <string name="cycle_complete">Hoàn thành chu kỳ!</string>
+    
+    <!-- Exam -->
+    <string name="exam_list_title">Danh sách đề thi</string>
+    <string name="official_exams">Đề thi chính thức</string>
+    <string name="practice_exams">Đề luyện tập</string>
+    <string name="exam_detail_title">Chi tiết đề thi</string>
+    <string name="question_count">Số câu hỏi: %1$d</string>
+    <string name="browse_questions">Duyệt câu hỏi</string>
+    <string name="question_number">Câu %1$d</string>
+    <string name="correct_answer">Đáp án đúng: %1$s</string>
+    <string name="explanation">Giải thích</string>
+    
+    <!-- Practice Test -->
+    <string name="config_test_title">Cấu hình thi thử</string>
+    <string name="num_questions">Số câu hỏi</string>
+    <string name="test_duration">Thời lượng (phút)</string>
+    <string name="start_test">Bắt đầu thi</string>
+    <string name="question_image">Hình ảnh câu hỏi</string>
+    <string name="test_in_progress">Đang làm bài</string>
+    <string name="time_remaining">Thời gian còn lại: %1$s</string>
+    <string name="mark_for_review">Đánh dấu xem lại</string>
+    <string name="previous_question">Câu trước</string>
+    <string name="next_question">Câu sau</string>
+    <string name="submit_test">Nộp bài</string>
+    <string name="confirm_submit">Bạn có chắc muốn nộp bài?</string>
+    <string name="test_result_title">Kết quả</string>
+    <string name="your_score">Điểm của bạn: %1$d/%2$d</string>
+    <string name="pass">Đậu</string>
+    <string name="fail">Rớt</string>
+    <string name="correct_answers">Câu đúng: %1$d</string>
+    <string name="wrong_answers">Câu sai: %1$d</string>
+    <string name="review_mistakes">Ôn lỗi</string>
+    <string name="view_all_answers">Xem tất cả đáp án</string>
+    <string name="save_to_history">Lưu vào lịch sử</string>
+    <string name="filter_wrong">Chỉ câu sai</string>
+    <string name="filter_marked">Chỉ câu đánh dấu</string>
+    <string name="your_answer">Câu trả lời của bạn: %1$s</string>
+    
+    <!-- History -->
+    <string name="history_title">Lịch sử thi</string>
+    <string name="no_history">Chưa có lịch sử thi</string>
+    <string name="test_date">Ngày thi: %1$s</string>
+    <string name="view_detail">Xem chi tiết</string>
+    <string name="history_detail_title">Chi tiết lần thi</string>
+    <string name="score_chart">Biểu đồ điểm</string>
+    <string name="time_chart">Thời gian làm bài</string>
+    <string name="mistakes_chart">Các câu sai</string>
+    
+    <!-- Settings -->
+    <string name="settings_title">Cài đặt</string>
+    <string name="sync_backup">Đồng bộ và Backup</string>
+    <string name="backup_now">Backup ngay</string>
+    <string name="restore_data">Khôi phục dữ liệu</string>
+    <string name="notifications">Thông báo</string>
+    <string name="enable_notifications">Bật thông báo</string>
+    <string name="notification_time">Thời gian nhắc nhở</string>
+    <string name="daily_goal">Mục tiêu hàng ngày</string>
+    <string name="set_goal">Đặt mục tiêu</string>
+    <string name="about">Về ứng dụng</string>
+    <string name="version">Phiên bản: 1.0</string>
+    
+    <!-- Common -->
+    <string name="ok">OK</string>
+    <string name="cancel">Hủy</string>
+    <string name="yes">Có</string>
+    <string name="no">Không</string>
+    <string name="confirm">Xác nhận</string>
+    <string name="back">Quay lại</string>
+    <string name="save">Lưu</string>
+    <string name="delete">Xóa</string>
+    <string name="edit">Sửa</string>
+    <string name="loading">Đang tải...</string>
+    <string name="error">Có lỗi xảy ra</string>
+    <string name="success">Thành công</string>
+</resources>
+

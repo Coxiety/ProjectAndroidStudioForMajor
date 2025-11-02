@@ -1,0 +1,64 @@
+==============================================================
+              CHẠY NGAY - HƯỚNG DẪN CỰC NHANH
+==============================================================
+
+BẠN ĐÃ CÀI ĐẶT XONG! GIỜ CHẠY THÔI!
+
+CÁCH 1: DOUBLE-CLICK (DỄ NHẤT)
+================================
+1. Mở thư mục: pdf-extractor-python
+2. Double-click file: setup_and_run.bat
+3. Làm theo hướng dẫn trên màn hình
+
+
+CÁCH 2: DÒNG LỆNH
+==================
+Mở PowerShell/CMD tại thư mục pdf-extractor-python và gõ:
+
+python pdf_extractor.py
+
+
+CÁCH 3: VỚI THAM SỐ (NHANH HƠN)
+================================
+python pdf_extractor.py "đường_dẫn_PDF" "thư_mục_ảnh" "file_json"
+
+Ví dụ:
+python pdf_extractor.py "..\app\src\main\assets\1105395282_250 câu hỏi sát hạch xe Mô tô.pdf" ".\output\images" ".\output\questions.json"
+
+
+KHI CHẠY, CHƯƠNG TRÌNH SẼ HỎI:
+===============================
+1. Đường dẫn file PDF của bạn
+2. Nơi lưu ảnh (nhấn Enter = dùng mặc định)
+3. Nơi lưu JSON (nhấn Enter = dùng mặc định)
+4. Tên đề thi
+5. Mô tả đề thi
+6. Phân loại (B2, A1, etc.)
+7. Có phải đề chính thức không
+
+
+SAU KHI CHẠY XONG:
+==================
+Bạn sẽ có:
+- output/images/ (chứa tất cả hình ảnh)
+- output/questions.json (dữ liệu câu hỏi)
+
+
+SAO CHÉP VÀO ANDROID APP:
+==========================
+1. Copy output/questions.json 
+   Vào: app/src/main/assets/questions.json
+
+2. Copy output/images/* 
+   Vào: app/src/main/assets/images/
+
+
+XEM THÊM:
+==========
+- HUONG_DAN.txt - Hướng dẫn chi tiết
+- README.md - Tài liệu đầy đủ
+
+==============================================================
+        CHÚC BẠN THÀNH CÔNG!
+==============================================================
+

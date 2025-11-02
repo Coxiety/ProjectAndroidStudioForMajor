@@ -1,0 +1,341 @@
+==============================================================
+        HƯỚNG DẪN TÍCH HỢP VÀO ANDROID APP
+==============================================================
+
+📱 FILE CẦN DÙNG CHO ANDROID:
+==============================
+
+1. FILE JSON:
+   Từ: pdf-extractor-python/output/A1_250Q_with_images.json
+   Đến: app/src/main/assets/questions.json
+   ⚠️ LƯU Ý: Đổi tên thành questions.json
+
+2. THƯ MỤC HÌNH:
+   Từ: pdf-extractor-python/output/A1_250Q_images/*
+   Đến: app/src/main/assets/images/
+   ⚠️ LƯU Ý: Copy TẤT CẢ 80 file ảnh
+
+
+📂 CẤU TRÚC ANDROID PROJECT:
+=============================
+
+app/
+└── src/
+    └── main/
+        ├── java/...
+        ├── res/...
+        └── assets/                    ← Thư mục này
+            ├── questions.json         ← Copy file JSON vào đây
+            └── images/                ← Tạo thư mục này
+                ├── question_image_1.jpeg
+                ├── question_image_2.jpeg
+                ├── question_image_3.jpeg
+                ├── ...
+                └── question_image_80.jpeg
+
+
+📝 FORMAT DỮ LIỆU:
+==================
+
+Câu hỏi KHÔNG có hình (imagePath = null):
+{
+  "questionText": "Luật TTATGTĐB có nghiêm cấm...",
+  "optionA": "Nghiêm cấm",
+  "optionB": "Không nghiêm cấm",
+  "optionC": "Tùy trường hợp",
+  "optionD": null,
+  "correctAnswer": "A",
+  "explanation": null,
+  "imagePath": null  ← Không có hình
+}
+
+Câu hỏi CÓ hình (imagePath = tên file):
+{
+  "questionText": "Biển nào báo hiệu đường dành cho xe thô sơ?",
+  "optionA": "Biển 1",
+  "optionB": "Biển 2",
+  "optionC": "Biển 3",
+  "optionD": null,
+  "correctAnswer": "C",
+  "explanation": null,
+  "imagePath": "question_image_3.jpeg"  ← Có link hình
+}
+
+
+💻 CODE JAVA ĐỂ LOAD HÌNH:
+===========================
+
+Cách 1: Dùng standard Android (Không cần thư viện)
+---------------------------------------------------
+
+// Trong Activity hoặc Fragment
+ImageView questionImageView = findViewById(R.id.questionImageView);
+
+if (question.getImagePath() != null && !question.getImagePath().isEmpty()) {
+    // Có hình - hiển thị
+    questionImageView.setVisibility(View.VISIBLE);
+    
+    try {
+        // Load từ assets
+        AssetManager assetManager = getAssets();
+        InputStream inputStream = assetManager.open("images/" + question.getImagePath());
+        Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+        questionImageView.setImageBitmap(bitmap);
+        inputStream.close();
+    } catch (IOException e) {
+        e.printStackTrace();
+        questionImageView.setVisibility(View.GONE);
+    }
+} else {
+    // Không có hình - ẩn đi
+    questionImageView.setVisibility(View.GONE);
+}
+
+
+Cách 2: Dùng Glide (Khuyên dùng - Dễ hơn)
+------------------------------------------
+
+// Thêm vào build.gradle (Module: app)
+dependencies {
+    implementation 'com.github.bumptech.glide:glide:4.16.0'
+}
+
+// Trong Activity hoặc Fragment
+ImageView questionImageView = findViewById(R.id.questionImageView);
+
+if (question.getImagePath() != null && !question.getImagePath().isEmpty()) {
+    questionImageView.setVisibility(View.VISIBLE);
+    
+    String imagePath = "file:///android_asset/images/" + question.getImagePath();
+    
+    Glide.with(this)
+        .load(imagePath)
+        .placeholder(R.drawable.placeholder_image)  // Optional
+        .error(R.drawable.error_image)              // Optional
+        .into(questionImageView);
+} else {
+    questionImageView.setVisibility(View.GONE);
+}
+
+
+Cách 3: Tạo Helper Method (Clean Code)
+---------------------------------------
+
+// Tạo class ImageHelper.java
+public class ImageHelper {
+    
+    public static void loadQuestionImage(Context context, 
+                                        ImageView imageView, 
+                                        String imagePath) {
+        if (imagePath != null && !imagePath.isEmpty()) {
+            imageView.setVisibility(View.VISIBLE);
+            
+            String fullPath = "file:///android_asset/images/" + imagePath;
+            
+            Glide.with(context)
+                .load(fullPath)
+                .into(imageView);
+        } else {
+            imageView.setVisibility(View.GONE);
+        }
+    }
+}
+
+// Sử dụng:
+ImageHelper.loadQuestionImage(this, questionImageView, question.getImagePath());
+
+
+📋 CODE LAYOUT XML:
+===================
+
+<!-- question_item.xml -->
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Hình ảnh câu hỏi (ẩn nếu không có) -->
+    <ImageView
+        android:id="@+id/questionImageView"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        android:visibility="gone"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Text câu hỏi -->
+    <TextView
+        android:id="@+id/questionTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="@color/black"/>
+
+    <!-- Options A, B, C, D -->
+    <!-- ... -->
+    
+</LinearLayout>
+
+
+🔄 CODE ĐỌC FILE JSON:
+========================
+
+// Đọc file JSON từ assets
+public String loadJSONFromAssets(String filename) {
+    String json = null;
+    try {
+        InputStream is = getAssets().open(filename);
+        int size = is.available();
+        byte[] buffer = new byte[size];
+        is.read(buffer);
+        is.close();
+        json = new String(buffer, "UTF-8");
+    } catch (IOException ex) {
+        ex.printStackTrace();
+        return null;
+    }
+    return json;
+}
+
+// Parse JSON
+String jsonString = loadJSONFromAssets("questions.json");
+JSONArray jsonArray = new JSONArray(jsonString);
+JSONObject examData = jsonArray.getJSONObject(0);
+
+// Get exam info
+JSONObject examSet = examData.getJSONObject("examSet");
+String examName = examSet.getString("name");
+String examDesc = examSet.getString("description");
+
+// Get questions
+JSONArray questions = examData.getJSONArray("questions");
+for (int i = 0; i < questions.length(); i++) {
+    JSONObject q = questions.getJSONObject(i);
+    
+    String questionText = q.getString("questionText");
+    String optionA = q.optString("optionA", null);
+    String optionB = q.optString("optionB", null);
+    String optionC = q.optString("optionC", null);
+    String optionD = q.optString("optionD", null);
+    String correctAnswer = q.getString("correctAnswer");
+    String imagePath = q.optString("imagePath", null);  ← Lấy path hình
+    
+    // Create Question object
+    Question question = new Question(questionText, optionA, optionB, 
+                                    optionC, optionD, correctAnswer, imagePath);
+}
+
+
+📊 STATISTICS:
+==============
+
+File A1_250Q_with_images.json:
+- Total questions: 242
+- Questions WITH images: 50 (biển báo, sa hình)
+- Questions WITHOUT images: 192 (lý thuyết)
+- Correct answers: 242/242 (100%)
+- Image files: 80 files
+- Total size: ~15MB
+
+
+✅ CHECKLIST TÍCH HỢP:
+=======================
+
+□ Copy questions.json vào app/src/main/assets/
+□ Tạo thư mục app/src/main/assets/images/
+□ Copy 80 file ảnh vào thư mục images/
+□ Thêm Glide dependency vào build.gradle (nếu dùng)
+□ Update Question model class với field imagePath
+□ Update layout XML với ImageView
+□ Update code load hình theo imagePath
+□ Test với câu hỏi có hình và không có hình
+□ Build và run app
+
+
+🧪 TEST:
+========
+
+Để test tính năng:
+1. Tìm câu hỏi có imagePath (từ câu 86 trở đi)
+2. Check ImageView có hiển thị không
+3. Check hình có load đúng không
+4. Check câu hỏi không có hình → ImageView bị ẩn
+
+
+⚠️ LƯU Ý:
+==========
+
+1. Đường dẫn assets:
+   - ĐÚNG: "images/question_image_3.jpeg"
+   - SAI: "/images/question_image_3.jpeg"
+   - SAI: "assets/images/question_image_3.jpeg"
+
+2. File size:
+   - 80 ảnh ~ 15MB
+   - Có thể resize ảnh nếu app quá nặng
+   - Hoặc download on-demand từ server
+
+3. Performance:
+   - Dùng Glide để cache
+   - Không load tất cả ảnh cùng lúc
+   - Load theo nhu cầu (lazy loading)
+
+4. Format support:
+   - JPEG: OK
+   - PNG: OK
+   - Cả 2 format đều có trong file
+
+
+📱 VÍ DỤ HOÀN CHỈNH:
+=====================
+
+// QuestionActivity.java
+public class QuestionActivity extends AppCompatActivity {
+    
+    private TextView questionText;
+    private ImageView questionImage;
+    private RadioGroup optionsGroup;
+    private Question currentQuestion;
+    
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_question);
+        
+        questionText = findViewById(R.id.questionText);
+        questionImage = findViewById(R.id.questionImage);
+        optionsGroup = findViewById(R.id.optionsGroup);
+        
+        loadQuestion(currentQuestion);
+    }
+    
+    private void loadQuestion(Question question) {
+        // Set question text
+        questionText.setText(question.getQuestionText());
+        
+        // Load image if available
+        if (question.getImagePath() != null && !question.getImagePath().isEmpty()) {
+            questionImage.setVisibility(View.VISIBLE);
+            
+            String imagePath = "file:///android_asset/images/" 
+                             + question.getImagePath();
+            
+            Glide.with(this)
+                .load(imagePath)
+                .into(questionImage);
+        } else {
+            questionImage.setVisibility(View.GONE);
+        }
+        
+        // Set options
+        // ...
+    }
+}
+
+
+==============================================================
+        CHÚC BẠN TÍCH HỢP THÀNH CÔNG!
+==============================================================
+
