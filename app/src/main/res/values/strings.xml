@@ -84,8 +84,8 @@
     <string name="your_score">Điểm của bạn: %1$d/%2$d</string>
     <string name="pass">Đậu</string>
     <string name="fail">Rớt</string>
-    <string name="correct_answers">Câu đúng: %1$d</string>
-    <string name="wrong_answers">Câu sai: %1$d</string>
+    <string name="correct_answers">Câu đúng:</string>
+    <string name="wrong_answers">Câu sai:</string>
     <string name="review_mistakes">Ôn lỗi</string>
     <string name="view_all_answers">Xem tất cả đáp án</string>
     <string name="save_to_history">Lưu vào lịch sử</string>

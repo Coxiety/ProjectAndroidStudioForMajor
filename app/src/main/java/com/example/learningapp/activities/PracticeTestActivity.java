@@ -59,11 +59,7 @@ public class PracticeTestActivity extends AppCompatActivity {
         timeLeftInMillis = duration * 60 * 1000L;
         
         databaseHelper = new DatabaseHelper(this);
-        questions = databaseHelper.getQuestionsByExamSet(examSetId);
-        
-        if (questions.size() > numQuestions) {
-            questions = questions.subList(0, numQuestions);
-        }
+        questions = databaseHelper.getRandomQuestionsForTest(examSetId, numQuestions);
         
         userAnswers = new ArrayList<>();
         for (Question question : questions) {
@@ -175,14 +171,14 @@ public class PracticeTestActivity extends AppCompatActivity {
         radioOptionA.setText("A. " + question.getOptionA());
         radioOptionB.setText("B. " + question.getOptionB());
         
-        if (question.getOptionC() != null && !question.getOptionC().isEmpty()) {
+        if (question.getOptionC() != null && !question.getOptionC().isEmpty() && !question.getOptionC().equals("null")) {
             radioOptionC.setVisibility(View.VISIBLE);
             radioOptionC.setText("C. " + question.getOptionC());
         } else {
             radioOptionC.setVisibility(View.GONE);
         }
         
-        if (question.getOptionD() != null && !question.getOptionD().isEmpty()) {
+        if (question.getOptionD() != null && !question.getOptionD().isEmpty() && !question.getOptionD().equals("null")) {
             radioOptionD.setVisibility(View.VISIBLE);
             radioOptionD.setText("D. " + question.getOptionD());
         } else {

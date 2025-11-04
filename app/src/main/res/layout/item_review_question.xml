@@ -47,7 +47,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Question text"
-            android:layout_marginBottom="16dp" />
+            android:layout_marginBottom="8dp" />
+
+        <ImageView
+            android:id="@+id/ivQuestionImage"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginBottom="16dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:visibility="gone"
+            android:contentDescription="@string/question_image" />
 
         <TextView
             android:id="@+id/tvYourAnswer"

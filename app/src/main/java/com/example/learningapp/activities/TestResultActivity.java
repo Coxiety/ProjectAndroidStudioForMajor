@@ -8,6 +8,12 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.learningapp.R;
+import com.example.learningapp.database.DatabaseHelper;
+import com.example.learningapp.models.ExamHistory;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -16,9 +22,12 @@ public class TestResultActivity extends AppCompatActivity {
     private TextView tvScore, tvResult, tvCorrectCount, tvWrongCount;
     private Button btnReviewMistakes, btnViewAllAnswers, btnFinish;
     
+    private DatabaseHelper databaseHelper;
     private int correctAnswers = 0;
     private int wrongAnswers = 0;
     private int totalQuestions;
+    private int examSetId;
+    private String examName;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +46,13 @@ public class TestResultActivity extends AppCompatActivity {
         btnViewAllAnswers = findViewById(R.id.btnViewAllAnswers);
         btnFinish = findViewById(R.id.btnFinish);
         
+        databaseHelper = new DatabaseHelper(this);
+        examSetId = getIntent().getIntExtra("exam_set_id", -1);
+        examName = "Đề thi thử";
+        
         calculateResults();
         displayResults();
+        saveToHistory();
         setupListeners();
     }
     
@@ -73,6 +87,45 @@ public class TestResultActivity extends AppCompatActivity {
         } else {
             tvResult.setText(R.string.fail);
             tvResult.setTextColor(getResources().getColor(R.color.error, null));
+        }
+    }
+    
+    private void saveToHistory() {
+        try {
+            ExamHistory history = new ExamHistory();
+            history.setExamSetId(examSetId);
+            history.setExamName(examName + " (" + totalQuestions + " câu)");
+            history.setTotalQuestions(totalQuestions);
+            history.setCorrectAnswers(correctAnswers);
+            history.setWrongAnswers(wrongAnswers);
+            
+            int score = (correctAnswers * 100) / totalQuestions;
+            history.setScore(score);
+            history.setPassed(score >= 80);
+            history.setTestDate(System.currentTimeMillis());
+            
+            int durationMinutes = getIntent().getIntExtra("duration", 0);
+            history.setDurationMinutes(durationMinutes);
+            
+            ArrayList<Integer> questionIds = getIntent().getIntegerArrayListExtra("question_ids");
+            ArrayList<String> selectedAnswers = getIntent().getStringArrayListExtra("selected_answers");
+            ArrayList<String> correctAnswersList = getIntent().getStringArrayListExtra("correct_answers");
+            
+            JSONArray answersArray = new JSONArray();
+            if (questionIds != null && selectedAnswers != null && correctAnswersList != null) {
+                for (int i = 0; i < questionIds.size(); i++) {
+                    JSONObject answerObj = new JSONObject();
+                    answerObj.put("question_id", questionIds.get(i));
+                    answerObj.put("selected", selectedAnswers.get(i));
+                    answerObj.put("correct", correctAnswersList.get(i));
+                    answersArray.put(answerObj);
+                }
+            }
+            history.setAnswersJson(answersArray.toString());
+            
+            databaseHelper.saveExamHistory(history);
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
     }
     

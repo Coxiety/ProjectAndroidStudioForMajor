@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.learningapp.R;
 import com.example.learningapp.database.DatabaseHelper;
 import com.example.learningapp.models.Question;
+import com.example.learningapp.utils.ImageHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -158,12 +160,14 @@ public class ReviewMistakesActivity extends AppCompatActivity {
         
         class ViewHolder extends RecyclerView.ViewHolder {
             TextView tvQuestionNumber, tvResultBadge, tvQuestion, tvYourAnswer, tvCorrectAnswer;
+            ImageView ivQuestionImage;
             
             public ViewHolder(@NonNull View itemView) {
                 super(itemView);
                 tvQuestionNumber = itemView.findViewById(R.id.tvQuestionNumber);
                 tvResultBadge = itemView.findViewById(R.id.tvResultBadge);
                 tvQuestion = itemView.findViewById(R.id.tvQuestion);
+                ivQuestionImage = itemView.findViewById(R.id.ivQuestionImage);
                 tvYourAnswer = itemView.findViewById(R.id.tvYourAnswer);
                 tvCorrectAnswer = itemView.findViewById(R.id.tvCorrectAnswer);
             }
@@ -171,6 +175,8 @@ public class ReviewMistakesActivity extends AppCompatActivity {
             public void bind(ReviewItem item) {
                 tvQuestionNumber.setText("Câu " + item.questionNumber);
                 tvQuestion.setText(item.question.getQuestionText());
+                
+                ImageHelper.loadQuestionImage(ReviewMistakesActivity.this, ivQuestionImage, item.question.getImagePath());
                 
                 boolean isCorrect = item.selectedAnswer != null && 
                                    item.selectedAnswer.equals(item.correctAnswer);

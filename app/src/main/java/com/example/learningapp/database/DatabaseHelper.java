@@ -299,6 +299,51 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return questions;
     }
     
+    public List<Question> getRandomQuestionsForTest(int examSetId, int totalQuestions) {
+        List<Question> allQuestions = getQuestionsByExamSet(examSetId);
+        
+        List<Question> questionsWithImage = new ArrayList<>();
+        List<Question> questionsWithoutImage = new ArrayList<>();
+        
+        for (Question q : allQuestions) {
+            String imagePath = q.getImagePath();
+            if (imagePath != null && !imagePath.isEmpty() && !imagePath.equals("null")) {
+                questionsWithImage.add(q);
+            } else {
+                questionsWithoutImage.add(q);
+            }
+        }
+        
+        int numImageQuestions = (int) Math.round(totalQuestions * 0.3);
+        int numNormalQuestions = totalQuestions - numImageQuestions;
+        
+        if (numImageQuestions > questionsWithImage.size()) {
+            numImageQuestions = questionsWithImage.size();
+            numNormalQuestions = totalQuestions - numImageQuestions;
+        }
+        
+        if (numNormalQuestions > questionsWithoutImage.size()) {
+            numNormalQuestions = questionsWithoutImage.size();
+            numImageQuestions = totalQuestions - numNormalQuestions;
+        }
+        
+        List<Question> selectedQuestions = new ArrayList<>();
+        
+        java.util.Collections.shuffle(questionsWithoutImage);
+        for (int i = 0; i < numNormalQuestions && i < questionsWithoutImage.size(); i++) {
+            selectedQuestions.add(questionsWithoutImage.get(i));
+        }
+        
+        java.util.Collections.shuffle(questionsWithImage);
+        for (int i = 0; i < numImageQuestions && i < questionsWithImage.size(); i++) {
+            selectedQuestions.add(questionsWithImage.get(i));
+        }
+        
+        java.util.Collections.shuffle(selectedQuestions);
+        
+        return selectedQuestions;
+    }
+    
     public long saveExamHistory(ExamHistory history) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();

@@ -29,9 +29,57 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Question text"
-            android:maxLines="2"
-            android:ellipsize="end" />
+            android:text="Question text" />
+
+        <ImageView
+            android:id="@+id/ivQuestionImage"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginTop="8dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:visibility="gone"
+            android:contentDescription="@string/question_image" />
+
+        <TextView
+            android:id="@+id/tvOptionA"
+            style="@style/BodyText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:padding="8dp"
+            android:background="@color/background"
+            android:text="A. Option A" />
+
+        <TextView
+            android:id="@+id/tvOptionB"
+            style="@style/BodyText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:padding="8dp"
+            android:background="@color/background"
+            android:text="B. Option B" />
+
+        <TextView
+            android:id="@+id/tvOptionC"
+            style="@style/BodyText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:padding="8dp"
+            android:background="@color/background"
+            android:text="C. Option C" />
+
+        <TextView
+            android:id="@+id/tvOptionD"
+            style="@style/BodyText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:padding="8dp"
+            android:background="@color/background"
+            android:text="D. Option D" />
 
         <TextView
             android:id="@+id/tvCorrectAnswer"
@@ -39,8 +87,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Đáp án: A"
-            android:textColor="@color/success" />
+            android:text="Đáp án đúng: A"
+            android:textColor="@color/success"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
