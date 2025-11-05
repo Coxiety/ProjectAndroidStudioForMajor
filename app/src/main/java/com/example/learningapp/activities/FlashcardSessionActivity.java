@@ -64,6 +64,8 @@ public class FlashcardSessionActivity extends AppCompatActivity {
             return;
         }
         
+        java.util.Collections.shuffle(flashcards);
+        
         setupListeners();
         showCurrentCard();
     }

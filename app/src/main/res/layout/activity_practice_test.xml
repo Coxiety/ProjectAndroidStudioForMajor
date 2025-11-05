@@ -22,13 +22,29 @@
             android:textColor="@color/text_white"
             android:textStyle="bold" />
 
+        <Button
+            android:id="@+id/btnQuestionOverview"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:text="Nhấn vào đây để xem DS Câu hỏi"
+            android:textColor="@color/text_white"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:minWidth="0dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:backgroundTint="#4CAF50" />
+
         <TextView
             android:id="@+id/tvQuestionProgress"
             style="@style/BodyText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="1/30"
-            android:textColor="@color/text_white" />
+            android:textColor="@color/text_white"
+            android:textStyle="bold" />
     </LinearLayout>
 
     <ScrollView

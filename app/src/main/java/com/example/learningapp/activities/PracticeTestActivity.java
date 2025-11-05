@@ -1,9 +1,12 @@
 package com.example.learningapp.activities;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
@@ -12,8 +15,11 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.learningapp.R;
 import com.example.learningapp.database.DatabaseHelper;
@@ -32,7 +38,7 @@ public class PracticeTestActivity extends AppCompatActivity {
     private RadioGroup radioGroupOptions;
     private RadioButton radioOptionA, radioOptionB, radioOptionC, radioOptionD;
     private CheckBox checkMarkReview;
-    private Button btnPrevious, btnNext, btnSubmit;
+    private Button btnPrevious, btnNext, btnSubmit, btnQuestionOverview;
     
     private DatabaseHelper databaseHelper;
     private List<Question> questions;
@@ -89,6 +95,7 @@ public class PracticeTestActivity extends AppCompatActivity {
         btnPrevious = findViewById(R.id.btnPrevious);
         btnNext = findViewById(R.id.btnNext);
         btnSubmit = findViewById(R.id.btnSubmit);
+        btnQuestionOverview = findViewById(R.id.btnQuestionOverview);
     }
     
     private void startTimer() {
@@ -115,6 +122,8 @@ public class PracticeTestActivity extends AppCompatActivity {
     }
     
     private void setupListeners() {
+        btnQuestionOverview.setOnClickListener(v -> showQuestionOverviewDialog());
+        
         radioGroupOptions.setOnCheckedChangeListener((group, checkedId) -> {
             String selectedAnswer = "";
             if (checkedId == R.id.radioOptionA) {
@@ -262,6 +271,78 @@ public class PracticeTestActivity extends AppCompatActivity {
             .setPositiveButton(R.string.yes, (dialog, which) -> super.onBackPressed())
             .setNegativeButton(R.string.no, null)
             .show();
+    }
+    
+    private void showQuestionOverviewDialog() {
+        View dialogView = getLayoutInflater().inflate(R.layout.dialog_question_overview, null);
+        RecyclerView recyclerView = dialogView.findViewById(R.id.recyclerViewQuestions);
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 5));
+        
+        QuestionOverviewAdapter adapter = new QuestionOverviewAdapter();
+        recyclerView.setAdapter(adapter);
+        
+        AlertDialog dialog = new AlertDialog.Builder(this)
+                .setView(dialogView)
+                .create();
+        
+        adapter.setDialog(dialog);
+        
+        dialog.show();
+    }
+    
+    private class QuestionOverviewAdapter extends RecyclerView.Adapter<QuestionOverviewAdapter.ViewHolder> {
+        
+        private AlertDialog dialog;
+        
+        void setDialog(AlertDialog dialog) {
+            this.dialog = dialog;
+        }
+        
+        @NonNull
+        @Override
+        public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            View view = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.item_question_number, parent, false);
+            return new ViewHolder(view);
+        }
+        
+        @Override
+        public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+            holder.bind(position);
+        }
+        
+        @Override
+        public int getItemCount() {
+            return questions.size();
+        }
+        
+        class ViewHolder extends RecyclerView.ViewHolder {
+            TextView tvNumber;
+            
+            ViewHolder(@NonNull View itemView) {
+                super(itemView);
+                tvNumber = itemView.findViewById(R.id.tvQuestionNumber);
+            }
+            
+            void bind(int position) {
+                tvNumber.setText(String.valueOf(position + 1));
+                
+                UserAnswer userAnswer = userAnswers.get(position);
+                if (userAnswer.getSelectedAnswer() != null) {
+                    tvNumber.setBackgroundColor(getResources().getColor(R.color.primary, null));
+                } else {
+                    tvNumber.setBackgroundColor(getResources().getColor(R.color.text_secondary, null));
+                }
+                
+                tvNumber.setOnClickListener(v -> {
+                    currentQuestionIndex = position;
+                    displayQuestion();
+                    if (dialog != null) {
+                        dialog.dismiss();
+                    }
+                });
+            }
+        }
     }
 }
 
