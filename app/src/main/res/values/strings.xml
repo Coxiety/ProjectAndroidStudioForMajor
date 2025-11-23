@@ -2,23 +2,6 @@
 <resources>
     <string name="app_name">Learning App</string>
     
-    <!-- Onboarding -->
-    <string name="onboarding_title">Chào mừng!</string>
-    <string name="select_goal_title">Chọn mục tiêu học</string>
-    <string name="select_goal_subtitle">Bạn muốn học gì?</string>
-    <string name="goal_driving_test">Ôn thi bằng lái xe</string>
-    <string name="goal_language">Học ngoại ngữ</string>
-    <string name="goal_general">Học tập chung</string>
-    <string name="notification_permission_title">Cho phép thông báo</string>
-    <string name="notification_permission_message">Cho phép thông báo để nhận nhắc nhở học tập</string>
-    <string name="allow_notification">Cho phép</string>
-    <string name="skip">Bỏ qua</string>
-    <string name="import_data_title">Nhập dữ liệu</string>
-    <string name="import_data_subtitle">Bạn có muốn nhập dữ liệu từ file không?</string>
-    <string name="import_now">Nhập ngay</string>
-    <string name="start_learning">Bắt đầu học</string>
-    <string name="next">Tiếp theo</string>
-    
     <!-- Main -->
     <string name="home">Trang chủ</string>
     <string name="flashcard">Flashcard</string>
@@ -37,7 +20,6 @@
     <string name="flip_card">Lật thẻ</string>
     <string name="i_know">Nhớ rồi</string>
     <string name="not_sure">Chưa rõ</string>
-    <string name="view_explanation">Xem giải thích</string>
     <string name="session_complete">Hoàn thành phiên học!</string>
     
     <!-- Pomodoro -->
@@ -65,7 +47,6 @@
     <string name="browse_questions">Duyệt câu hỏi</string>
     <string name="question_number">Câu %1$d</string>
     <string name="correct_answer">Đáp án đúng: %1$s</string>
-    <string name="explanation">Giải thích</string>
     
     <!-- Practice Test -->
     <string name="config_test_title">Cấu hình thi thử</string>

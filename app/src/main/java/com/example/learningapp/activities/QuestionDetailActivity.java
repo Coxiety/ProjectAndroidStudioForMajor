@@ -1,6 +1,5 @@
 package com.example.learningapp.activities;
 
-import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
@@ -8,7 +7,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 
 import com.example.learningapp.R;
@@ -16,9 +14,8 @@ import com.example.learningapp.utils.ImageHelper;
 
 public class QuestionDetailActivity extends AppCompatActivity {
     
-    private TextView tvQuestion, tvOptionA, tvOptionB, tvOptionC, tvOptionD, tvExplanation;
+    private TextView tvQuestion, tvOptionA, tvOptionB, tvOptionC, tvOptionD;
     private ImageView ivQuestionImage;
-    private CardView cardExplanation;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,9 +32,7 @@ public class QuestionDetailActivity extends AppCompatActivity {
         tvOptionB = findViewById(R.id.tvOptionB);
         tvOptionC = findViewById(R.id.tvOptionC);
         tvOptionD = findViewById(R.id.tvOptionD);
-        tvExplanation = findViewById(R.id.tvExplanation);
         ivQuestionImage = findViewById(R.id.ivQuestionImage);
-        cardExplanation = findViewById(R.id.cardExplanation);
         
         String questionText = getIntent().getStringExtra("question_text");
         String optionA = getIntent().getStringExtra("option_a");
@@ -45,7 +40,6 @@ public class QuestionDetailActivity extends AppCompatActivity {
         String optionC = getIntent().getStringExtra("option_c");
         String optionD = getIntent().getStringExtra("option_d");
         String correctAnswer = getIntent().getStringExtra("correct_answer");
-        String explanation = getIntent().getStringExtra("explanation");
         String imagePath = getIntent().getStringExtra("image_path");
         
         tvQuestion.setText(questionText);
@@ -54,13 +48,6 @@ public class QuestionDetailActivity extends AppCompatActivity {
         setOptionText(tvOptionB, "B", optionB);
         setOptionText(tvOptionC, "C", optionC);
         setOptionText(tvOptionD, "D", optionD);
-        
-        if (isNullOrEmpty(explanation)) {
-            cardExplanation.setVisibility(View.GONE);
-        } else {
-            cardExplanation.setVisibility(View.VISIBLE);
-            tvExplanation.setText(explanation);
-        }
         
         highlightCorrectAnswer(correctAnswer);
         

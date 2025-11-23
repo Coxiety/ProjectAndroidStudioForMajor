@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -82,8 +81,7 @@ public class FlashcardHubActivity extends AppCompatActivity {
         }
         
         class ViewHolder extends RecyclerView.ViewHolder {
-            TextView tvTopicName, tvTopicDescription, tvProgress, tvPercentage;
-            ProgressBar progressBar;
+            TextView tvTopicName, tvTopicDescription, tvProgress;
             CardView cardView;
             
             public ViewHolder(@NonNull View itemView) {
@@ -91,17 +89,13 @@ public class FlashcardHubActivity extends AppCompatActivity {
                 tvTopicName = itemView.findViewById(R.id.tvTopicName);
                 tvTopicDescription = itemView.findViewById(R.id.tvTopicDescription);
                 tvProgress = itemView.findViewById(R.id.tvProgress);
-                tvPercentage = itemView.findViewById(R.id.tvPercentage);
-                progressBar = itemView.findViewById(R.id.progressBar);
                 cardView = (CardView) itemView;
             }
             
             public void bind(FlashcardTopic topic) {
                 tvTopicName.setText(topic.getName());
                 tvTopicDescription.setText(topic.getDescription());
-                tvProgress.setText(topic.getLearnedCards() + "/" + topic.getTotalCards() + " thẻ");
-                tvPercentage.setText(topic.getProgress() + "%");
-                progressBar.setProgress(topic.getProgress());
+                tvProgress.setText(topic.getTotalCards() + " câu hỏi");
                 
                 cardView.setOnClickListener(v -> {
                     Intent intent = new Intent(FlashcardHubActivity.this, FlashcardSessionActivity.class);

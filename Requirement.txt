@@ -1,0 +1,31 @@
+-The project is a android studio project.
+-It uses java 21 language.
+-It uses xml for the layout.
+-It uses Gradle, not Kotlin.
+
+flowchart LR
+  B{Trang chủ}
+
+  B -->|Flashcard| C[Flashcard Hub<br/>- Chọn bộ chủ đề<br/>- Xem tiến độ]
+  C --> D[Phiên Flashcard<br/>- Lật thẻ<br/>- Đánh giá: Nhớ/Chưa rõ]
+  D --> C
+  D -->|Xem giải thích/ảnh| E[Chi tiết câu]
+
+  B -->|Pomodoro| F[Pomodoro Hub<br/>- Preset 25/5/4<br/>- Tùy chỉnh chu kỳ]
+  F --> G[Ses. Pomodoro đang chạy<br/>- Đếm ngược<br/>- Tạm dừng/Kết thúc]
+  G --> F
+
+  B -->|Xem đề thi| H[Danh sách bộ đề<br/>(official/đề luyện)]
+  H --> I[Chi tiết đề<br/>- Duyệt câu từng câu<br/>- Xem giải thích]
+  
+  B -->|Thi thử| J[Thi thử - Cấu hình<br/>- Số câu / thời lượng (config)]
+  J --> K[Thi thử - Làm bài<br/>- Chuyển câu<br/>- Đánh dấu xem lại]
+  K --> L[Kết quả<br/>- Điểm/Đậu-Rớt<br/>- Các câu sai]
+  L --> M[Ôn lỗi (review)\n- Lọc câu sai/quan trọng]
+  L --> N[Lưu lịch sử]
+
+  B -->|Lịch sử| O[Lịch sử thi]
+  O --> P[Chi tiết lần thi\n- Biểu đồ điểm, thời gian, câu sai]
+  P --> M
+
+  B -->|Cài đặt| Q[Cài đặt\n- Đồng bộ/Backup\n- Thông báo\n- Đặt mục tiêu]

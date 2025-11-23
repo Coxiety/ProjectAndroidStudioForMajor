@@ -164,7 +164,6 @@ public class ExamDetailActivity extends AppCompatActivity {
                     intent.putExtra("option_c", question.getOptionC());
                     intent.putExtra("option_d", question.getOptionD());
                     intent.putExtra("correct_answer", question.getCorrectAnswer());
-                    intent.putExtra("explanation", question.getExplanation());
                     intent.putExtra("image_path", question.getImagePath());
                     startActivity(intent);
                 });

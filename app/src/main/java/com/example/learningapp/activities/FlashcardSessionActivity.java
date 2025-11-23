@@ -23,7 +23,7 @@ public class FlashcardSessionActivity extends AppCompatActivity {
     private CardView cardFlashcard;
     private TextView tvProgress, tvCardContent, tvFlipHint;
     private ImageView ivFlashcardImage;
-    private Button btnKnow, btnNotSure, btnViewExplanation;
+    private Button btnKnow, btnNotSure;
     
     private DatabaseHelper databaseHelper;
     private List<Flashcard> flashcards;
@@ -53,7 +53,6 @@ public class FlashcardSessionActivity extends AppCompatActivity {
         ivFlashcardImage = findViewById(R.id.ivFlashcardImage);
         btnKnow = findViewById(R.id.btnKnow);
         btnNotSure = findViewById(R.id.btnNotSure);
-        btnViewExplanation = findViewById(R.id.btnViewExplanation);
         
         databaseHelper = new DatabaseHelper(this);
         flashcards = databaseHelper.getFlashcardsByTopic(topicId);
@@ -90,13 +89,6 @@ public class FlashcardSessionActivity extends AppCompatActivity {
                 Toast.makeText(this, "Vui lòng lật thẻ trước", Toast.LENGTH_SHORT).show();
             }
         });
-        
-        btnViewExplanation.setOnClickListener(v -> {
-            Flashcard currentCard = flashcards.get(currentIndex);
-            if (currentCard.getExplanation() != null && !currentCard.getExplanation().isEmpty()) {
-                Toast.makeText(this, currentCard.getExplanation(), Toast.LENGTH_LONG).show();
-            }
-        });
     }
     
     private void showCurrentCard() {
@@ -106,14 +98,7 @@ public class FlashcardSessionActivity extends AppCompatActivity {
         isFlipped = false;
         tvFlipHint.setVisibility(View.VISIBLE);
         
-        // Always show text + image (normal mode)
         ImageHelper.loadFlashcardImage(this, ivFlashcardImage, card.getImagePath());
-        
-        if (card.getExplanation() != null && !card.getExplanation().isEmpty()) {
-            btnViewExplanation.setVisibility(View.VISIBLE);
-        } else {
-            btnViewExplanation.setVisibility(View.GONE);
-        }
     }
     
     private void flipCard() {
