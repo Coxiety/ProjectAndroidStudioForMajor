@@ -19,7 +19,7 @@ import java.util.List;
 public class DatabaseHelper extends SQLiteOpenHelper {
     
     private static final String DATABASE_NAME = "learning_app.db";
-    private static final int DATABASE_VERSION = 10;  // Incremented version to force DB recreation with front options/back answer format
+    private static final int DATABASE_VERSION = 13;  // Fixed data import in onUpgrade
     
     private static final String TABLE_FLASHCARD_TOPICS = "flashcard_topics";
     private static final String TABLE_FLASHCARDS = "flashcards";
@@ -48,7 +48,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "front TEXT NOT NULL, " +
                 "back TEXT NOT NULL, " +
-                "explanation TEXT, " +
                 "image_path TEXT, " +
                 "topic_id INTEGER, " +
                 "is_learned INTEGER DEFAULT 0, " +
@@ -72,8 +71,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "option_c TEXT, " +
                 "option_d TEXT, " +
                 "correct_answer TEXT NOT NULL, " +
-                "explanation TEXT, " +
                 "image_path TEXT, " +
+                "is_liet INTEGER DEFAULT 0, " +
                 "exam_set_id INTEGER, " +
                 "FOREIGN KEY(exam_set_id) REFERENCES " + TABLE_EXAM_SETS + "(id))";
         
@@ -97,110 +96,95 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(createQuestionsTable);
         db.execSQL(createExamHistoryTable);
         
-        insertSampleData(db);
+        // Import data from JSON
+        android.util.Log.d("DatabaseHelper", "onCreate called - importing data...");
+        JsonImporter.importQuestionsFromAssets(context, db, "A1_250Q_with_images.json");
+        JsonImporter.importFlashcardsFromAssets(context, db, "A1_250Q_with_images.json");
+        android.util.Log.d("DatabaseHelper", "Data import completed");
     }
     
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        android.util.Log.d("DatabaseHelper", "onUpgrade called from v" + oldVersion + " to v" + newVersion);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_EXAM_HISTORY);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_QUESTIONS);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_EXAM_SETS);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_FLASHCARDS);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_FLASHCARD_TOPICS);
-        onCreate(db);
-    }
-    
-    private void insertSampleData(SQLiteDatabase db) {
-        // Import questions from JSON file for Practice Tests
-        try {
-            JsonImporter.importQuestionsFromAssets(context, db, "A1_250Q_with_images.json");
-        } catch (Exception e) {
-            e.printStackTrace();
-            // If JSON import fails, insert sample questions as fallback
-            ContentValues values = new ContentValues();
-            values.put("name", "Đề thi chính thức số 1");
-            values.put("description", "Đề thi bằng lái B2");
-            values.put("question_count", 3);
-            values.put("is_official", 1);
-            values.put("category", "B2");
-            long examSetId = db.insert(TABLE_EXAM_SETS, null, values);
-            
-            insertSampleQuestion(db, examSetId, 
-                "Khái niệm 'người điều khiển giao thông' được hiểu như thế nào?",
-                "Là người điều khiển phương tiện tham gia giao thông đường bộ",
-                "Là cảnh sát giao thông, người được giao nhiệm vụ hướng dẫn giao thông",
-                "Là người tham gia giao thông tại các ngã ba, ngã tư có tín hiệu đèn",
-                null, "B", "Người điều khiển giao thông là cảnh sát hoặc người được giao nhiệm vụ");
-            
-            insertSampleQuestion(db, examSetId,
-                "Người lái xe phải làm gì khi điều khiển xe vượt xe khác?",
-                "Quan sát để bảo đảm an toàn, báo hiệu bằng còi, đèn rồi vượt",
-                "Tăng tốc độ để vượt nhanh",
-                "Liên tục bấm còi và bật đèn pha",
-                null, "A", "Phải quan sát kỹ và báo hiệu trước khi vượt");
-            
-            insertSampleQuestion(db, examSetId,
-                "Tại ngã ba có đèn điều khiển giao thông, xe nào được quyền đi trước?",
-                "Xe đi theo tín hiệu đèn xanh",
-                "Xe có còi ưu tiên",
-                "Cả hai trường hợp trên",
-                null, "C", "Xe ưu tiên và xe đi theo đèn xanh đều được ưu tiên");
-        }
         
-        // Import flashcards from JSON file for Flashcard feature
-        try {
-            JsonImporter.importFlashcardsFromAssets(context, db, "A1_250Q_with_images.json");
-        } catch (Exception e) {
-            e.printStackTrace();
-            // If JSON import fails, insert sample flashcards as fallback
-            ContentValues values = new ContentValues();
-            values.put("name", "Biển báo giao thông");
-            values.put("description", "Các biển báo giao thông cơ bản");
-            values.put("total_cards", 3);
-            values.put("learned_cards", 0);
-            long topicId = db.insert(TABLE_FLASHCARD_TOPICS, null, values);
-            
-            insertSampleFlashcard(db, topicId, "Biển nào cấm đi ngược chiều?", "Biển 3 - P.123a", "Biển này cấm phương tiện đi ngược chiều", "question_image_5.png");
-            insertSampleFlashcard(db, topicId, "Biển nào cấm quay đầu xe?", "Biển 3 - P.123b", "Cấm quay đầu xe tại vị trí có biển này", "question_image_7.png");
-            insertSampleFlashcard(db, topicId, "Biển nào báo hiệu đường dành cho xe thô sơ?", "Biển 3 - R.130", "Đường dành riêng cho xe thô sơ", "question_image_3.jpeg");
-        }
-    }
-    
-    private void insertSampleFlashcard(SQLiteDatabase db, long topicId, String front, String back, String explanation) {
-        insertSampleFlashcard(db, topicId, front, back, explanation, null);
-    }
-    
-    private void insertSampleFlashcard(SQLiteDatabase db, long topicId, String front, String back, String explanation, String imagePath) {
-        ContentValues values = new ContentValues();
-        values.put("front", front);
-        values.put("back", back);
-        values.put("explanation", explanation);
-        values.put("image_path", imagePath);
-        values.put("topic_id", topicId);
-        values.put("is_learned", 0);
-        values.put("review_count", 0);
-        db.insert(TABLE_FLASHCARDS, null, values);
-    }
-    
-    private void insertSampleQuestion(SQLiteDatabase db, long examSetId, String questionText,
-                                     String optionA, String optionB, String optionC, String optionD,
-                                     String correctAnswer, String explanation) {
-        ContentValues values = new ContentValues();
-        values.put("question_text", questionText);
-        values.put("option_a", optionA);
-        values.put("option_b", optionB);
-        values.put("option_c", optionC);
-        values.put("option_d", optionD);
-        values.put("correct_answer", correctAnswer);
-        values.put("explanation", explanation);
-        values.put("exam_set_id", examSetId);
-        db.insert(TABLE_QUESTIONS, null, values);
+        // Recreate tables
+        String createFlashcardTopicsTable = "CREATE TABLE " + TABLE_FLASHCARD_TOPICS + " (" +
+                "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "name TEXT NOT NULL, " +
+                "description TEXT, " +
+                "total_cards INTEGER DEFAULT 0, " +
+                "learned_cards INTEGER DEFAULT 0, " +
+                "is_image_only INTEGER DEFAULT 0)";
+        
+        String createFlashcardsTable = "CREATE TABLE " + TABLE_FLASHCARDS + " (" +
+                "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "front TEXT NOT NULL, " +
+                "back TEXT NOT NULL, " +
+                "image_path TEXT, " +
+                "topic_id INTEGER, " +
+                "is_learned INTEGER DEFAULT 0, " +
+                "review_count INTEGER DEFAULT 0, " +
+                "last_review_time INTEGER, " +
+                "FOREIGN KEY(topic_id) REFERENCES " + TABLE_FLASHCARD_TOPICS + "(id))";
+        
+        String createExamSetsTable = "CREATE TABLE " + TABLE_EXAM_SETS + " (" +
+                "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "name TEXT NOT NULL, " +
+                "description TEXT, " +
+                "question_count INTEGER DEFAULT 0, " +
+                "is_official INTEGER DEFAULT 0, " +
+                "category TEXT)";
+        
+        String createQuestionsTable = "CREATE TABLE " + TABLE_QUESTIONS + " (" +
+                "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "question_text TEXT NOT NULL, " +
+                "option_a TEXT NOT NULL, " +
+                "option_b TEXT NOT NULL, " +
+                "option_c TEXT, " +
+                "option_d TEXT, " +
+                "correct_answer TEXT NOT NULL, " +
+                "image_path TEXT, " +
+                "is_liet INTEGER DEFAULT 0, " +
+                "exam_set_id INTEGER, " +
+                "FOREIGN KEY(exam_set_id) REFERENCES " + TABLE_EXAM_SETS + "(id))";
+        
+        String createExamHistoryTable = "CREATE TABLE " + TABLE_EXAM_HISTORY + " (" +
+                "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "exam_set_id INTEGER, " +
+                "exam_name TEXT, " +
+                "total_questions INTEGER, " +
+                "correct_answers INTEGER, " +
+                "wrong_answers INTEGER, " +
+                "score INTEGER, " +
+                "is_passed INTEGER, " +
+                "test_date INTEGER, " +
+                "duration_minutes INTEGER, " +
+                "answers_json TEXT, " +
+                "FOREIGN KEY(exam_set_id) REFERENCES " + TABLE_EXAM_SETS + "(id))";
+        
+        db.execSQL(createFlashcardTopicsTable);
+        db.execSQL(createFlashcardsTable);
+        db.execSQL(createExamSetsTable);
+        db.execSQL(createQuestionsTable);
+        db.execSQL(createExamHistoryTable);
+        
+        // Import data from JSON
+        android.util.Log.d("DatabaseHelper", "onUpgrade - importing data...");
+        JsonImporter.importQuestionsFromAssets(context, db, "A1_250Q_with_images.json");
+        JsonImporter.importFlashcardsFromAssets(context, db, "A1_250Q_with_images.json");
+        android.util.Log.d("DatabaseHelper", "onUpgrade - data import completed");
     }
     
     public List<FlashcardTopic> getAllFlashcardTopics() {
         List<FlashcardTopic> topics = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(TABLE_FLASHCARD_TOPICS, null, null, null, null, null, "id DESC");
+        android.util.Log.d("DatabaseHelper", "getAllFlashcardTopics - cursor count: " + cursor.getCount());
         
         if (cursor.moveToFirst()) {
             do {
@@ -230,7 +214,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 flashcard.setId(cursor.getInt(cursor.getColumnIndexOrThrow("id")));
                 flashcard.setFront(cursor.getString(cursor.getColumnIndexOrThrow("front")));
                 flashcard.setBack(cursor.getString(cursor.getColumnIndexOrThrow("back")));
-                flashcard.setExplanation(cursor.getString(cursor.getColumnIndexOrThrow("explanation")));
                 flashcard.setImagePath(cursor.getString(cursor.getColumnIndexOrThrow("image_path")));
                 flashcard.setTopicId(cursor.getInt(cursor.getColumnIndexOrThrow("topic_id")));
                 flashcard.setLearned(cursor.getInt(cursor.getColumnIndexOrThrow("is_learned")) == 1);
@@ -289,8 +272,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 question.setOptionC(cursor.getString(cursor.getColumnIndexOrThrow("option_c")));
                 question.setOptionD(cursor.getString(cursor.getColumnIndexOrThrow("option_d")));
                 question.setCorrectAnswer(cursor.getString(cursor.getColumnIndexOrThrow("correct_answer")));
-                question.setExplanation(cursor.getString(cursor.getColumnIndexOrThrow("explanation")));
                 question.setImagePath(cursor.getString(cursor.getColumnIndexOrThrow("image_path")));
+                question.setLiet(cursor.getInt(cursor.getColumnIndexOrThrow("is_liet")) == 1);
                 question.setExamSetId(cursor.getInt(cursor.getColumnIndexOrThrow("exam_set_id")));
                 questions.add(question);
             } while (cursor.moveToNext());

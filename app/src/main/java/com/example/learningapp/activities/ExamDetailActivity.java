@@ -94,7 +94,7 @@ public class ExamDetailActivity extends AppCompatActivity {
         }
         
         class ViewHolder extends RecyclerView.ViewHolder {
-            TextView tvQuestionNumber, tvQuestion, tvOptionA, tvOptionB, tvOptionC, tvOptionD, tvCorrectAnswer;
+            TextView tvQuestionNumber, tvQuestion, tvOptionA, tvOptionB, tvOptionC, tvOptionD, tvCorrectAnswer, tvLietBadge;
             ImageView ivQuestionImage;
             CardView cardView;
             
@@ -108,12 +108,19 @@ public class ExamDetailActivity extends AppCompatActivity {
                 tvOptionC = itemView.findViewById(R.id.tvOptionC);
                 tvOptionD = itemView.findViewById(R.id.tvOptionD);
                 tvCorrectAnswer = itemView.findViewById(R.id.tvCorrectAnswer);
+                tvLietBadge = itemView.findViewById(R.id.tvLietBadge);
                 cardView = (CardView) itemView;
             }
             
             public void bind(Question question, int number) {
                 tvQuestionNumber.setText("Câu " + number);
                 tvQuestion.setText(question.getQuestionText());
+                
+                if (question.isLiet()) {
+                    tvLietBadge.setVisibility(View.VISIBLE);
+                } else {
+                    tvLietBadge.setVisibility(View.GONE);
+                }
                 
                 ImageHelper.loadQuestionImage(ExamDetailActivity.this, ivQuestionImage, question.getImagePath());
                 
@@ -165,6 +172,7 @@ public class ExamDetailActivity extends AppCompatActivity {
                     intent.putExtra("option_d", question.getOptionD());
                     intent.putExtra("correct_answer", question.getCorrectAnswer());
                     intent.putExtra("image_path", question.getImagePath());
+                    intent.putExtra("is_liet", question.isLiet());
                     startActivity(intent);
                 });
             }

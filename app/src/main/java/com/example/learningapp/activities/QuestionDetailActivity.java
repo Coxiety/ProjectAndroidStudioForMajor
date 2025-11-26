@@ -14,7 +14,7 @@ import com.example.learningapp.utils.ImageHelper;
 
 public class QuestionDetailActivity extends AppCompatActivity {
     
-    private TextView tvQuestion, tvOptionA, tvOptionB, tvOptionC, tvOptionD;
+    private TextView tvQuestion, tvOptionA, tvOptionB, tvOptionC, tvOptionD, tvLietBadge;
     private ImageView ivQuestionImage;
     
     @Override
@@ -32,6 +32,7 @@ public class QuestionDetailActivity extends AppCompatActivity {
         tvOptionB = findViewById(R.id.tvOptionB);
         tvOptionC = findViewById(R.id.tvOptionC);
         tvOptionD = findViewById(R.id.tvOptionD);
+        tvLietBadge = findViewById(R.id.tvLietBadge);
         ivQuestionImage = findViewById(R.id.ivQuestionImage);
         
         String questionText = getIntent().getStringExtra("question_text");
@@ -41,8 +42,15 @@ public class QuestionDetailActivity extends AppCompatActivity {
         String optionD = getIntent().getStringExtra("option_d");
         String correctAnswer = getIntent().getStringExtra("correct_answer");
         String imagePath = getIntent().getStringExtra("image_path");
+        boolean isLiet = getIntent().getBooleanExtra("is_liet", false);
         
         tvQuestion.setText(questionText);
+        
+        if (isLiet) {
+            tvLietBadge.setVisibility(View.VISIBLE);
+        } else {
+            tvLietBadge.setVisibility(View.GONE);
+        }
         
         setOptionText(tvOptionA, "A", optionA);
         setOptionText(tvOptionB, "B", optionB);

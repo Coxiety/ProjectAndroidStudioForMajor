@@ -47,6 +47,9 @@ public class PracticeTestActivity extends AppCompatActivity {
     private CountDownTimer countDownTimer;
     private long timeLeftInMillis;
     
+    private RadioGroup.OnCheckedChangeListener radioGroupListener;
+    private CheckBox.OnCheckedChangeListener checkBoxListener;
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -124,8 +127,8 @@ public class PracticeTestActivity extends AppCompatActivity {
     private void setupListeners() {
         btnQuestionOverview.setOnClickListener(v -> showQuestionOverviewDialog());
         
-        radioGroupOptions.setOnCheckedChangeListener((group, checkedId) -> {
-            String selectedAnswer = "";
+        radioGroupListener = (group, checkedId) -> {
+            String selectedAnswer = null;
             if (checkedId == R.id.radioOptionA) {
                 selectedAnswer = "A";
             } else if (checkedId == R.id.radioOptionB) {
@@ -136,11 +139,13 @@ public class PracticeTestActivity extends AppCompatActivity {
                 selectedAnswer = "D";
             }
             userAnswers.get(currentQuestionIndex).setSelectedAnswer(selectedAnswer);
-        });
+        };
+        radioGroupOptions.setOnCheckedChangeListener(radioGroupListener);
         
-        checkMarkReview.setOnCheckedChangeListener((buttonView, isChecked) -> {
+        checkBoxListener = (buttonView, isChecked) -> {
             userAnswers.get(currentQuestionIndex).setMarkedForReview(isChecked);
-        });
+        };
+        checkMarkReview.setOnCheckedChangeListener(checkBoxListener);
         
         btnPrevious.setOnClickListener(v -> {
             if (currentQuestionIndex > 0) {
@@ -194,6 +199,10 @@ public class PracticeTestActivity extends AppCompatActivity {
             radioOptionD.setVisibility(View.GONE);
         }
         
+        // Temporarily remove listener to avoid triggering it during UI update
+        radioGroupOptions.setOnCheckedChangeListener(null);
+        checkMarkReview.setOnCheckedChangeListener(null);
+        
         radioGroupOptions.clearCheck();
         if (userAnswer.getSelectedAnswer() != null) {
             switch (userAnswer.getSelectedAnswer()) {
@@ -213,6 +222,10 @@ public class PracticeTestActivity extends AppCompatActivity {
         }
         
         checkMarkReview.setChecked(userAnswer.isMarkedForReview());
+        
+        // Re-attach listeners
+        radioGroupOptions.setOnCheckedChangeListener(radioGroupListener);
+        checkMarkReview.setOnCheckedChangeListener(checkBoxListener);
         
         btnPrevious.setEnabled(currentQuestionIndex > 0);
         
@@ -238,18 +251,21 @@ public class PracticeTestActivity extends AppCompatActivity {
         ArrayList<String> selectedAnswers = new ArrayList<>();
         ArrayList<String> correctAnswers = new ArrayList<>();
         ArrayList<Boolean> markedForReview = new ArrayList<>();
+        ArrayList<Boolean> isLietList = new ArrayList<>();
         
         for (int i = 0; i < userAnswers.size(); i++) {
             questionIds.add(questions.get(i).getId());
             selectedAnswers.add(userAnswers.get(i).getSelectedAnswer());
             correctAnswers.add(userAnswers.get(i).getCorrectAnswer());
             markedForReview.add(userAnswers.get(i).isMarkedForReview());
+            isLietList.add(questions.get(i).isLiet());
         }
         
         intent.putIntegerArrayListExtra("question_ids", questionIds);
         intent.putStringArrayListExtra("selected_answers", selectedAnswers);
         intent.putStringArrayListExtra("correct_answers", correctAnswers);
         intent.putExtra("marked_for_review", markedForReview);
+        intent.putExtra("is_liet_list", isLietList);
         
         startActivity(intent);
         finish();
@@ -328,7 +344,12 @@ public class PracticeTestActivity extends AppCompatActivity {
                 tvNumber.setText(String.valueOf(position + 1));
                 
                 UserAnswer userAnswer = userAnswers.get(position);
-                if (userAnswer.getSelectedAnswer() != null) {
+                String selectedAnswer = userAnswer.getSelectedAnswer();
+                boolean isMarkedForReview = userAnswer.isMarkedForReview();
+                
+                if (isMarkedForReview) {
+                    tvNumber.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_dark, null));
+                } else if (selectedAnswer != null && !selectedAnswer.isEmpty()) {
                     tvNumber.setBackgroundColor(getResources().getColor(R.color.primary, null));
                 } else {
                     tvNumber.setBackgroundColor(getResources().getColor(R.color.text_secondary, null));

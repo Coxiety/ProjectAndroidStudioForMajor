@@ -14,8 +14,8 @@
         "optionC": "Đường ưu tiên là đường mà trên đó phương tiện tham gia giao thông đường bộ được các phương tiện giao thông đường bộ đến từ hướng khác nhường đường khi qua nơi đường giao nhau, được cắm biển báo hiệu đường ưu tiên.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Trong Luật TTATGTĐB, “làn đường” được quy định như thế nào?",
@@ -24,8 +24,8 @@
         "optionC": "Cả hai ý trên.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Trong Luật TTATGTĐB, “người tham gia giao thông đường bộ” gồm những thành phần nào?",
@@ -34,8 +34,8 @@
         "optionC": "Người đi bộ trên đường bộ.",
         "optionD": "Cả ba ý trên.",
         "correctAnswer": "D",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Trong Luật TTATGTĐB, “người lái xe” được quy định như thế nào?",
@@ -44,8 +44,8 @@
         "optionC": "Là người điều khiển xe máy chuyên dùng.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Trong Luật TTATGTĐB, “người điều khiển giao thông đường bộ” gồm những thành phần nào?",
@@ -54,8 +54,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "A",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Người tham gia giao thông ngoài việc phải chấp hành các quy định về trật tự, an toàn giao thông đường bộ và quy định khác của pháp luật có liên quan, còn có trách nhiệm gì?",
@@ -64,8 +64,8 @@
         "optionC": "Cả hai ý trên.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Mọi hành vi vi phạm pháp luật về trật tự, an toàn giao thông đường bộ phải được phát hiện, ngăn chặn kịp thời và phải bị xử lý nghiêm minh theo quy định của pháp luật là đúng hay sai?",
@@ -74,8 +74,8 @@
         "optionC": "Tùy trường hợp.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Luật TTATGTĐB có nghiêm cấm người điều khiển phương tiện tham gia giao thông đường bộ mà trong máu hoặc hơi thở có nồng độ cồn không?",
@@ -84,8 +84,8 @@
         "optionC": "Cấm người điều khiển phương tiện giao thông mà trong máu có nồng độ cồn vượt quá 50 miligam/100 mililít máu hoặc vượt quá 0,25 miligam/1lít khí thở.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Luật TTATGTĐB có nghiêm cấm người điều khiển phương tiện tham gia giao thông đường bộ mà trong cơ thể có chất ma túy không?",
@@ -94,8 +94,8 @@
         "optionC": "Nghiêm cấm tùy từng trường hợp.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Hành vi nào dưới đây bị nghiêm cấm trong Luật TTATGTĐB?",
@@ -104,8 +104,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "B",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Luật TTATGTĐB có nghiêm cấm người lái xe dùng tay cầm và sử dụng điện thoại khi điều khiển phương tiện tham gia giao thông đang di chuyển trên đường bộ không?",
@@ -114,8 +114,8 @@
         "optionC": "Nghiêm cấm tùy từng trường hợp.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Luật TTATGTĐB có nghiêm cấm hành vi giao xe mô tô, xe gắn máy cho người không đủ điều kiện theo quy định của pháp luật để điều khiển xe tham gia giao thông đường bộ không?",
@@ -124,8 +124,8 @@
         "optionC": "Nghiêm cấm tùy từng trường hợp.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Luật TTATGTĐB có nghiêm cấm hành vi cắt, hàn, tẩy xóa, đục sửa, đóng lại trái phép số khung, số động cơ của xe mô tô, xe gắn máy không?",
@@ -134,8 +134,8 @@
         "optionC": "Nghiêm cấm.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Luật TTATGTĐB có nghiêm cấm hành vi lắp đặt, sử dụng thiết bị âm thanh, ánh sáng trên xe cơ giới gây mất trật tự, an toàn giao thông đường bộ không?",
@@ -144,8 +144,8 @@
         "optionC": "Nghiêm cấm tùy từng trường hợp.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Luật TTATGTĐB có nghiêm cấm hành vi  sản xuất, sử dụng, mua, bán trái phép biển số xe không?",
@@ -154,8 +154,8 @@
         "optionC": "Nghiêm cấm tùy từng trường hợp.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Luật TTATGTĐB có nghiêm cấm hành vi bẻ cong, che lấp biển số xe, làm thay đổi chữ, số của biển số xe không?",
@@ -164,8 +164,8 @@
         "optionC": "Nghiêm cấm tùy từng trường hợp.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Luật TTATGTĐB nghiêm cấm hành vi nào dưới đây?",
@@ -174,8 +174,8 @@
         "optionC": "Cả hai ý trên.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Hành vi nào dưới đây của người lái xe bị nghiêm cấm khi bị phát hiện vi phạm pháp luật về TTATGTĐB?",
@@ -184,8 +184,8 @@
         "optionC": "Cả hai ý trên.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": true
       },
       {
         "questionText": "Luật TTATGTĐB nghiêm cấm các hành vi nào dưới đây?",
@@ -194,8 +194,8 @@
         "optionC": "Lợi dụng việc xảy ra tai nạn giao thông đường bộ để hành hung, đe dọa, xúi giục, gây sức ép, làm mất trật tự, cản trở việc xử lý tai nạn giao thông đường bộ.",
         "optionD": "Cả ba ý trên.",
         "correctAnswer": "D",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": true
       },
       {
         "questionText": "Khi hiệu lệnh của người điều khiển giao thông trái với tín hiệu đèn giao thông, biển báo hiệu đường bộ, người tham gia giao thông đường bộ phải chấp hành như thế nào?",
@@ -204,8 +204,8 @@
         "optionC": "Biển báo hiệu đường bộ.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": true
       },
       {
         "questionText": "Khi người điều khiển giao thông ra hiệu lệnh: “tay bên phải giơ thẳng đứng”, người tham gia giao thông đường bộ phải thực hiện như thế nào?",
@@ -214,8 +214,8 @@
         "optionC": "Người tham gia giao thông đường bộ ở tất cả các hướng phải dừng lại.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Khi người điều khiển giao thông ra hiệu lệnh: “hai tay hoặc một tay dang ngang”, người tham gia giao thông đường bộ phải thực hiện như thế nào?",
@@ -224,8 +224,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "B",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": true
       },
       {
         "questionText": "Tại nơi đường giao nhau khi đèn điều khiển giao thông có tín hiệu màu vàng, người tham gia giao thông đường bộ  phải thực hiện thế nào?",
@@ -234,8 +234,8 @@
         "optionC": "Phải dừng lại trước vạch dừng; trường hợp đang đi trên vạch dừng hoặc đã đi qua vạch dừng mà tín hiệu đèn màu vàng thì được đi tiếp; trường hợp tín hiệu đèn màu vàng nhấp nháy, người điều khiển phương tiện tham gia giao thông đường bộ được đi nhưng phải quan sát, giảm tốc độ hoặc dừng lại nhường đường cho người đi bộ, xe lăn của người khuyết tật qua đường hoặc các phương tiện khác.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": true
       },
       {
         "questionText": "Luật TTATGTĐB quy định có bao nhiêu nhóm biển báo hiệu đường bộ?",
@@ -244,8 +244,8 @@
         "optionC": "Năm nhóm: Biển báo cấm, biển báo nguy hiểm, biển hiệu lệnh, biển chỉ dẫn, biển phụ.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": true
       },
       {
         "questionText": "Tác dụng của biển báo cấm?",
@@ -254,8 +254,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "B",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": true
       },
       {
         "questionText": "Tác dụng của biển báo nguy hiểm?",
@@ -264,8 +264,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "A",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Tác dụng của biển hiệu lệnh?",
@@ -274,8 +274,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "B",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": true
       },
       {
         "questionText": "Trong Luật TTATGTĐB, “vạch kẻ đường” được quy định như thế nào?",
@@ -284,8 +284,8 @@
         "optionC": "Vạch kẻ đường là vạch dùng để phân chia dòng phương tiện hai hướng ngược chiều nhau trên các đường có hai hoặc ba làn xe chạy.",
         "optionD": "Cả ba ý trên.",
         "correctAnswer": "D",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Khi ở một vị trí vừa có biển báo hiệu đặt cố định vừa có biển báo hiệu tạm thời mà hai biển có ý nghĩa khác nhau, người tham gia giao thông đường bộ phải chấp hành hiệu lệnh của biển báo nào?",
@@ -294,8 +294,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "B",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Tại nơi có vạch kẻ đường hoặc tại nơi mà người đi bộ, xe lăn của người khuyết tật đang qua đường, người điều khiển phương tiện tham gia giao thông đường bộ phải thực hiện như thế nào?",
@@ -304,8 +304,8 @@
         "optionC": "Quan sát, tăng tốc độ và điều khiển phương tiện nhanh chóng đi qua.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Trường hợp nào dưới đây người điều khiển phương tiện tham gia giao thông đường bộ phải quan sát, giảm tốc độ hoặc dừng lại để bảo đảm an toàn?",
@@ -314,8 +314,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "A",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Trường hợp nào dưới đây người điều khiển phương tiện tham gia giao thông đường bộ phải quan sát, giảm tốc độ hoặc dừng lại để bảo đảm an toàn?",
@@ -324,8 +324,8 @@
         "optionC": "Chuyển hướng xe chạy hoặc tầm nhìn bị hạn chế.",
         "optionD": "Cả ba ý trên.",
         "correctAnswer": "D",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Trường hợp nào dưới đây người điều khiển phương tiện tham gia giao thông đường bộ phải quan sát, giảm tốc độ hoặc dừng lại để bảo đảm an toàn?",
@@ -334,8 +334,8 @@
         "optionC": "Điểm dừng xe, đỗ xe trên đường bộ có khách đang lên, xuống xe.",
         "optionD": "Cả ba ý trên.",
         "correctAnswer": "D",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Khi qua khu vực đông dân cư, chợ, khu vực đang thi công trên đường bộ người điều khiển phương tiện tham gia giao thông đường bộ phải làm gì?",
@@ -344,8 +344,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "B",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Luật TTATGTĐB quy định phương tiện tham gia giao thông đường bộ di chuyển với tốc độ thấp hơn phải đi về bên phải theo chiều đi của mình có đúng không?",
@@ -354,8 +354,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "B",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Người điều khiển xe thô sơ, xe cơ giới và xe máy chuyên dùng phải đi như thế nào trên đường một chiều có vạch kẻ phân làn đường?",
@@ -364,8 +364,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "B",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Luật TTATGTĐB quy định vượt bên phải xe khác trong trường hợp nào?",
@@ -374,8 +374,8 @@
         "optionC": "Cả hai ý trên.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Luật TTATGTĐB quy định chỉ được vượt xe khi nào?",
@@ -384,8 +384,8 @@
         "optionC": "Cả hai ý trên.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Người lái xe có được vượt xe khác ở phần đường dành cho người đi bộ qua đường không?",
@@ -394,8 +394,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "B",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Trước khi chuyển hướng, người lái xe phải làm gì?",
@@ -404,8 +404,8 @@
         "optionC": "Bảo đảm an toàn, không gây trở ngại cho người và phương tiện khác mới được chuyển hướng.",
         "optionD": "Cả ba ý trên.",
         "correctAnswer": "D",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Khi chuyển hướng, người lái xe phải làm gì?",
@@ -414,8 +414,8 @@
         "optionC": "Phải nhường đường cho người đi bộ, xe thô sơ, xe đi ngược chiều và chỉ chuyển hướng khi không gây trở ngại hoặc nguy hiểm cho người, phương tiện khác.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Người lái xe tham gia giao thông đường bộ phải bật đèn chiếu sáng phía trước khi nào?",
@@ -424,8 +424,8 @@
         "optionC": "Cả hai ý trên.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Người lái xe phải tắt đèn chiếu xa, bật đèn chiếu gần trong trường hợp nào dưới đây?",
@@ -434,8 +434,8 @@
         "optionC": "Khi gặp người đi bộ qua đường; khi chuyển hướng xe tại nơi đường giao nhau.",
         "optionD": "Cả ba ý trên.",
         "correctAnswer": "D",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Trường hợp nào dưới đây người lái xe được phép sử dụng tín hiệu còi?",
@@ -444,8 +444,8 @@
         "optionC": "Cả hai ý trên.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": true
       },
       {
         "questionText": "Hành vi nào dưới đây của người điều khiển phương tiện tham gia giao thông đường bộ bị cấm?",
@@ -454,8 +454,8 @@
         "optionC": "Sử dụng còi trong thời gian từ 22 giờ ngày hôm trước đến 05 giờ ngày hôm sau trong khu đông dân cư, khu vực cơ sở khám bệnh, chữa bệnh, trừ xe ưu tiên.",
         "optionD": "Cả ba ý trên.",
         "correctAnswer": "D",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": true
       },
       {
         "questionText": "Tại nơi đường giao nhau giữa đường không ưu tiên với đường ưu tiên hoặc giữa đường nhánh với đường chính, người lái xe đi từ đường không ưu tiên hoặc đường nhánh phải nhường đường như thế nào?",
@@ -464,8 +464,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "A",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Tại nơi đường giao nhau không có báo hiệu đi theo vòng xuyến, người điều khiển phương tiện tham gia giao thông đường bộ phải nhường đường như thế nào là đúng quy tắc giao thông?",
@@ -474,8 +474,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "B",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Tại nơi đường giao nhau có báo hiệu đi theo vòng xuyến, người điều khiển phương tiện tham gia giao thông đường bộ phải nhường đường như thế nào là đúng quy tắc giao thông?",
@@ -484,8 +484,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "B",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Thứ tự xuống phà như thế nào là đúng quy tắc giao thông?",
@@ -494,8 +494,8 @@
         "optionC": "Xe cơ giới, xe thô sơ xuống phà trước, xe máy chuyên dùng, người đi bộ xuống phà sau.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": true
       },
       {
         "questionText": "Tại nơi đường bộ giao nhau cùng mức với đường sắt không có người gác, chắn đường bộ, chuông, đèn tín hiệu, người tham gia giao thông đường bộ phải thực hiện như thế nào?",
@@ -504,8 +504,8 @@
         "optionC": "Cả hai ý trên.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": true
       },
       {
         "questionText": "Trường hợp nào dưới đây không được đi vào đường cao tốc?",
@@ -514,8 +514,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "B",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Luật TTATGTĐB có quy định người lái xe khi tham gia giao thông trong hầm đường bộ phải bật đèn chiếu gần không?",
@@ -524,8 +524,8 @@
         "optionC": "Tùy trường hợp cụ thể.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Khi gặp xe ưu tiên phát tín hiệu, người tham gia giao thông đường bộ phải tuân theo quy tắc giao thông nào?",
@@ -534,8 +534,8 @@
         "optionC": "Phải quan sát, đi sát lề đường bên phải.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Người lái xe mô tô hai bánh, xe gắn máy được chở tối đa hai người trong những trường hợp nào?",
@@ -544,8 +544,8 @@
         "optionC": "Người già yếu hoặc người khuyết tật.",
         "optionD": "Cả ba ý trên.",
         "correctAnswer": "D",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Người lái xe mô tô hai bánh khi tham gia giao thông đường bộ không được thực hiện hành vi nào dưới đây?",
@@ -554,8 +554,8 @@
         "optionC": "Ngồi về một bên điều khiển xe; đứng, nằm trên xe điều khiển xe; thay người lái xe khi xe đang chạy.",
         "optionD": "Cả ba ý trên.",
         "correctAnswer": "D",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Chiều cao xếp hàng trên xe mô tô, xe gắn máy được quy định cụ thể như thế nào?",
@@ -564,8 +564,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "B",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Xe cơ giới tham gia giao thông đường bộ phải đáp ứng các điều kiện gì?",
@@ -574,8 +574,8 @@
         "optionC": "Cả hai ý trên.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Xe cơ giới phải đáp ứng quy định nào thì được cơ quan nhà nước có thẩm quyền cấp đăng ký và biển số?",
@@ -584,8 +584,8 @@
         "optionC": "Chứng từ hoàn thành nghĩa vụ tài chính.",
         "optionD": "Cả ba ý trên.",
         "correctAnswer": "D",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Cá nhân, tổ chức khi chuyển quyền sở hữu xe có phải làm thủ tục thu hồi chứng nhận đăng ký xe, biển số xe không?",
@@ -594,8 +594,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "B",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Trách nhiệm của cá nhân đứng tên trong giấy chứng nhận đăng ký xe như thế nào khi chưa thực hiện thu hồi chứng nhận đăng ký xe, biển số xe khi đã chuyển nhượng, trao đổi, tặng, cho xe?",
@@ -604,8 +604,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "B",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": true
       },
       {
         "questionText": "Cá nhân vi phạm pháp luật về trật tự, an toàn giao thông đường bộ mà chưa thực hiện xong yêu cầu của cơ quan nhà nước có thẩm quyền về giải quyết vụ việc vi phạm hành chính có được giải quyết việc đăng ký phương tiện vi phạm không?",
@@ -614,8 +614,8 @@
         "optionC": "Tùy trường hợp cụ thể.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": true
       },
       {
         "questionText": "Người lái xe khi điều khiển phương tiện tham gia giao thông đường bộ phải mang theo các loại giấy tờ gì?",
@@ -624,8 +624,8 @@
         "optionC": "Chứng nhận kiểm định an toàn kỹ thuật và bảo vệ môi trường đối với xe cơ giới theo quy định của pháp luật.",
         "optionD": "Cả ba ý trên.",
         "correctAnswer": "D",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": true
       },
       {
         "questionText": "Người có giấy phép lái xe hạng A được điều khiển loại xe nào?",
@@ -634,8 +634,8 @@
         "optionC": "Xe mô tô ba bánh và các loại xe quy định cho giấy phép lái xe hạng A1.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Người có giấy phép lái xe hạng B1 được điều khiển loại xe nào?",
@@ -644,8 +644,8 @@
         "optionC": "Xe mô tô ba bánh và các loại xe quy định cho giấy phép lái xe hạng A1.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Giấy phép lái xe hạng nào dưới đây có thời hạn?",
@@ -654,8 +654,8 @@
         "optionC": "Hạng B.",
         "optionD": "Hạng A.",
         "correctAnswer": "D",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": true
       },
       {
         "questionText": "Giấy phép lái xe không còn hiệu lực trong trường hợp nào?",
@@ -664,8 +664,8 @@
         "optionC": "Giấy phép lái bị trừ điểm hết điểm và chưa phục hồi điểm giấy phép lái xe.",
         "optionD": "Cả ba ý trên.",
         "correctAnswer": "D",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Người có giấy phép lái xe đã bị trừ hết điểm phải làm gì để phục hồi điểm giấy phép lái xe?",
@@ -674,8 +674,8 @@
         "optionC": "Cả hai ý trên.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": true
       },
       {
         "questionText": "Theo Luật TTATGTĐB, người đủ bao nhiêu tuổi trở lên được cấp giấy phép lái xe hạng A1, A, B1?",
@@ -684,8 +684,8 @@
         "optionC": "20 tuổi.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": true
       },
       {
         "questionText": "Người vi phạm trật tự, an toàn giao thông đường bộ chưa thực hiện xong yêu cầu của cơ quan nhà nước có thẩm quyền về giải quyết vụ việc vi phạm hành chính trong lĩnh vực trật tự, an toàn giao thông đường bộ có được cấp, đổi, cấp lại giấy phép lái xe không?",
@@ -694,8 +694,8 @@
         "optionC": "Tùy trường hợp.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Luật TTATGTĐB quy định trường hợp nào dưới đây bị thu hồi giấy phép lái xe?",
@@ -704,8 +704,8 @@
         "optionC": "Giấy phép lái xe đã quá thời hạn tạm giữ người vi phạm không đến nhận mà không có lý do chính đáng.",
         "optionD": "Cả ba ý trên.",
         "correctAnswer": "D",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Luật TTATGTĐB quy định người lái xe gây tai nạn giao thông đường bộ được rời khỏi hiện trường tai nạn trong trường hợp nào?",
@@ -714,8 +714,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "A",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Người lái xe khi tham gia giao thông trong hầm đường bộ phải tuân thủ quy tắc nào dưới đây?",
@@ -724,8 +724,8 @@
         "optionC": "Cả hai ý trên.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Tại nơi đường bộ giao nhau cùng mức với đường sắt, quyền ưu tiên thuộc về phương tiện nào?",
@@ -734,8 +734,8 @@
         "optionC": "Quyền ưu tiên thuộc về các phương tiện đường sắt.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Hành vi người điều khiển xe mô tô trên đường mà trong máu hoặc hơi thở có nồng độ cồn chưa vượt quá 80 miligam/100 mililit máu hoặc chưa vượt quá 0,4 miligam/1 lít khí thở có bị trừ điểm giấy phép lái xe không?",
@@ -744,8 +744,8 @@
         "optionC": "Bị trừ điểm tùy trường hợp.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Hành vi điều khiển xe gắn biển số không đúng với chứng nhận đăng ký xe hoặc gắn biển số không do cơ quan có thẩm quyền cấp có bị tịch thu biển số không?",
@@ -754,8 +754,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "B",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Hành vi điều khiển xe mô tô, sử dụng còi không đúng tiêu chuẩn kỹ thuật, ngoài bị phạt tiền còn bị xử lý như thế nào?",
@@ -764,8 +764,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "B",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Hành vi không chấp hành yêu cầu kiểm tra về chất ma túy của người thi hành công vụ có bị tước quyền sử dụng giấy phép lái xe không?",
@@ -774,8 +774,8 @@
         "optionC": "Bị tước tùy trường hợp.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Hành vi không chấp hành yêu cầu kiểm tra về nồng độ cồn của người thi hành công vụ có bị tước quyền sử dụng giấy phép lái xe không?",
@@ -784,8 +784,8 @@
         "optionC": "Bị tước tùy trường hợp.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Hành vi cắt, hàn, tẩy xoá, đục sửa, đóng lại trái phép số máy, số khung xe cơ giới có bị tịch thu xe không?",
@@ -794,8 +794,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "B",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Hành vi người điều khiển xe mô tô trên đường mà trong máu hoặc hơi thở có nồng độ cồn nhưng chưa vượt quá 50 miligam/100 mililit máu hoặc chưa vượt quá 0,25 miligam/1 lít khí thở bị trừ bao nhiêu điểm giấy phép lái xe?",
@@ -804,8 +804,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "B",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Trong khu vực đông dân cư, tốc độ tối đa cho phép đối với xe mô tô tham gia giao thông trên đường đôi; đường một chiều có từ hai làn xe cơ giới trở lên là bao nhiêu?",
@@ -814,8 +814,8 @@
         "optionC": "50 km/h.",
         "optionD": "60 km/h.",
         "correctAnswer": "D",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Trong khu vực đông dân cư, tốc độ tối đa cho phép đối với xe mô tô tham gia giao thông trên đường hai chiều; đường một chiều có một làn xe cơ giới là bao nhiêu?",
@@ -824,8 +824,8 @@
         "optionC": "50 km/h.",
         "optionD": "60 km/h.",
         "correctAnswer": "D",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Ngoài khu vực đông dân cư, tốc độ tối đa cho phép đối với xe mô tô tham gia giao thông trên đường hai chiều; đường một chiều có một làn xe cơ giới là bao nhiêu?",
@@ -834,8 +834,8 @@
         "optionC": "50 km/h.",
         "optionD": "40 km/h.",
         "correctAnswer": "D",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Khi tham gia giao thông trên đường bộ, mặt đường khô ráo, không có sương mù, mặt đường không trơn trượt, địa hình bằng phẳng, đường thẳng, tầm nhìn bảo đảm, người điều khiển xe cơ giới chạy với tốc độ 60 km/h phải giữ khoảng cách an toàn tối thiểu đối với xe chạy liền trước xe của mình là bao nhiêu?",
@@ -844,8 +844,8 @@
         "optionC": "50 m.",
         "optionD": "55 m.",
         "correctAnswer": "D",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Hành vi giao xe hoặc để cho người không đủ điều kiện theo quy định của Luật TTATGTĐB điều khiển tham gia thông, có bị xử phạt không?",
@@ -854,8 +854,8 @@
         "optionC": "Bị xử phạt tùy trường hợp.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Biển nào báo hiệu đường dành cho xe thô sơ?",
@@ -864,8 +864,8 @@
         "optionC": "Biển 3.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": "question_image_3.jpeg"
+        "imagePath": "question_image_3.jpeg",
+        "isLiet": false
       },
       {
         "questionText": "Biển nào báo cấm tất cả các loại phương tiện đi lại cả hai hướng trừ các xe được ưu tiên theo luật định (nếu đường vẫn cho xe chạy được)?",
@@ -874,8 +874,8 @@
         "optionC": "Cả hai biển.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": "question_image_4.png"
+        "imagePath": "question_image_4.png",
+        "isLiet": false
       },
       {
         "questionText": "Biển nào cấm đi ngược chiều?",
@@ -884,8 +884,8 @@
         "optionC": "Cả ba biển.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": "question_image_5.png"
+        "imagePath": "question_image_5.png",
+        "isLiet": false
       },
       {
         "questionText": "Biển nào xe được phép quay đầu?",
@@ -894,8 +894,8 @@
         "optionC": "Biển 3.   4. Biển 1 và 2.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": "question_image_6.png"
+        "imagePath": "question_image_6.png",
+        "isLiet": false
       },
       {
         "questionText": "Biển nào cấm quay đầu xe?",
@@ -904,8 +904,8 @@
         "optionC": "Cả hai biển.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": "question_image_7.png"
+        "imagePath": "question_image_7.png",
+        "isLiet": false
       },
       {
         "questionText": "Ba biển này có ý nghĩa như thế nào?",
@@ -914,8 +914,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "B",
-        "explanation": null,
-        "imagePath": "question_image_8.png"
+        "imagePath": "question_image_8.png",
+        "isLiet": false
       },
       {
         "questionText": "Biển nào xe mô tô hai bánh được đi vào?",
@@ -924,8 +924,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "A",
-        "explanation": null,
-        "imagePath": "question_image_9.png"
+        "imagePath": "question_image_9.png",
+        "isLiet": false
       },
       {
         "questionText": "Khi gặp biển nào thì xe mô tô hai bánh được đi vào?",
@@ -934,8 +934,8 @@
         "optionC": "Biển 2 và 3.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": "question_image_10.jpeg"
+        "imagePath": "question_image_10.jpeg",
+        "isLiet": false
       },
       {
         "questionText": "Biển nào báo hiệu cấm xe mô tô ba bánh đi vào?",
@@ -944,8 +944,8 @@
         "optionC": "Biển 2 và 3.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": "question_image_11.jpeg"
+        "imagePath": "question_image_11.jpeg",
+        "isLiet": false
       },
       {
         "questionText": "Biển nào cấm người đi bộ?",
@@ -954,8 +954,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "A",
-        "explanation": null,
-        "imagePath": "question_image_12.jpeg"
+        "imagePath": "question_image_12.jpeg",
+        "isLiet": false
       },
       {
         "questionText": "Trong các biển dưới đây, biển nào báo đường cấm xe ba bánh loại có động cơ?",
@@ -964,8 +964,8 @@
         "optionC": "Biển 3.",
         "optionD": "Biển 2 và 3.",
         "correctAnswer": "D",
-        "explanation": null,
-        "imagePath": "question_image_13.jpeg"
+        "imagePath": "question_image_13.jpeg",
+        "isLiet": false
       },
       {
         "questionText": "Biển nào báo hiệu hết hạn chế tốc độ tối đa trong khu vực?",
@@ -974,8 +974,8 @@
         "optionC": "Biển 3.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": "question_image_14.jpeg"
+        "imagePath": "question_image_14.jpeg",
+        "isLiet": false
       },
       {
         "questionText": "Biển nào báo hiệu hết tất cả các lệnh cấm?",
@@ -984,8 +984,8 @@
         "optionC": "Biển 3.",
         "optionD": "Cả ba biển.",
         "correctAnswer": "D",
-        "explanation": null,
-        "imagePath": "question_image_15.jpeg"
+        "imagePath": "question_image_15.jpeg",
+        "isLiet": false
       },
       {
         "questionText": "Biển này có ý nghĩa gì?",
@@ -994,8 +994,8 @@
         "optionC": "Biển hết hạn chế tốc độ tối đa cho phép theo biển ghép.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": "question_image_16.jpeg"
+        "imagePath": "question_image_16.jpeg",
+        "isLiet": false
       },
       {
         "questionText": "Khi gặp biển này, các loại phương tiện vận tải có phải dừng lại để làm thủ tục kiểm tra, kiểm soát theo quy định không?",
@@ -1004,8 +1004,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "B",
-        "explanation": null,
-        "imagePath": "question_image_17.png"
+        "imagePath": "question_image_17.png",
+        "isLiet": false
       },
       {
         "questionText": "Biển nào báo hiệu chú ý chướng ngại vật?",
@@ -1014,8 +1014,8 @@
         "optionC": "Cả ba biển.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": "question_image_18.jpeg"
+        "imagePath": "question_image_18.jpeg",
+        "isLiet": false
       },
       {
         "questionText": "Biển nào báo hiệu đoạn đường hay xảy ra tai nạn?",
@@ -1024,8 +1024,8 @@
         "optionC": "Biển 2 và 3.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": "question_image_19.jpeg"
+        "imagePath": "question_image_19.jpeg",
+        "isLiet": false
       },
       {
         "questionText": "Biển nào báo hiệu đường hầm?",
@@ -1034,8 +1034,8 @@
         "optionC": "Biển 2.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": "question_image_20.png"
+        "imagePath": "question_image_20.png",
+        "isLiet": false
       },
       {
         "questionText": "Biển nào báo hiệu đường đôi?",
@@ -1044,8 +1044,8 @@
         "optionC": "Biển 3.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": "question_image_21.png"
+        "imagePath": "question_image_21.png",
+        "isLiet": false
       },
       {
         "questionText": "Biển nào báo hiệu đường hai chiều?",
@@ -1054,8 +1054,8 @@
         "optionC": "Biển 3.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": "question_image_22.jpeg"
+        "imagePath": "question_image_22.jpeg",
+        "isLiet": false
       },
       {
         "questionText": "Biển nào báo hiệu giao nhau với đường không ưu tiên?",
@@ -1064,8 +1064,8 @@
         "optionC": "Biển 3.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": "question_image_23.png"
+        "imagePath": "question_image_23.png",
+        "isLiet": false
       },
       {
         "questionText": "Biển nào báo trước sắp đến nơi giao nhau cùng mức của các tuyến đường cùng cấp?",
@@ -1074,8 +1074,8 @@
         "optionC": "Biển 3.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": "question_image_24.png"
+        "imagePath": "question_image_24.png",
+        "isLiet": false
       },
       {
         "questionText": "Khi gặp biển nào, người lái xe phải giảm tốc độ, chú ý xe đi ngược chiều, xe đi ở chiều đường bị hẹp phải nhường đường cho xe đi ngược chiều?",
@@ -1084,8 +1084,8 @@
         "optionC": "Cả ba biển.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": "question_image_25.jpeg"
+        "imagePath": "question_image_25.jpeg",
+        "isLiet": false
       },
       {
         "questionText": "Biển nào báo hiệu, chỉ dẫn xe đi trên đường này được quyền ưu tiên qua nơi giao nhau?",
@@ -1094,8 +1094,8 @@
         "optionC": "Cả ba biển.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": "question_image_26.png"
+        "imagePath": "question_image_26.png",
+        "isLiet": false
       },
       {
         "questionText": "Biển nào báo hiệu đường bộ giao nhau với đường sắt không có rào chắn?",
@@ -1104,8 +1104,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "B",
-        "explanation": null,
-        "imagePath": "question_image_27.png"
+        "imagePath": "question_image_27.png",
+        "isLiet": false
       },
       {
         "questionText": "Biển nào báo hiệu sắp đến chỗ giao nhau với đường sắt có rào chắn?",
@@ -1114,8 +1114,8 @@
         "optionC": "Biển 3.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": "question_image_28.png"
+        "imagePath": "question_image_28.png",
+        "isLiet": false
       },
       {
         "questionText": "Gặp biển nào người lái xe phải giảm tốc độ, nhường ưu tiên cho người đi bộ?",
@@ -1124,8 +1124,8 @@
         "optionC": "Biển 2.",
         "optionD": "Biển 1 và 3",
         "correctAnswer": "D",
-        "explanation": null,
-        "imagePath": "question_image_29.jpeg"
+        "imagePath": "question_image_29.jpeg",
+        "isLiet": false
       },
       {
         "questionText": "Biển nào báo hiệu đoạn đường hay xảy ra ùn tắc giao thông?",
@@ -1134,8 +1134,8 @@
         "optionC": "Biển 3.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": "question_image_30.png"
+        "imagePath": "question_image_30.png",
+        "isLiet": false
       },
       {
         "questionText": "Biển nào cảnh báo chỗ ngoặt nguy hiểm liên tiếp?",
@@ -1144,8 +1144,8 @@
         "optionC": "Biển 3 và 4.",
         "optionD": "Biển 2 và 4.",
         "correctAnswer": "D",
-        "explanation": null,
-        "imagePath": "question_image_31.jpeg"
+        "imagePath": "question_image_31.jpeg",
+        "isLiet": false
       },
       {
         "questionText": "Biển nào cảnh báo đường ngầm có nguy cơ lũ quét?",
@@ -1154,8 +1154,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "B",
-        "explanation": null,
-        "imagePath": "question_image_32.jpeg"
+        "imagePath": "question_image_32.jpeg",
+        "isLiet": false
       },
       {
         "questionText": "Biển nào cảnh báo vách núi nguy hiểm?",
@@ -1164,8 +1164,8 @@
         "optionC": "Biển 3 và 4.",
         "optionD": "Biển 1 và 3.",
         "correctAnswer": "D",
-        "explanation": null,
-        "imagePath": "question_image_33.jpeg"
+        "imagePath": "question_image_33.jpeg",
+        "isLiet": false
       },
       {
         "questionText": "Biển nào báo trước gần đến đoạn đường thường có trẻ em đi ngang qua hoặc tụ tập trên đường?",
@@ -1174,8 +1174,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "B",
-        "explanation": null,
-        "imagePath": "question_image_34.jpeg"
+        "imagePath": "question_image_34.jpeg",
+        "isLiet": false
       },
       {
         "questionText": "Biển này có ý nghĩa gì?",
@@ -1184,8 +1184,8 @@
         "optionC": "Khoảng cách từ điểm đặt biển đến đoạn đường có đá lở bất ngờ gây nguy hiểm cho xe cộ và người đi đường.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": "question_image_35.png"
+        "imagePath": "question_image_35.png",
+        "isLiet": false
       },
       {
         "questionText": "Biển này có ý nghĩa gì?",
@@ -1194,8 +1194,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "B",
-        "explanation": null,
-        "imagePath": "question_image_36.png"
+        "imagePath": "question_image_36.png",
+        "isLiet": false
       },
       {
         "questionText": "Biển nào báo trước đoạn đường có gồ giảm tốc?",
@@ -1204,8 +1204,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "B",
-        "explanation": null,
-        "imagePath": "question_image_37.jpeg"
+        "imagePath": "question_image_37.jpeg",
+        "isLiet": false
       },
       {
         "questionText": "Biển nào báo trước sắp đến bến phà?",
@@ -1214,8 +1214,8 @@
         "optionC": "Biển 3.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": "question_image_38.jpeg"
+        "imagePath": "question_image_38.jpeg",
+        "isLiet": false
       },
       {
         "questionText": "Biển này có ý nghĩa gì?",
@@ -1224,8 +1224,8 @@
         "optionC": "Báo trước chiều dài đoạn đường dốc xuống nguy hiểm.",
         "optionD": "Báo trước chiều dài đoạn đường dốc lên nguy hiểm.",
         "correctAnswer": "D",
-        "explanation": null,
-        "imagePath": "question_image_39.png"
+        "imagePath": "question_image_39.png",
+        "isLiet": false
       },
       {
         "questionText": "Biển này có ý nghĩa gì?",
@@ -1234,8 +1234,8 @@
         "optionC": "Cả hai ý trên.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": "question_image_40.png"
+        "imagePath": "question_image_40.png",
+        "isLiet": false
       },
       {
         "questionText": "Biển nào đặt trước ngã ba, ngã tư và có hiệu lực phía sau mặt biển?",
@@ -1244,8 +1244,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "B",
-        "explanation": null,
-        "imagePath": "question_image_41.jpeg"
+        "imagePath": "question_image_41.jpeg",
+        "isLiet": false
       },
       {
         "questionText": "Biển nào báo hiệu bắt đầu đường dành cho các loại ô tô, xe máy đi lại?",
@@ -1254,8 +1254,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "B",
-        "explanation": null,
-        "imagePath": "question_image_42.jpeg"
+        "imagePath": "question_image_42.jpeg",
+        "isLiet": false
       },
       {
         "questionText": "Biển nào báo hiệu hướng đi phải theo?",
@@ -1264,8 +1264,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "B",
-        "explanation": null,
-        "imagePath": "question_image_43.jpeg"
+        "imagePath": "question_image_43.jpeg",
+        "isLiet": false
       },
       {
         "questionText": "Biển nào báo hiệu hết đoạn đường ưu tiên?",
@@ -1274,8 +1274,8 @@
         "optionC": "Biển 3.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": "question_image_44.jpeg"
+        "imagePath": "question_image_44.jpeg",
+        "isLiet": false
       },
       {
         "questionText": "Biển nào báo hiệu hết hạn chế tốc độ tối đa cho phép theo biển ghép?",
@@ -1284,8 +1284,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "B",
-        "explanation": null,
-        "imagePath": "question_image_45.jpeg"
+        "imagePath": "question_image_45.jpeg",
+        "isLiet": false
       },
       {
         "questionText": "Biển nào chỉ dẫn nơi bắt đầu đoạn đường dành cho người đi bộ?",
@@ -1294,8 +1294,8 @@
         "optionC": "Biển 3. 4. Biển 4.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": "question_image_46.jpeg"
+        "imagePath": "question_image_46.jpeg",
+        "isLiet": false
       },
       {
         "questionText": "Biển nào đặt trước các đường giao nhau, để chỉ dẫn lối đi đường tránh, đường vòng trong trường hợp đường chính bị tắc hoặc đường chính cấm một số loại xe đi qua?",
@@ -1304,8 +1304,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "B",
-        "explanation": null,
-        "imagePath": "question_image_47.jpeg"
+        "imagePath": "question_image_47.jpeg",
+        "isLiet": false
       },
       {
         "questionText": "Biển này có ý nghĩa gì?",
@@ -1314,8 +1314,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "B",
-        "explanation": null,
-        "imagePath": "question_image_48.png"
+        "imagePath": "question_image_48.png",
+        "isLiet": false
       },
       {
         "questionText": "Biển này có ý nghĩa gì?",
@@ -1324,8 +1324,8 @@
         "optionC": "Báo cấm dùng còi có độ vang xa 500m.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": "question_image_49.png"
+        "imagePath": "question_image_49.png",
+        "isLiet": false
       },
       {
         "questionText": "Biển này có ý nghĩa gì?",
@@ -1334,8 +1334,8 @@
         "optionC": "Hướng trái và phải không cấm xe cơ giới.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Biển nào chỉ dẫn người lái xe đi được cả hai hướng?",
@@ -1344,8 +1344,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "B",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Biển này có ý nghĩa gì?",
@@ -1354,8 +1354,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "B",
-        "explanation": null,
-        "imagePath": "question_image_50.png"
+        "imagePath": "question_image_50.png",
+        "isLiet": false
       },
       {
         "questionText": "Tay ga xe mô tô hai bánh có tác dụng gì?",
@@ -1364,8 +1364,8 @@
         "optionC": "Để điều khiển xe chạy lùi.",
         "optionD": "Ý 1 và ý 2.",
         "correctAnswer": "D",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Nêu tác dụng của gương chiếu hậu xe mô tô?",
@@ -1374,8 +1374,8 @@
         "optionC": "Để quan sát an toàn phía sau bên trái, phía sau bên phải trước khi chuyển hướng.",
         "optionD": "Để quan sát an toàn phía trước cả bên trái và bên phải trước khi chuyển hướng.",
         "correctAnswer": "D",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Nêu tác dụng của côn tay xe mô tô?",
@@ -1384,8 +1384,8 @@
         "optionC": "Cả hai ý trên.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Cách hạ chân chống chính của xe mô tô?",
@@ -1394,8 +1394,8 @@
         "optionC": "Dựa xe vào hông, chân phải đưa lên phía trước, hai tay nắm vào tay nắm xe; kiểm tra an toàn xung quanh xe; dùng lực đẩy xe về phía trước; khi hai bánh xe chạm đất tay phải bóp phanh để xe không bị trượt.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Cách dựng chân chống chính của xe mô tô?",
@@ -1404,8 +1404,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "A",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Thao tác dựng xe mô tô khi bị đổ sang trái?",
@@ -1414,8 +1414,8 @@
         "optionC": "Dùng chân trái làm trụ kết hợp đùi và hông để hỗ trợ nâng xe lên một nhịp.",
         "optionD": "Cả ba ý trên.",
         "correctAnswer": "D",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Thao tác dựng xe mô tô khi bị đổ sang phải?",
@@ -1424,8 +1424,8 @@
         "optionC": "Tay trái nắm vào thanh đỡ phía sau của xe, chân phải làm trụ kết hợp đùi và hông để hỗ trợ nâng xe lên một nhịp.",
         "optionD": "Cả ba ý trên.",
         "correctAnswer": "D",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Phương pháp kiểm tra lốp xe mô tô trước khi xuất phát?",
@@ -1434,8 +1434,8 @@
         "optionC": "Xoay tròn lốp xe để kiểm tra và loại bỏ dị vật; kiểm tra áp suất hơi và vành xe có bị rạn nứt không.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Để đảm bảo an toàn trước khi xuất phát, người lái xe phải làm gì?",
@@ -1444,8 +1444,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "B",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Trước khi khởi hành xe mô tô, người lái xe cần kiểm tra những gì?",
@@ -1454,8 +1454,8 @@
         "optionC": "Lốp, xăng, dầu máy, xích, phanh, tay côn (nếu có), đèn, còi, tay ga, gương và cần gạt mưa.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Để đảm bảo tư thế lái xe mô tô an toàn, người lái xe phải thực hiện như thế nào?",
@@ -1464,8 +1464,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "B",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Trước khi dừng xe, người lái xe phải thực hiện như thế nào?",
@@ -1474,8 +1474,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "B",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Khi điều khiển xe mô tô, người lái xe phải sử dụng phanh tay như thế nào là đúng?",
@@ -1484,8 +1484,8 @@
         "optionC": "Cả hai ý trên.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Khi điều khiển xe mô tô, người lái xe phải sử dụng phanh như thế nào để đạt hiệu quả cao nhất?",
@@ -1494,8 +1494,8 @@
         "optionC": "Sử dụng đồng thời phanh trước và phanh sau.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Trên đường đôi có xe container đi cùng chiều, người lái xe môtô phải xử lý như thế nào?",
@@ -1504,8 +1504,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "B",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Khi điều khiển xe mô tô, gặp xe ô tô đi phía trước có tín hiệu rẽ phải, người lái xe xử lý như thế nào?",
@@ -1514,8 +1514,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "B",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Khi điều khiển xe mô tô hai bánh, bất ngờ gặp chướng ngại vật, người lái xe xử lý như thế nào?",
@@ -1524,8 +1524,8 @@
         "optionC": "Giảm hết ga thật nhanh; sử dụng phanh trước với lực phanh tăng dần đều (lưu ý bóp phanh bằng bốn ngón tay); khi xe dừng hẳn lại chống chân trái xuống đất.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Để tránh đổ, ngã khi điều khiển xe mô tô hai bánh ở nơi đường xấu, nhỏ và hẹp, người lái xe xử lý như thế nào?",
@@ -1534,8 +1534,8 @@
         "optionC": "Không được lắc người sang trái hoặc phải nhiều; trọng tâm cơ thể cần trùng với trọng tâm của xe.",
         "optionD": "Cả ba ý trên.",
         "correctAnswer": "D",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Khi điều khiển xe mô tô trong điều kiện trời mưa, người lái xe xử lý như thế nào?",
@@ -1544,8 +1544,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "A",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Khi điều khiển xe mô tô trong điều kiện đường trơn trượt, người lái xe xử lý như thế nào?",
@@ -1554,8 +1554,8 @@
         "optionC": "Cả hai ý trên.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Khi điều khiển xe mô tô muốn rẽ phải, người lái xe phải xử lý như thế nào?",
@@ -1564,8 +1564,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "B",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Khi điều khiển xe mô tô rẽ trái, người lái xe phải xử lý như thế nào?",
@@ -1574,8 +1574,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "B",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Để đảm bảo an toàn khi điều khiển xe mô tô tay ga xuống dốc, người lái xe cần thực hiện như thế nào?",
@@ -1584,8 +1584,8 @@
         "optionC": "Sử dụng phanh trước để giảm tốc độ kết hợp với tắt động cơ.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Khi điều khiển xe mô tô vào đoạn đường vòng, người lái xe xử lý như thế nào?",
@@ -1594,8 +1594,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "A",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Khi điều khiển xe mô tô bị che khuất tầm nhìn, người lái xe xử lý như thế nào?",
@@ -1604,8 +1604,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "B",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Tại những khu vực giao thông phức tạp, có mật độ phương tiện đông, người lái xe xử lý như thế nào?",
@@ -1614,8 +1614,8 @@
         "optionC": "Chú ý quan sát, bấm còi liên tục và tăng tốc độ nhanh chóng đi qua nơi giao nhau.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Điều khiển xe mô tô vào ban đêm, người lái xe xử lý như thế nào?",
@@ -1624,8 +1624,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "B",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Khi điều khiển xe mô tô, thấy xe đi trước bật tín hiệu báo rẽ trái, người lái xe xử lý như thế nào?",
@@ -1634,8 +1634,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "B",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Khi điều khiển xe mô tô lên dốc cao, người lái xe xử lý như thế nào?",
@@ -1644,8 +1644,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "A",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Khi điều khiển xe mô tô xuống dốc nguy hiểm, người lái xe xử lý như thế nào?",
@@ -1654,8 +1654,8 @@
         "optionC": "Về số 0, kết hợp với phanh chân để khống chế tốc độ.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Khi điều khiển xe mô tô gặp xe lăn của người khuyết tật qua đường, người lái xe phải xử lý như thế nào?",
@@ -1664,8 +1664,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "B",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Khi đang điều khiển xe mô tô, nếu có nhu cầu sử dụng điện thoại, người lái xe xử lý như thế nào?",
@@ -1674,8 +1674,8 @@
         "optionC": "Tăng tốc độ để cách ra xe phía sau và sử dụng điện thoại để liên lạc.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Việc bảo dưỡng thường xuyên đối với xe mô tô có tác dụng gì?",
@@ -1684,8 +1684,8 @@
         "optionC": "Cả hai ý trên.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Phương pháp kiểm tra mức dầu bôi trơn động cơ?",
@@ -1694,8 +1694,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "B",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Hãy nêu công dụng của động cơ đốt trong?",
@@ -1704,8 +1704,8 @@
         "optionC": "Cả hai ý trên.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Điện xe mô tô gồm những hệ thống nào?",
@@ -1714,8 +1714,8 @@
         "optionC": "Hệ thống đánh lửa, hệ thống khởi động, hệ thống tín hiệu và hệ thống chiếu sáng, hệ thống đo lường, hệ thống làm mát.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Hãy nêu công dụng của hệ thống phanh?",
@@ -1724,8 +1724,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "B",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Hãy nêu công dụng hệ thống lái của xe mô tô?",
@@ -1734,8 +1734,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "B",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Hãy nêu công dụng hộp số của xe mô tô?",
@@ -1744,8 +1744,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "B",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Đèn phanh xe mô tô có tác dụng gì?",
@@ -1754,8 +1754,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "A",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Thế nào là động cơ 2 kỳ?",
@@ -1764,8 +1764,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "B",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Thế nào là động cơ 4 kỳ?",
@@ -1774,8 +1774,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "B",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Công dụng của hệ thống bôi trơn đối với động cơ xe mô tô?",
@@ -1784,8 +1784,8 @@
         "optionC": "Cả hai ý trên.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Khi điều khiển xe mô tô qua đường sắt không có rào chắn, không có người điều khiển giao thông, người lái xe xử lý như thế nào?",
@@ -1794,8 +1794,8 @@
         "optionC": "Cả hai ý trên.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Thứ tự các xe đi như thế nào là đúng quy tắc giao thông?",
@@ -1804,8 +1804,8 @@
         "optionC": "Xe mô tô, xe ô tô con, xe ô tô tải.",
         "optionD": "Xe ô tô con, xe mô tô, xe ô tô tải.",
         "correctAnswer": "D",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Trong trường hợp này xe nào được quyền đi trước?",
@@ -1814,8 +1814,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "B",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Theo tín hiệu đèn, xe nào được phép đi?",
@@ -1824,8 +1824,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "B",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Theo tín hiệu đèn, xe nào phải dừng lại là đúng quy tắc giao thông?",
@@ -1834,8 +1834,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "B",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Các xe đi theo hướng mũi tên, xe nào vi phạm quy tắc giao thông?",
@@ -1844,8 +1844,8 @@
         "optionC": "Xe ô tô khách, xe ô tô con, xe mô tô.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Thứ tự các xe đi như thế nào là đúng quy tắc giao thông?",
@@ -1854,8 +1854,8 @@
         "optionC": "Xe mô tô, xe ô tô tải, xe ô tô khách, xe ô tô con.",
         "optionD": "Xe mô tô, xe ô tô tải, xe ô tô con, xe ô tô khách.",
         "correctAnswer": "D",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Theo hướng mũi tên, những hướng nào xe gắn máy đi được?",
@@ -1864,8 +1864,8 @@
         "optionC": "Hướng 1.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Xe nào được quyền đi trước trong trường hợp này?",
@@ -1874,8 +1874,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "B",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Thứ tự các xe đi như thế nào là đúng quy tắc giao thông?",
@@ -1884,8 +1884,8 @@
         "optionC": "Xe ô tô (A), xe ô tô (B), xe mô tô + xe đạp.",
         "optionD": "Xe mô tô + xe đạp, xe ô tô (A), xe ô tô (B).",
         "correctAnswer": "D",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Theo hướng mũi tên, xe nào vi phạm quy tắc giao thông?",
@@ -1894,8 +1894,8 @@
         "optionC": "Xe ô tô con.",
         "optionD": "Xe ô tô con và xe mô tô.",
         "correctAnswer": "D",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Theo hiệu lệnh của người điều khiển giao thông, các xe đi như thế nào là đúng?",
@@ -1904,8 +1904,8 @@
         "optionC": "Tất cả các xe phải đứng lại trước ngã tư, trừ những xe đã ở trong ngã tư được phép tiếp tục đi.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Theo hiệu lệnh của người điều khiển giao thông, xe nào được phép đi?",
@@ -1914,8 +1914,8 @@
         "optionC": "Xe mô tô, xe ô tô tải.",
         "optionD": "Cả ba xe.",
         "correctAnswer": "D",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Theo tín hiệu đèn, xe nào chấp hành đúng quy tắc giao thông?",
@@ -1924,8 +1924,8 @@
         "optionC": "Xe ô tô con, xe ô tô tải.",
         "optionD": "Tất cả các loại xe trên.",
         "correctAnswer": "D",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Theo hướng mũi tên, những hướng nào xe mô tô được phép đi?",
@@ -1934,8 +1934,8 @@
         "optionC": "Hướng 1 và 3.",
         "optionD": "Hướng 2 và 3.",
         "correctAnswer": "D",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Theo tín hiệu đèn, xe nào phải dừng lại là đúng quy tắc giao thông?",
@@ -1944,8 +1944,8 @@
         "optionC": "Xe ô tô con, xe ô tô tải.",
         "optionD": null,
         "correctAnswer": "B",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Các xe đi theo hướng mũi tên, xe nào vi phạm quy tắc giao thông?",
@@ -1954,8 +1954,8 @@
         "optionC": "Xe ô tô khách, xe mô tô, xe ô tô con.",
         "optionD": "Cả 4 xe.",
         "correctAnswer": "D",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Các xe đi theo hướng mũi tên, xe nào chấp hành quy tắc giao thông?",
@@ -1964,8 +1964,8 @@
         "optionC": "Xe ô tô tải, xe ô tô con.",
         "optionD": "Xe mô tô, xe ô tô con.",
         "correctAnswer": "D",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Theo tín hiệu đèn, xe nào phải dừng lại là đúng quy tắc giao thông?",
@@ -1974,8 +1974,8 @@
         "optionC": "Xe ô tô con, xe ô tô tải.",
         "optionD": null,
         "correctAnswer": "B",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Thứ tự các xe đi như thế nào là đúng quy tắc giao thông?",
@@ -1984,8 +1984,8 @@
         "optionC": "Xe ô tô khách, xe ô tô tải, xe ô tô con, xe mô tô.",
         "optionD": "Xe mô tô, xe ô tô khách, xe ô tô con, xe ô tô tải.",
         "correctAnswer": "D",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Trong trường hợp này, thứ tự các xe đi như thế nào là đúng quy tắc giao thông?",
@@ -1994,8 +1994,8 @@
         "optionC": "Xe ô tô + xe mô tô, xe quân sự đi làm nhiệm vụ, xe công an đi làm nhiệm vụ.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Xe của anh (chị) có được phép vượt xe mô tô phía trước không?",
@@ -2004,8 +2004,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "B",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Trong hình dưới đây, những xe nào vi phạm quy tắc giao thông?",
@@ -2014,8 +2014,8 @@
         "optionC": "Xe ô tô tải (2), xe mô tô (5).",
         "optionD": "Xe ô tô tải (2), xe ô tô khách (1).",
         "correctAnswer": "D",
-        "explanation": null,
-        "imagePath": "question_image_72.jpeg"
+        "imagePath": "question_image_72.jpeg",
+        "isLiet": false
       },
       {
         "questionText": "Xe ô tô tải kéo xe mô tô ba bánh như hình này có đúng quy tắc giao thông không?",
@@ -2024,8 +2024,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "B",
-        "explanation": null,
-        "imagePath": "question_image_73.jpeg"
+        "imagePath": "question_image_73.jpeg",
+        "isLiet": false
       },
       {
         "questionText": "Xe nào đỗ vi phạm quy tắc giao thông?",
@@ -2034,8 +2034,8 @@
         "optionC": "Cả ba xe.",
         "optionD": "Xe mô tô và xe ô tô tải.",
         "correctAnswer": "D",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Xe nào đỗ vi phạm quy tắc giao thông?",
@@ -2044,8 +2044,8 @@
         "optionC": "Xe ô tô tải.",
         "optionD": "Không xe nào vi phạm.",
         "correctAnswer": "D",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Trong trường hợp này xe nào đỗ vi phạm quy tắc giao thông?",
@@ -2054,8 +2054,8 @@
         "optionC": "Cả 3 xe.",
         "optionD": "Xe ô tô con và xe ô tô tải.",
         "correctAnswer": "D",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Xe nào vi phạm quy tắc giao thông?",
@@ -2064,8 +2064,8 @@
         "optionC": "Không xe nào vi phạm.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Theo tín hiệu đèn của xe cơ giới, xe nào vi phạm quy tắc giao thông?",
@@ -2074,8 +2074,8 @@
         "optionC": "Xe ô tô con.",
         "optionD": "Không xe nào vi phạm.",
         "correctAnswer": "D",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Xe container đang rẽ phải, các phương tiện phía sau đi như thế nào để đảm bảo an toàn?",
@@ -2084,8 +2084,8 @@
         "optionC": "Vượt về phía bên trái để đi tiếp.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Trong trường hợp này, xe ô tô có được phép vượt xe mô tô không?",
@@ -2094,8 +2094,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "B",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Văn hóa giao thông được hiểu như thế nào là đúng?",
@@ -2104,8 +2104,8 @@
         "optionC": "Có thái độ ứng xử đúng mực khi tham gia giao thông và trong thực thi pháp luật bảo đảm trật tự, an toàn giao thông.",
         "optionD": "Cả ba ý trên.",
         "correctAnswer": "D",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Văn hóa giao thông của người lái xe Công an nhân dân gồm những tiêu chí gì?",
@@ -2114,8 +2114,8 @@
         "optionC": "Luôn sẵn sàng khắc phục khó khăn, gian khổ, nguy hiểm để hoàn thành nhiệm vụ.",
         "optionD": "Cả ba ý trên.",
         "correctAnswer": "D",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Người lái xe phục vụ chiến đấu trong Công an nhân dân cần phải đáp ứng những yêu cầu cơ bản nào?",
@@ -2124,8 +2124,8 @@
         "optionC": "Sử dụng được đa dạng các loại xe.",
         "optionD": "Cả ba ý trên.",
         "correctAnswer": "D",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Trách nhiệm của người lái xe khi thực hiện nhiệm vụ dẫn đoàn là gì?",
@@ -2134,8 +2134,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "A",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Yêu cầu đối với người lái xe khi thực hiện nhiệm vụ cảnh vệ, dẫn đoàn, lễ tân ngoại giao là gì?",
@@ -2144,8 +2144,8 @@
         "optionC": "Nắm vững quy trình dẫn đoàn, công tác cảnh vệ, có kiến thức nghi lễ Nhà nước, nghi thức ngoại giao, am hiểu ngoại ngữ, kỹ năng lái xe và kinh nghiệm xử lý tình huống khi thực hiện nhiệm vụ.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Theo thống kê, phân tích của các cơ quan chức năng, nguyên nhân nào chiếm đa số các vụ tai nạn giao thông đường bộ?",
@@ -2154,8 +2154,8 @@
         "optionC": "Lỗi của người tham gia giao thông.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Mục đích tuyên truyền, phổ biến, giáo dục pháp luật về TTATGTĐB là gì?",
@@ -2164,8 +2164,8 @@
         "optionC": "Đưa các chủ trương, chính sách của Đảng, pháp luật của Nhà nước đến với đội ngũ lái xe.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "“Tiêu chí văn hoá giao thông đường bộ” do Bộ Văn hoá, Thể thao và Du lịch ban hành quy định tiêu chí cụ thể cho những đối tượng nào dưới đây?",
@@ -2174,8 +2174,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "B",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "“Tiêu chí Văn hóa giao thông đường bộ” do Bộ Văn hóa, Thể thao và Du lịch quy định những tiêu chí chung nào?",
@@ -2184,8 +2184,8 @@
         "optionC": "Tuân thủ pháp luật khi xử lý và bị xử lý các hành vi vi phạm trật tự, an toàn giao thông; thực hiện nghiêm nhiệm vụ, tác phong chuẩn mực, văn minh; tạo dựng kết cấu hạ tầng giao thông chuẩn mực an toàn.",
         "optionD": "Cả ba ý trên.",
         "correctAnswer": "D",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Tiêu chí văn hóa giao thông đối với lực lượng chức năng làm nhiệm vụ bảo đảm trật tự, an toàn giao thông là gì?",
@@ -2194,8 +2194,8 @@
         "optionC": "Hướng dẫn, giúp đỡ người tham gia giao thông, đặc biệt là người tàn tật, người cao tuổi, trẻ em và phụ nữ.",
         "optionD": "Cả ba ý trên.",
         "correctAnswer": "D",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Để góp phần xây dựng văn hóa giao thông, người lái xe không được thực hiện hành vi nào sau đây?",
@@ -2204,8 +2204,8 @@
         "optionC": "Tham gia giải tỏa vi phạm hành lang giao thông.",
         "optionD": "Tất cả các ý trên.",
         "correctAnswer": "D",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Người có Giấy phép lái xe do ngành Công an cấp khi không phục vụ trong ngành Công an phải thực hiện quy định nào dưới đây?",
@@ -2214,8 +2214,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "B",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Người tham gia giao thông phải đảm bảo những tiêu chí văn hóa giao thông nào dưới đây?",
@@ -2224,8 +2224,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "A",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Để xây dựng văn hóa giao thông, người tham gia giao thông cần có ý thức tự giác thực hiện những nội dung gì?",
@@ -2234,8 +2234,8 @@
         "optionC": "Cả hai ý trên.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Khi điều khiển phương tiện tham gia giao thông, gặp người đi xe đạp bị ngã, anh (chị) sẽ xử lý như thế nào?",
@@ -2244,8 +2244,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "B",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Khi đang lái xe, anh (chị) nhìn thấy xe đi phía trước chở vật liệu xây dựng nhưng bạt phủ đã bị bung, rách gây ô nhiễm môi trường và nguy hiểm cho người, phương tiện tham gia giao thông, anh (chị) sẽ xử lý như thế nào?",
@@ -2254,8 +2254,8 @@
         "optionC": "Ghi nhận và thông báo cho lực lượng Cảnh sát giao thông biết để xử lý.",
         "optionD": "Ý 1 và ý 3.",
         "correctAnswer": "D",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Khi lái xe trên đường, phát hiện cửa sau bên phụ xe phía trước đóng không chặt, anh (chị) sẽ xử lý như thế nào?",
@@ -2264,8 +2264,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "A",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Kết thúc buổi liên hoan mà tất cả mọi người đều đã uống bia, rượu, có người trong nhóm lái xe rủ anh (chị) đi cùng, anh (chị) sẽ xử lý thế nào?",
@@ -2274,8 +2274,8 @@
         "optionC": "Đồng ý đi cùng với điều kiện anh (chị) lái xe.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Khi lái xe tham gia giao thông, bị một xe mô tô bất ngờ tạt đầu xe, anh (chị) sẽ làm gì?",
@@ -2284,8 +2284,8 @@
         "optionC": "Đuổi theo để tranh luận đúng, sai với người điều khiển xe mô tô.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Khi lái xe tham gia giao thông vào ban đêm, gặp xe đi ngược chiều bật đèn chiếu xa, anh (chị) nên làm gì?",
@@ -2294,8 +2294,8 @@
         "optionC": "Bấm còi hoặc nháy đèn pha để cảnh báo.",
         "optionD": "Ý 2 và ý 3.",
         "correctAnswer": "D",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Khi lái xe, gặp tình huống người dẫn gia súc vượt qua đường, anh (chị) nên làm gì?",
@@ -2304,8 +2304,8 @@
         "optionC": "Giảm tốc độ, không bấm còi, chờ gia súc đi qua sau đó mới di chuyển tiếp.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Khi điều khiển xe mô tô trên đoạn đường xảy ra ùn tắc, anh (chị) xử lý như thế nào?",
@@ -2314,8 +2314,8 @@
         "optionC": "Đi đúng phần đường, làn đường, tuân thủ hướng dẫn của người điều khiển giao thông, tín hiệu đèn giao thông, biển báo hiệu đường bộ.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Khi người tham gia giao thông không chấp hành tín hiệu đèn giao thông gây ra những hậu quả nào?",
@@ -2324,8 +2324,8 @@
         "optionC": "Để lại những ấn tượng không đẹp về tình trạng giao thông ở nước ta với bạn bè quốc tế.",
         "optionD": "Cả ba ý trên.",
         "correctAnswer": "D",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Khi người thân của anh (chị) phơi thóc, rơm rạ, nông sản trên đường bộ, anh (chị) nên làm như thế nào?",
@@ -2334,8 +2334,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "B",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Khi tham gia giao thông phát hiện trên đường phố bị đổ nhiều đống phế thải trái quy định gây mất an toàn giao thông, anh (chị) sẽ xử lý thế nào?",
@@ -2344,8 +2344,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "B",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Anh (chị) nên làm như thế nào khi người thân mua xe nhưng chưa làm thủ tục chuyển quyền sở hữu xe theo quy định?",
@@ -2354,8 +2354,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "B",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Anh (chị) cho biết ý kiến của mình về hành vi đè lên vạch kênh hoá dòng xe để chuyển hướng phương tiện khi tham gia giao thông đường bộ ?",
@@ -2364,8 +2364,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "A",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Khi điều khiển phương tiện tham gia giao thông đường bộ, Cảnh sát giao thông ra hiệu lệnh dừng phương tiện để kiểm tra việc chấp hành các quy định pháp luật về trật tự, an toàn giao thông đường bộ, anh (chị) xử lý như thế nào?",
@@ -2374,8 +2374,8 @@
         "optionC": "Dừng phương tiện theo hiệu lệnh nhưng không tắt máy, xuống xe, cự cãi.",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Sau mưa lớn, một đoạn đường bị sụt, lún gây cản trở, mất an toàn giao thông đường bộ, là một người dân sống gần đó, anh (chị) sẽ xử lý như thế nào?",
@@ -2384,8 +2384,8 @@
         "optionC": null,
         "optionD": null,
         "correctAnswer": "B",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Trong các loại bình chữa cháy dưới đây, loại bình nào phù hợp nhất để trang bị và sử dụng trong phòng cháy, chữa cháy đối với phương tiện giao thông cơ giới đường bộ?",
@@ -2394,8 +2394,8 @@
         "optionC": "Bình chữa cháy dùng cacbon đioxit (bình C02 chữa cháy) và bình chữa cháy dùng chất chữa cháy sạch (bình khí/ lỏng sạch chữa cháy).",
         "optionD": null,
         "correctAnswer": "C",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Theo Anh (chị) để hệ thống điện trên phương tiện giao thông cơ giới đường bộ được đảm bảo an toàn không phát sinh tia lửa gây cháy, cần chú ý những gì?",
@@ -2404,8 +2404,8 @@
         "optionC": "Sử dụng các linh kiện (IC, cầu chì, diot nạp, bình ắc quy) đúng chủng loại, đúng công suất, chất lượng tốt.",
         "optionD": "Cả ba ý trên.",
         "correctAnswer": "D",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Anh (chị) hãy cho biết các biện pháp phòng cháy đối với phương tiện giao thông cơ giới đường bộ?",
@@ -2414,8 +2414,8 @@
         "optionC": "Không để các chất dễ cháy, dễ bắt lửa dưới yên xe, trong cốp xe, khi để xe trong nhà, ở nơi trông giữ xe phải tắt khóa điện, đóng chặt nắp bình nhiên liệu, để xa nguồn lửa, nguồn nhiệt.",
         "optionD": "Cả ba ý trên.",
         "correctAnswer": "D",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       },
       {
         "questionText": "Khi gặp nạn nhân bị bỏng trong vụ tai nạn giao thông, anh (chị) cần làm gì?",
@@ -2424,8 +2424,8 @@
         "optionC": "Nếu nạn nhân còn tỉnh, cần cho uống bù nước. Trong thời tiết lạnh, cần giữ ấm cho cơ thể nạn nhân, sau đó nhanh chóng đưa đến cơ sở y tế gần nhất.",
         "optionD": "Cả ba ý trên.",
         "correctAnswer": "D",
-        "explanation": null,
-        "imagePath": null
+        "imagePath": null,
+        "isLiet": false
       }
     ]
   }

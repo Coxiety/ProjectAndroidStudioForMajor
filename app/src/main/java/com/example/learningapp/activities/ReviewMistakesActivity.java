@@ -159,12 +159,13 @@ public class ReviewMistakesActivity extends AppCompatActivity {
         }
         
         class ViewHolder extends RecyclerView.ViewHolder {
-            TextView tvQuestionNumber, tvResultBadge, tvQuestion, tvYourAnswer, tvCorrectAnswer;
+            TextView tvQuestionNumber, tvLietBadge, tvResultBadge, tvQuestion, tvYourAnswer, tvCorrectAnswer;
             ImageView ivQuestionImage;
             
             public ViewHolder(@NonNull View itemView) {
                 super(itemView);
                 tvQuestionNumber = itemView.findViewById(R.id.tvQuestionNumber);
+                tvLietBadge = itemView.findViewById(R.id.tvLietBadge);
                 tvResultBadge = itemView.findViewById(R.id.tvResultBadge);
                 tvQuestion = itemView.findViewById(R.id.tvQuestion);
                 ivQuestionImage = itemView.findViewById(R.id.ivQuestionImage);
@@ -175,6 +176,13 @@ public class ReviewMistakesActivity extends AppCompatActivity {
             public void bind(ReviewItem item) {
                 tvQuestionNumber.setText("Câu " + item.questionNumber);
                 tvQuestion.setText(item.question.getQuestionText());
+                
+                // Show LIET badge if applicable
+                if (item.question.isLiet()) {
+                    tvLietBadge.setVisibility(View.VISIBLE);
+                } else {
+                    tvLietBadge.setVisibility(View.GONE);
+                }
                 
                 ImageHelper.loadQuestionImage(ReviewMistakesActivity.this, ivQuestionImage, item.question.getImagePath());
                 

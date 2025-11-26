@@ -18,6 +18,12 @@ class PDFQuestionExtractor:
         Path(output_image_dir).mkdir(parents=True, exist_ok=True)
         self.image_map = {}  # Map page_num -> list of image filenames
         
+        # Danh sach cau liet (cau phai tra loi dung de dau)
+        self.liet_questions = {
+            19, 20, 21, 22, 24, 26, 27, 28, 30,
+            47, 48, 52, 53, 63, 64, 65, 68, 70, 71, 72
+        }
+        
     def extract_questions(self, pdf_path):
         print(f"Opening PDF: {pdf_path}")
         doc = fitz.open(pdf_path)
@@ -139,8 +145,8 @@ class PDFQuestionExtractor:
                             'optionC': None,
                             'optionD': None,
                             'correctAnswer': None,
-                            'explanation': None,
                             'imagePath': None,
+                            'isLiet': question_num in self.liet_questions,
                             '_page': page_num,
                             '_y_position': block_y
                         }
@@ -357,9 +363,11 @@ def main():
         # Statistics
         questions_with_answers = sum(1 for q in questions if q.get('correctAnswer'))
         questions_with_images = sum(1 for q in questions if q.get('imagePath'))
+        liet_questions_count = sum(1 for q in questions if q.get('isLiet'))
         print(f"Questions with detected correct answer: {questions_with_answers}")
         print(f"Questions with linked images: {questions_with_images}")
         print(f"Questions without images: {len(questions) - questions_with_images}")
+        print(f"Liet questions (must answer correctly): {liet_questions_count}")
         print()
         
         # Show sample questions with images

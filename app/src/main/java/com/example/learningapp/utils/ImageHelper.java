@@ -12,21 +12,25 @@ import java.io.InputStream;
 public class ImageHelper {
     
     public static void loadQuestionImage(Context context, ImageView imageView, String imagePath) {
-        if (imagePath != null && !imagePath.isEmpty()) {
+        if (imagePath != null && !imagePath.isEmpty() && !imagePath.equals("null")) {
             try {
-                String fullPath = "Images/" + imagePath;
+                String fullPath = "A1_250Q_images/" + imagePath;
+                android.util.Log.d("ImageHelper", "Loading image from: " + fullPath);
                 InputStream inputStream = context.getAssets().open(fullPath);
                 Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
                 
                 if (bitmap != null) {
                     imageView.setImageBitmap(bitmap);
                     imageView.setVisibility(View.VISIBLE);
+                    android.util.Log.d("ImageHelper", "Image loaded successfully: " + fullPath);
                 } else {
                     imageView.setVisibility(View.GONE);
+                    android.util.Log.w("ImageHelper", "Bitmap is null for: " + fullPath);
                 }
                 
                 inputStream.close();
             } catch (IOException e) {
+                android.util.Log.e("ImageHelper", "Error loading image: " + imagePath + " - " + e.getMessage());
                 e.printStackTrace();
                 imageView.setVisibility(View.GONE);
             }

@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 public class TestResultActivity extends AppCompatActivity {
     
-    private TextView tvScore, tvResult, tvCorrectCount, tvWrongCount;
+    private TextView tvScore, tvResult, tvCorrectCount, tvWrongCount, tvFailReason;
     private Button btnReviewMistakes, btnViewAllAnswers, btnFinish;
     
     private DatabaseHelper databaseHelper;
@@ -28,6 +28,7 @@ public class TestResultActivity extends AppCompatActivity {
     private int totalQuestions;
     private int examSetId;
     private String examName;
+    private boolean failedDueToLiet = false;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +43,7 @@ public class TestResultActivity extends AppCompatActivity {
         tvResult = findViewById(R.id.tvResult);
         tvCorrectCount = findViewById(R.id.tvCorrectCount);
         tvWrongCount = findViewById(R.id.tvWrongCount);
+        tvFailReason = findViewById(R.id.tvFailReason);
         btnReviewMistakes = findViewById(R.id.btnReviewMistakes);
         btnViewAllAnswers = findViewById(R.id.btnViewAllAnswers);
         btnFinish = findViewById(R.id.btnFinish);
@@ -60,16 +62,22 @@ public class TestResultActivity extends AppCompatActivity {
         totalQuestions = getIntent().getIntExtra("total_questions", 0);
         ArrayList<String> selectedAnswers = getIntent().getStringArrayListExtra("selected_answers");
         ArrayList<String> correctAnswersList = getIntent().getStringArrayListExtra("correct_answers");
+        ArrayList<Boolean> isLietList = (ArrayList<Boolean>) getIntent().getSerializableExtra("is_liet_list");
         
         if (selectedAnswers != null && correctAnswersList != null) {
             for (int i = 0; i < selectedAnswers.size(); i++) {
                 String selected = selectedAnswers.get(i);
                 String correct = correctAnswersList.get(i);
+                boolean isLiet = isLietList != null && i < isLietList.size() && isLietList.get(i);
                 
                 if (selected != null && selected.equals(correct)) {
                     correctAnswers++;
                 } else {
                     wrongAnswers++;
+                    // Check if failed a liet question
+                    if (isLiet) {
+                        failedDueToLiet = true;
+                    }
                 }
             }
         }
@@ -80,13 +88,27 @@ public class TestResultActivity extends AppCompatActivity {
         tvCorrectCount.setText(String.valueOf(correctAnswers));
         tvWrongCount.setText(String.valueOf(wrongAnswers));
         
-        double percentage = (correctAnswers * 100.0) / totalQuestions;
-        if (percentage >= 80) {
+        // New pass/fail logic: fail if wrong >= 4 OR failed a liet question
+        boolean isPassed = wrongAnswers < 4 && !failedDueToLiet;
+        
+        if (isPassed) {
             tvResult.setText(R.string.pass);
             tvResult.setTextColor(getResources().getColor(R.color.success, null));
+            tvFailReason.setVisibility(android.view.View.GONE);
         } else {
             tvResult.setText(R.string.fail);
             tvResult.setTextColor(getResources().getColor(R.color.error, null));
+            
+            // Show fail reason
+            if (failedDueToLiet) {
+                tvFailReason.setText("⚠️ Lý do: Sai câu liệt");
+                tvFailReason.setVisibility(android.view.View.VISIBLE);
+            } else if (wrongAnswers >= 4) {
+                tvFailReason.setText("⚠️ Lý do: Sai " + wrongAnswers + " câu (tối đa 3 câu)");
+                tvFailReason.setVisibility(android.view.View.VISIBLE);
+            } else {
+                tvFailReason.setVisibility(android.view.View.GONE);
+            }
         }
     }
     
@@ -101,7 +123,9 @@ public class TestResultActivity extends AppCompatActivity {
             
             int score = (correctAnswers * 100) / totalQuestions;
             history.setScore(score);
-            history.setPassed(score >= 80);
+            // Use new pass/fail logic
+            boolean isPassed = wrongAnswers < 4 && !failedDueToLiet;
+            history.setPassed(isPassed);
             history.setTestDate(System.currentTimeMillis());
             
             int durationMinutes = getIntent().getIntExtra("duration", 0);
@@ -151,6 +175,7 @@ public class TestResultActivity extends AppCompatActivity {
     
     @Override
     public void onBackPressed() {
+        super.onBackPressed();
         finish();
     }
 }

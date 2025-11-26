@@ -8,8 +8,8 @@ public class Question {
     private String optionC;
     private String optionD;
     private String correctAnswer;
-    private String explanation;
     private String imagePath;
+    private boolean isLiet;
     private int examSetId;
 
     public Question() {
@@ -17,7 +17,7 @@ public class Question {
 
     public Question(int id, String questionText, String optionA, String optionB, 
                    String optionC, String optionD, String correctAnswer, 
-                   String explanation, String imagePath, int examSetId) {
+                   String imagePath, boolean isLiet, int examSetId) {
         this.id = id;
         this.questionText = questionText;
         this.optionA = optionA;
@@ -25,8 +25,8 @@ public class Question {
         this.optionC = optionC;
         this.optionD = optionD;
         this.correctAnswer = correctAnswer;
-        this.explanation = explanation;
         this.imagePath = imagePath;
+        this.isLiet = isLiet;
         this.examSetId = examSetId;
     }
 
@@ -86,20 +86,20 @@ public class Question {
         this.correctAnswer = correctAnswer;
     }
 
-    public String getExplanation() {
-        return explanation;
-    }
-
-    public void setExplanation(String explanation) {
-        this.explanation = explanation;
-    }
-
     public String getImagePath() {
         return imagePath;
     }
 
     public void setImagePath(String imagePath) {
         this.imagePath = imagePath;
+    }
+
+    public boolean isLiet() {
+        return isLiet;
+    }
+
+    public void setLiet(boolean liet) {
+        isLiet = liet;
     }
 
     public int getExamSetId() {

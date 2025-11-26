@@ -20,8 +20,10 @@ public class JsonImporter {
     
     public static void importQuestionsFromAssets(Context context, SQLiteDatabase db, String fileName) {
         try {
+            Log.d("JsonImporter", "Starting import questions from: " + fileName);
             String jsonString = loadJsonFromAssets(context, fileName);
             JSONArray examSets = new JSONArray(jsonString);
+            Log.d("JsonImporter", "Found " + examSets.length() + " exam sets");
             
             for (int i = 0; i < examSets.length(); i++) {
                 JSONObject examSetJson = examSets.getJSONObject(i);
@@ -42,6 +44,7 @@ public class JsonImporter {
                 examSetValues.put("category", category);
                 
                 long examSetId = db.insert("exam_sets", null, examSetValues);
+                Log.d("JsonImporter", "Inserted exam set: " + name + " with ID: " + examSetId + ", questions count: " + questions.length());
                 
                 for (int j = 0; j < questions.length(); j++) {
                     JSONObject question = questions.getJSONObject(j);
@@ -73,22 +76,26 @@ public class JsonImporter {
                     }
                     questionValues.put("correct_answer", correctAnswer);
                     
-                    questionValues.put("explanation", question.optString("explanation", null));
                     questionValues.put("image_path", question.optString("imagePath", null));
+                    questionValues.put("is_liet", question.optBoolean("isLiet", false) ? 1 : 0);
                     questionValues.put("exam_set_id", examSetId);
                     
                     db.insert("questions", null, questionValues);
                 }
             }
+            Log.d("JsonImporter", "Successfully imported questions");
         } catch (JSONException | IOException e) {
+            Log.e("JsonImporter", "Error importing questions: " + e.getMessage());
             e.printStackTrace();
         }
     }
     
     public static void importFlashcardsFromAssets(Context context, SQLiteDatabase db, String fileName) {
         try {
+            Log.d("JsonImporter", "Starting import flashcards from: " + fileName);
             String jsonString = loadJsonFromAssets(context, fileName);
             JSONArray examSets = new JSONArray(jsonString);
+            Log.d("JsonImporter", "Found " + examSets.length() + " exam sets for flashcards");
             
             int totalFlashcardsWithImages = 0;
             
@@ -108,6 +115,7 @@ public class JsonImporter {
                 topicValues.put("learned_cards", 0);
                 
                 long topicId = db.insert("flashcard_topics", null, topicValues);
+                Log.d("JsonImporter", "Inserted flashcard topic: " + topicName + " with ID: " + topicId + ", total cards: " + questions.length());
                 
                 for (int j = 0; j < questions.length(); j++) {
                     JSONObject question = questions.getJSONObject(j);
@@ -134,7 +142,6 @@ public class JsonImporter {
                     String optionC = cleanOptionText(optC);
                     String optionD = cleanOptionText(optD);
                     
-                    String explanation = question.optString("explanation", null);
                     String imagePath = !question.isNull("imagePath") ? question.getString("imagePath").trim() : null;
                     
                     if (imagePath != null && !imagePath.isEmpty()) {
@@ -168,7 +175,6 @@ public class JsonImporter {
                     ContentValues flashcardValues = new ContentValues();
                     flashcardValues.put("front", frontContent);
                     flashcardValues.put("back", backContent);
-                    flashcardValues.put("explanation", explanation);
                     flashcardValues.put("image_path", imagePath);
                     flashcardValues.put("topic_id", topicId);
                     flashcardValues.put("is_learned", 0);
@@ -181,7 +187,9 @@ public class JsonImporter {
             // Create special topic for flashcards with images only
             createFlashcardsWithImagesTopic(context, db, fileName, totalFlashcardsWithImages);
             
+            Log.d("JsonImporter", "Successfully imported flashcards. Total with images: " + totalFlashcardsWithImages);
         } catch (JSONException | IOException e) {
+            Log.e("JsonImporter", "Error importing flashcards: " + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -232,8 +240,6 @@ public class JsonImporter {
                         String optionC = cleanOptionText(optC);
                         String optionD = cleanOptionText(optD);
                         
-                        String explanation = question.optString("explanation", null);
-                        
                         if ("4".equals(correctAnswer)) {
                             correctAnswer = "D";
                         }
@@ -261,7 +267,6 @@ public class JsonImporter {
                         ContentValues flashcardValues = new ContentValues();
                         flashcardValues.put("front", frontContent);
                         flashcardValues.put("back", backContent);
-                        flashcardValues.put("explanation", explanation);
                         flashcardValues.put("image_path", imagePath);
                         flashcardValues.put("topic_id", imageTopicId);
                         flashcardValues.put("is_learned", 0);
@@ -328,8 +333,9 @@ public class JsonImporter {
     }
     
     private static String loadJsonFromAssets(Context context, String fileName) throws IOException {
+        Log.d("JsonImporter", "loadJsonFromAssets - fileName: " + fileName);
         InputStream is = context.getAssets().open(fileName);
-        BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+        BufferedReader reader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
         StringBuilder sb = new StringBuilder();
         String line;
         
@@ -339,6 +345,8 @@ public class JsonImporter {
         
         reader.close();
         is.close();
-        return sb.toString();
+        String jsonString = sb.toString();
+        Log.d("JsonImporter", "Loaded JSON length: " + jsonString.length() + " characters");
+        return jsonString;
     }
 }
