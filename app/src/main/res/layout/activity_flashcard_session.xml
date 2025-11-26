@@ -25,41 +25,50 @@
         android:clickable="true"
         android:focusable="true">
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:padding="24dp">
+            android:fillViewport="true">
 
-            <ImageView
-                android:id="@+id/ivFlashcardImage"
+            <LinearLayout
+                android:id="@+id/layoutFlashcardContent"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_marginBottom="16dp"
-                android:adjustViewBounds="true"
-                android:scaleType="fitCenter"
-                android:visibility="gone"
-                android:contentDescription="@string/question_image" />
-
-            <TextView
-                android:id="@+id/tvCardContent"
-                style="@style/SubtitleText"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Flashcard Content"
-                android:textAlignment="center"
-                android:gravity="center" />
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="24dp"
+                android:clickable="true"
+                android:focusable="true">
 
-            <TextView
-                android:id="@+id/tvFlipHint"
-                style="@style/CaptionText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/flip_card"
-                android:textColor="@color/primary" />
-        </LinearLayout>
+                <ImageView
+                    android:id="@+id/ivFlashcardImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_marginBottom="16dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    android:visibility="gone"
+                    android:contentDescription="@string/question_image" />
+
+                <TextView
+                    android:id="@+id/tvCardContent"
+                    style="@style/SubtitleText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Flashcard Content"
+                    android:textAlignment="center"
+                    android:gravity="center" />
+
+                <TextView
+                    android:id="@+id/tvFlipHint"
+                    style="@style/CaptionText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/flip_card"
+                    android:textColor="@color/primary" />
+            </LinearLayout>
+        </ScrollView>
 
     </androidx.cardview.widget.CardView>
 
@@ -91,4 +100,3 @@
     </LinearLayout>
 
 </RelativeLayout>
-

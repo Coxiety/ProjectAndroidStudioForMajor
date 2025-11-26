@@ -3,6 +3,7 @@ package com.example.learningapp.utils;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -12,6 +13,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class JsonImporter {
     
@@ -43,13 +46,33 @@ public class JsonImporter {
                 for (int j = 0; j < questions.length(); j++) {
                     JSONObject question = questions.getJSONObject(j);
                     
+                    String optA = question.optString("optionA", "");
+                    String optB = question.optString("optionB", "");
+                    String optC = question.optString("optionC", null);
+                    String optD = question.optString("optionD", null);
+                    
+                    // Fix merged C-D options (e.g. "C. content  4. content")
+                    if ((optD == null || optD.trim().isEmpty() || optD.equals("null")) && optC != null) {
+                        String[] parts = splitMergedOption(optC, "4", "D");
+                        if (parts != null) {
+                            optC = parts[0];
+                            optD = parts[1];
+                        }
+                    }
+
                     ContentValues questionValues = new ContentValues();
                     questionValues.put("question_text", question.getString("questionText"));
-                    questionValues.put("option_a", question.optString("optionA", ""));
-                    questionValues.put("option_b", question.optString("optionB", ""));
-                    questionValues.put("option_c", question.optString("optionC", null));
-                    questionValues.put("option_d", question.optString("optionD", null));
-                    questionValues.put("correct_answer", question.getString("correctAnswer"));
+                    questionValues.put("option_a", cleanOptionText(optA));
+                    questionValues.put("option_b", cleanOptionText(optB));
+                    questionValues.put("option_c", cleanOptionText(optC));
+                    questionValues.put("option_d", cleanOptionText(optD));
+                    
+                    String correctAnswer = question.getString("correctAnswer");
+                    if ("4".equals(correctAnswer)) {
+                        correctAnswer = "D";
+                    }
+                    questionValues.put("correct_answer", correctAnswer);
+                    
                     questionValues.put("explanation", question.optString("explanation", null));
                     questionValues.put("image_path", question.optString("imagePath", null));
                     questionValues.put("exam_set_id", examSetId);
@@ -91,15 +114,35 @@ public class JsonImporter {
                     
                     String questionText = question.getString("questionText");
                     String correctAnswer = question.getString("correctAnswer");
-                    String optionA = question.optString("optionA", "");
-                    String optionB = question.optString("optionB", "");
-                    String optionC = question.optString("optionC", "");
-                    String optionD = question.optString("optionD", "");
+                    
+                    String optA = question.optString("optionA", "");
+                    String optB = question.optString("optionB", "");
+                    String optC = question.optString("optionC", "");
+                    String optD = question.optString("optionD", "");
+                    
+                    // Fix merged C-D options
+                    if ((optD == null || optD.trim().isEmpty() || optD.equals("null")) && optC != null && !optC.isEmpty()) {
+                        String[] parts = splitMergedOption(optC, "4", "D");
+                        if (parts != null) {
+                            optC = parts[0];
+                            optD = parts[1];
+                        }
+                    }
+
+                    String optionA = cleanOptionText(optA);
+                    String optionB = cleanOptionText(optB);
+                    String optionC = cleanOptionText(optC);
+                    String optionD = cleanOptionText(optD);
+                    
                     String explanation = question.optString("explanation", null);
-                    String imagePath = !question.isNull("imagePath") ? question.getString("imagePath") : null;
+                    String imagePath = !question.isNull("imagePath") ? question.getString("imagePath").trim() : null;
                     
                     if (imagePath != null && !imagePath.isEmpty()) {
                         totalFlashcardsWithImages++;
+                    }
+                    
+                    if ("4".equals(correctAnswer)) {
+                        correctAnswer = "D";
                     }
                     
                     String correctAnswerText = "";
@@ -118,9 +161,13 @@ public class JsonImporter {
                             break;
                     }
                     
+                    // New format: Front = Question + Options, Back = Correct Answer
+                    String frontContent = formatFlashcardFront(questionText, optionA, optionB, optionC, optionD);
+                    String backContent = correctAnswer + ". " + correctAnswerText;
+                    
                     ContentValues flashcardValues = new ContentValues();
-                    flashcardValues.put("front", questionText);
-                    flashcardValues.put("back", correctAnswer + ". " + correctAnswerText);
+                    flashcardValues.put("front", frontContent);
+                    flashcardValues.put("back", backContent);
                     flashcardValues.put("explanation", explanation);
                     flashcardValues.put("image_path", imagePath);
                     flashcardValues.put("topic_id", topicId);
@@ -160,16 +207,36 @@ public class JsonImporter {
                 for (int j = 0; j < questions.length(); j++) {
                     JSONObject question = questions.getJSONObject(j);
                     
-                    String imagePath = !question.isNull("imagePath") ? question.getString("imagePath") : null;
+                    String imagePath = !question.isNull("imagePath") ? question.getString("imagePath").trim() : null;
                     
                     if (imagePath != null && !imagePath.isEmpty()) {
                         String questionText = question.getString("questionText");
                         String correctAnswer = question.getString("correctAnswer");
-                        String optionA = question.optString("optionA", "");
-                        String optionB = question.optString("optionB", "");
-                        String optionC = question.optString("optionC", "");
-                        String optionD = question.optString("optionD", "");
+                        
+                        String optA = question.optString("optionA", "");
+                        String optB = question.optString("optionB", "");
+                        String optC = question.optString("optionC", "");
+                        String optD = question.optString("optionD", "");
+                        
+                        // Fix merged C-D options
+                        if ((optD == null || optD.trim().isEmpty() || optD.equals("null")) && optC != null && !optC.isEmpty()) {
+                            String[] parts = splitMergedOption(optC, "4", "D");
+                            if (parts != null) {
+                                optC = parts[0];
+                                optD = parts[1];
+                            }
+                        }
+                        
+                        String optionA = cleanOptionText(optA);
+                        String optionB = cleanOptionText(optB);
+                        String optionC = cleanOptionText(optC);
+                        String optionD = cleanOptionText(optD);
+                        
                         String explanation = question.optString("explanation", null);
+                        
+                        if ("4".equals(correctAnswer)) {
+                            correctAnswer = "D";
+                        }
                         
                         String correctAnswerText = "";
                         switch (correctAnswer) {
@@ -187,9 +254,13 @@ public class JsonImporter {
                                 break;
                         }
                         
+                        // New format: Front = Question + Options, Back = Correct Answer
+                        String frontContent = formatFlashcardFront(questionText, optionA, optionB, optionC, optionD);
+                        String backContent = correctAnswer + ". " + correctAnswerText;
+                        
                         ContentValues flashcardValues = new ContentValues();
-                        flashcardValues.put("front", questionText);
-                        flashcardValues.put("back", correctAnswer + ". " + correctAnswerText);
+                        flashcardValues.put("front", frontContent);
+                        flashcardValues.put("back", backContent);
                         flashcardValues.put("explanation", explanation);
                         flashcardValues.put("image_path", imagePath);
                         flashcardValues.put("topic_id", imageTopicId);
@@ -203,6 +274,57 @@ public class JsonImporter {
         } catch (JSONException | IOException e) {
             e.printStackTrace();
         }
+    }
+    
+    // Helper method to split text like "Some content 4. Some other content"
+    private static String[] splitMergedOption(String text, String nextNumMarker, String nextLetterMarker) {
+        // Regex to find space followed by marker (e.g., " 4.", " D.", " 4)", " D)") and space/end
+        // Pattern matches: space + (marker) + (dot or paren) + space*
+        String pattern = "\\s+(" + nextNumMarker + "|" + nextLetterMarker + ")[.)]\\s*";
+        
+        Pattern p = Pattern.compile(pattern);
+        Matcher m = p.matcher(text);
+        
+        if (m.find()) {
+            int start = m.start();
+            int end = m.end();
+            
+            String part1 = text.substring(0, start).trim();
+            String part2 = text.substring(end).trim();
+            
+            return new String[]{part1, part2};
+        }
+        return null;
+    }
+    
+    private static String formatFlashcardFront(String questionText, String optionA, String optionB, String optionC, String optionD) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(questionText).append("\n\n");
+        
+        if (optionA != null && !optionA.isEmpty() && !optionA.equals("null") && !optionA.equals("4")) {
+            sb.append("A. ").append(optionA).append("\n");
+        }
+        if (optionB != null && !optionB.isEmpty() && !optionB.equals("null") && !optionB.equals("4")) {
+            sb.append("B. ").append(optionB).append("\n");
+        }
+        if (optionC != null && !optionC.isEmpty() && !optionC.equals("null") && !optionC.equals("4")) {
+            sb.append("C. ").append(optionC).append("\n");
+        }
+        if (optionD != null && !optionD.isEmpty() && !optionD.equals("null") && !optionD.equals("4")) {
+            sb.append("D. ").append(optionD).append("\n");
+        }
+        
+        return sb.toString().trim();
+    }
+    
+    private static String cleanOptionText(String text) {
+        if (text == null) return null;
+        if (text.isEmpty() || text.equals("null")) return text;
+        
+        // Remove prefixes like "A.", "B ", "1.", "4."
+        // Matches A-D or 1-4 followed by dot or space at the start of the string
+        String cleaned = text.trim().replaceAll("^([A-Da-d]|[1-4])[.\\s)]\\s*", "");
+        return cleaned;
     }
     
     private static String loadJsonFromAssets(Context context, String fileName) throws IOException {
@@ -220,5 +342,3 @@ public class JsonImporter {
         return sb.toString();
     }
 }
-
-

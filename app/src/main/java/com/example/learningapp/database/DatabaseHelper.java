@@ -19,7 +19,7 @@ import java.util.List;
 public class DatabaseHelper extends SQLiteOpenHelper {
     
     private static final String DATABASE_NAME = "learning_app.db";
-    private static final int DATABASE_VERSION = 7;  // Fixed imagePath null check to properly filter 50 image cards
+    private static final int DATABASE_VERSION = 10;  // Incremented version to force DB recreation with front options/back answer format
     
     private static final String TABLE_FLASHCARD_TOPICS = "flashcard_topics";
     private static final String TABLE_FLASHCARDS = "flashcards";
@@ -386,4 +386,3 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return historyList;
     }
 }
-

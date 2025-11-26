@@ -21,6 +21,7 @@ import java.util.List;
 public class FlashcardSessionActivity extends AppCompatActivity {
     
     private CardView cardFlashcard;
+    private View layoutFlashcardContent;
     private TextView tvProgress, tvCardContent, tvFlipHint;
     private ImageView ivFlashcardImage;
     private Button btnKnow, btnNotSure;
@@ -47,6 +48,7 @@ public class FlashcardSessionActivity extends AppCompatActivity {
         }
         
         cardFlashcard = findViewById(R.id.cardFlashcard);
+        layoutFlashcardContent = findViewById(R.id.layoutFlashcardContent);
         tvProgress = findViewById(R.id.tvProgress);
         tvCardContent = findViewById(R.id.tvCardContent);
         tvFlipHint = findViewById(R.id.tvFlipHint);
@@ -71,6 +73,9 @@ public class FlashcardSessionActivity extends AppCompatActivity {
     
     private void setupListeners() {
         cardFlashcard.setOnClickListener(v -> flipCard());
+        if (layoutFlashcardContent != null) {
+            layoutFlashcardContent.setOnClickListener(v -> flipCard());
+        }
         
         btnKnow.setOnClickListener(v -> {
             if (isFlipped) {
@@ -107,10 +112,12 @@ public class FlashcardSessionActivity extends AppCompatActivity {
             tvCardContent.setText(card.getBack());
             isFlipped = true;
             tvFlipHint.setVisibility(View.GONE);
+            ivFlashcardImage.setVisibility(View.GONE);
         } else {
             tvCardContent.setText(card.getFront());
             isFlipped = false;
             tvFlipHint.setVisibility(View.VISIBLE);
+            ImageHelper.loadFlashcardImage(this, ivFlashcardImage, card.getImagePath());
         }
     }
     
@@ -130,4 +137,3 @@ public class FlashcardSessionActivity extends AppCompatActivity {
         return true;
     }
 }
-
