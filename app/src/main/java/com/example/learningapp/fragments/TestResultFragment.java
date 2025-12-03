@@ -1,11 +1,17 @@
-package com.example.learningapp.activities;
+package com.example.learningapp.fragments;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import com.example.learningapp.R;
 import com.example.learningapp.database.DatabaseHelper;
@@ -17,7 +23,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class TestResultActivity extends AppCompatActivity {
+public class TestResultFragment extends Fragment {
     
     private TextView tvScore, tvResult, tvCorrectCount, tvWrongCount, tvFailReason;
     private Button btnReviewMistakes, btnViewAllAnswers, btnFinish;
@@ -30,39 +36,47 @@ public class TestResultActivity extends AppCompatActivity {
     private String examName;
     private boolean failedDueToLiet = false;
     
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_test_result);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.activity_test_result, container, false);
+    }
+    
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        tvScore = view.findViewById(R.id.tvScore);
+        tvResult = view.findViewById(R.id.tvResult);
+        tvCorrectCount = view.findViewById(R.id.tvCorrectCount);
+        tvWrongCount = view.findViewById(R.id.tvWrongCount);
+        tvFailReason = view.findViewById(R.id.tvFailReason);
+        btnReviewMistakes = view.findViewById(R.id.btnReviewMistakes);
+        btnViewAllAnswers = view.findViewById(R.id.btnViewAllAnswers);
+        btnFinish = view.findViewById(R.id.btnFinish);
+        
+        databaseHelper = new DatabaseHelper(requireContext());
+        
+        Bundle args = getArguments();
+        if (args != null) {
+            examSetId = args.getInt("exam_set_id", -1);
+            examName = "Đề thi thử";
+            
+            calculateResults();
+            displayResults();
+            saveToHistory();
+            setupListeners();
         }
-        
-        tvScore = findViewById(R.id.tvScore);
-        tvResult = findViewById(R.id.tvResult);
-        tvCorrectCount = findViewById(R.id.tvCorrectCount);
-        tvWrongCount = findViewById(R.id.tvWrongCount);
-        tvFailReason = findViewById(R.id.tvFailReason);
-        btnReviewMistakes = findViewById(R.id.btnReviewMistakes);
-        btnViewAllAnswers = findViewById(R.id.btnViewAllAnswers);
-        btnFinish = findViewById(R.id.btnFinish);
-        
-        databaseHelper = new DatabaseHelper(this);
-        examSetId = getIntent().getIntExtra("exam_set_id", -1);
-        examName = "Đề thi thử";
-        
-        calculateResults();
-        displayResults();
-        saveToHistory();
-        setupListeners();
     }
     
     private void calculateResults() {
-        totalQuestions = getIntent().getIntExtra("total_questions", 0);
-        ArrayList<String> selectedAnswers = getIntent().getStringArrayListExtra("selected_answers");
-        ArrayList<String> correctAnswersList = getIntent().getStringArrayListExtra("correct_answers");
-        ArrayList<Boolean> isLietList = (ArrayList<Boolean>) getIntent().getSerializableExtra("is_liet_list");
+        Bundle args = getArguments();
+        if (args == null) return;
+        
+        totalQuestions = args.getInt("total_questions", 0);
+        ArrayList<String> selectedAnswers = args.getStringArrayList("selected_answers");
+        ArrayList<String> correctAnswersList = args.getStringArrayList("correct_answers");
+        ArrayList<Boolean> isLietList = (ArrayList<Boolean>) args.getSerializable("is_liet_list");
         
         if (selectedAnswers != null && correctAnswersList != null) {
             for (int i = 0; i < selectedAnswers.size(); i++) {
@@ -74,7 +88,6 @@ public class TestResultActivity extends AppCompatActivity {
                     correctAnswers++;
                 } else {
                     wrongAnswers++;
-                    // Check if failed a liet question
                     if (isLiet) {
                         failedDueToLiet = true;
                     }
@@ -88,31 +101,32 @@ public class TestResultActivity extends AppCompatActivity {
         tvCorrectCount.setText(String.valueOf(correctAnswers));
         tvWrongCount.setText(String.valueOf(wrongAnswers));
         
-        // New pass/fail logic: fail if wrong >= 4 OR failed a liet question
         boolean isPassed = wrongAnswers < 4 && !failedDueToLiet;
         
         if (isPassed) {
             tvResult.setText(R.string.pass);
-            tvResult.setTextColor(getResources().getColor(R.color.success, null));
-            tvFailReason.setVisibility(android.view.View.GONE);
+            tvResult.setTextColor(requireContext().getResources().getColor(R.color.success, null));
+            tvFailReason.setVisibility(View.GONE);
         } else {
             tvResult.setText(R.string.fail);
-            tvResult.setTextColor(getResources().getColor(R.color.error, null));
+            tvResult.setTextColor(requireContext().getResources().getColor(R.color.error, null));
             
-            // Show fail reason
             if (failedDueToLiet) {
                 tvFailReason.setText("⚠️ Lý do: Sai câu liệt");
-                tvFailReason.setVisibility(android.view.View.VISIBLE);
+                tvFailReason.setVisibility(View.VISIBLE);
             } else if (wrongAnswers >= 4) {
                 tvFailReason.setText("⚠️ Lý do: Sai " + wrongAnswers + " câu (tối đa 3 câu)");
-                tvFailReason.setVisibility(android.view.View.VISIBLE);
+                tvFailReason.setVisibility(View.VISIBLE);
             } else {
-                tvFailReason.setVisibility(android.view.View.GONE);
+                tvFailReason.setVisibility(View.GONE);
             }
         }
     }
     
     private void saveToHistory() {
+        Bundle args = getArguments();
+        if (args == null) return;
+        
         try {
             ExamHistory history = new ExamHistory();
             history.setExamSetId(examSetId);
@@ -123,17 +137,16 @@ public class TestResultActivity extends AppCompatActivity {
             
             int score = (correctAnswers * 100) / totalQuestions;
             history.setScore(score);
-            // Use new pass/fail logic
             boolean isPassed = wrongAnswers < 4 && !failedDueToLiet;
             history.setPassed(isPassed);
             history.setTestDate(System.currentTimeMillis());
             
-            int durationMinutes = getIntent().getIntExtra("duration", 0);
+            int durationMinutes = args.getInt("duration", 0);
             history.setDurationMinutes(durationMinutes);
             
-            ArrayList<Integer> questionIds = getIntent().getIntegerArrayListExtra("question_ids");
-            ArrayList<String> selectedAnswers = getIntent().getStringArrayListExtra("selected_answers");
-            ArrayList<String> correctAnswersList = getIntent().getStringArrayListExtra("correct_answers");
+            ArrayList<Integer> questionIds = args.getIntegerArrayList("question_ids");
+            ArrayList<String> selectedAnswers = args.getStringArrayList("selected_answers");
+            ArrayList<String> correctAnswersList = args.getStringArrayList("correct_answers");
             
             JSONArray answersArray = new JSONArray();
             if (questionIds != null && selectedAnswers != null && correctAnswersList != null) {
@@ -155,28 +168,31 @@ public class TestResultActivity extends AppCompatActivity {
     
     private void setupListeners() {
         btnReviewMistakes.setOnClickListener(v -> {
-            Intent intent = new Intent(this, ReviewMistakesActivity.class);
-            intent.putExtras(getIntent());
-            intent.putExtra("filter_mode", "wrong");
-            startActivity(intent);
+            Bundle args = getArguments();
+            if (args != null) {
+                Bundle reviewArgs = new Bundle(args);
+                reviewArgs.putString("filter_mode", "wrong");
+                
+                NavController navController = Navigation.findNavController(v);
+                navController.navigate(R.id.action_testResultFragment_to_reviewMistakesFragment, reviewArgs);
+            }
         });
         
         btnViewAllAnswers.setOnClickListener(v -> {
-            Intent intent = new Intent(this, ReviewMistakesActivity.class);
-            intent.putExtras(getIntent());
-            intent.putExtra("filter_mode", "all");
-            startActivity(intent);
+            Bundle args = getArguments();
+            if (args != null) {
+                Bundle reviewArgs = new Bundle(args);
+                reviewArgs.putString("filter_mode", "all");
+                
+                NavController navController = Navigation.findNavController(v);
+                navController.navigate(R.id.action_testResultFragment_to_reviewMistakesFragment, reviewArgs);
+            }
         });
         
         btnFinish.setOnClickListener(v -> {
-            finish();
+            NavController navController = Navigation.findNavController(v);
+            navController.popBackStack(R.id.homeFragment, false);
         });
-    }
-    
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        finish();
     }
 }
 

@@ -18,88 +18,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LearningApp"
         tools:targetApi="31">
-
+        
         <activity
             android:name=".activities.MainActivity"
             android:exported="true"
             android:screenOrientation="portrait">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-        
-        <activity
-            android:name=".activities.FlashcardHubActivity"
-            android:exported="false"
-            android:screenOrientation="portrait"/>
-        
-        <activity
-            android:name=".activities.FlashcardSessionActivity"
-            android:exported="false"
-            android:screenOrientation="portrait"/>
-        
-        <activity
-            android:name=".activities.QuestionDetailActivity"
-            android:exported="false"
-            android:screenOrientation="portrait"/>
-        
-        <activity
-            android:name=".activities.PomodoroHubActivity"
-            android:exported="false"
-            android:screenOrientation="portrait"/>
-        
-        <activity
-            android:name=".activities.PomodoroSessionActivity"
-            android:exported="false"
-            android:screenOrientation="portrait"/>
-        
-        <activity
-            android:name=".activities.ExamListActivity"
-            android:exported="false"
-            android:screenOrientation="portrait"/>
-        
-        <activity
-            android:name=".activities.ExamDetailActivity"
-            android:exported="false"
-            android:screenOrientation="portrait"/>
-        
-        <activity
-            android:name=".activities.PracticeTestConfigActivity"
-            android:exported="false"
-            android:screenOrientation="portrait"/>
-        
-        <activity
-            android:name=".activities.PracticeTestActivity"
-            android:exported="false"
-            android:screenOrientation="portrait"/>
-        
-        <activity
-            android:name=".activities.TestResultActivity"
-            android:exported="false"
-            android:screenOrientation="portrait"/>
-        
-        <activity
-            android:name=".activities.ReviewMistakesActivity"
-            android:exported="false"
-            android:screenOrientation="portrait"/>
-        
-        <activity
-            android:name=".activities.HistoryActivity"
-            android:exported="false"
-            android:screenOrientation="portrait"/>
-        
-        <activity
-            android:name=".activities.HistoryDetailActivity"
-            android:exported="false"
-            android:screenOrientation="portrait"/>
-        
-        <activity
-            android:name=".activities.SettingsActivity"
-            android:exported="false"
-            android:screenOrientation="portrait"/>
         
     </application>
 

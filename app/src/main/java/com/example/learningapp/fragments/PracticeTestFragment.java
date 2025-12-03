@@ -1,7 +1,6 @@
-package com.example.learningapp.activities;
+package com.example.learningapp.fragments;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.LayoutInflater;
@@ -16,8 +15,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -31,7 +33,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-public class PracticeTestActivity extends AppCompatActivity {
+public class PracticeTestFragment extends Fragment {
     
     private TextView tvTimeRemaining, tvQuestionProgress, tvQuestionNumber, tvQuestion;
     private ImageView ivQuestionImage;
@@ -50,24 +52,28 @@ public class PracticeTestActivity extends AppCompatActivity {
     private RadioGroup.OnCheckedChangeListener radioGroupListener;
     private CheckBox.OnCheckedChangeListener checkBoxListener;
     
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_practice_test);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.activity_practice_test, container, false);
+    }
+    
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle("Thi thử");
-        }
+        initializeViews(view);
         
-        initializeViews();
+        Bundle args = getArguments();
+        if (args == null) return;
         
-        int examSetId = getIntent().getIntExtra("exam_set_id", -1);
-        int numQuestions = getIntent().getIntExtra("num_questions", 30);
-        int duration = getIntent().getIntExtra("duration", 45);
+        int examSetId = args.getInt("exam_set_id", -1);
+        int numQuestions = args.getInt("num_questions", 30);
+        int duration = args.getInt("duration", 45);
         
         timeLeftInMillis = duration * 60 * 1000L;
         
-        databaseHelper = new DatabaseHelper(this);
+        databaseHelper = new DatabaseHelper(requireContext());
         questions = databaseHelper.getRandomQuestionsForTest(examSetId, numQuestions);
         
         userAnswers = new ArrayList<>();
@@ -81,24 +87,39 @@ public class PracticeTestActivity extends AppCompatActivity {
         startTimer();
         displayQuestion();
         setupListeners();
+        
+        requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), new androidx.activity.OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                new AlertDialog.Builder(requireContext())
+                    .setTitle("Thoát bài thi")
+                    .setMessage("Bạn có chắc muốn thoát? Kết quả sẽ không được lưu.")
+                    .setPositiveButton(R.string.yes, (dialog, which) -> {
+                        setEnabled(false);
+                        requireActivity().onBackPressed();
+                    })
+                    .setNegativeButton(R.string.no, null)
+                    .show();
+            }
+        });
     }
     
-    private void initializeViews() {
-        tvTimeRemaining = findViewById(R.id.tvTimeRemaining);
-        tvQuestionProgress = findViewById(R.id.tvQuestionProgress);
-        tvQuestionNumber = findViewById(R.id.tvQuestionNumber);
-        tvQuestion = findViewById(R.id.tvQuestion);
-        ivQuestionImage = findViewById(R.id.ivQuestionImage);
-        radioGroupOptions = findViewById(R.id.radioGroupOptions);
-        radioOptionA = findViewById(R.id.radioOptionA);
-        radioOptionB = findViewById(R.id.radioOptionB);
-        radioOptionC = findViewById(R.id.radioOptionC);
-        radioOptionD = findViewById(R.id.radioOptionD);
-        checkMarkReview = findViewById(R.id.checkMarkReview);
-        btnPrevious = findViewById(R.id.btnPrevious);
-        btnNext = findViewById(R.id.btnNext);
-        btnSubmit = findViewById(R.id.btnSubmit);
-        btnQuestionOverview = findViewById(R.id.btnQuestionOverview);
+    private void initializeViews(View view) {
+        tvTimeRemaining = view.findViewById(R.id.tvTimeRemaining);
+        tvQuestionProgress = view.findViewById(R.id.tvQuestionProgress);
+        tvQuestionNumber = view.findViewById(R.id.tvQuestionNumber);
+        tvQuestion = view.findViewById(R.id.tvQuestion);
+        ivQuestionImage = view.findViewById(R.id.ivQuestionImage);
+        radioGroupOptions = view.findViewById(R.id.radioGroupOptions);
+        radioOptionA = view.findViewById(R.id.radioOptionA);
+        radioOptionB = view.findViewById(R.id.radioOptionB);
+        radioOptionC = view.findViewById(R.id.radioOptionC);
+        radioOptionD = view.findViewById(R.id.radioOptionD);
+        checkMarkReview = view.findViewById(R.id.checkMarkReview);
+        btnPrevious = view.findViewById(R.id.btnPrevious);
+        btnNext = view.findViewById(R.id.btnNext);
+        btnSubmit = view.findViewById(R.id.btnSubmit);
+        btnQuestionOverview = view.findViewById(R.id.btnQuestionOverview);
     }
     
     private void startTimer() {
@@ -111,7 +132,7 @@ public class PracticeTestActivity extends AppCompatActivity {
             
             @Override
             public void onFinish() {
-                Toast.makeText(PracticeTestActivity.this, "Hết giờ!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(requireContext(), "Hết giờ!", Toast.LENGTH_SHORT).show();
                 submitTest();
             }
         }.start();
@@ -162,7 +183,7 @@ public class PracticeTestActivity extends AppCompatActivity {
         });
         
         btnSubmit.setOnClickListener(v -> {
-            new AlertDialog.Builder(this)
+            new AlertDialog.Builder(requireContext())
                 .setTitle(R.string.confirm_submit)
                 .setMessage("Bạn có chắc muốn nộp bài?")
                 .setPositiveButton(R.string.yes, (dialog, which) -> submitTest())
@@ -179,8 +200,7 @@ public class PracticeTestActivity extends AppCompatActivity {
         tvQuestionNumber.setText("Câu " + (currentQuestionIndex + 1));
         tvQuestion.setText(question.getQuestionText());
         
-        // Load question image if available
-        ImageHelper.loadQuestionImage(this, ivQuestionImage, question.getImagePath());
+        ImageHelper.loadQuestionImage(requireContext(), ivQuestionImage, question.getImagePath());
         
         radioOptionA.setText("A. " + question.getOptionA());
         radioOptionB.setText("B. " + question.getOptionB());
@@ -199,31 +219,21 @@ public class PracticeTestActivity extends AppCompatActivity {
             radioOptionD.setVisibility(View.GONE);
         }
         
-        // Temporarily remove listener to avoid triggering it during UI update
         radioGroupOptions.setOnCheckedChangeListener(null);
         checkMarkReview.setOnCheckedChangeListener(null);
         
         radioGroupOptions.clearCheck();
         if (userAnswer.getSelectedAnswer() != null) {
             switch (userAnswer.getSelectedAnswer()) {
-                case "A":
-                    radioOptionA.setChecked(true);
-                    break;
-                case "B":
-                    radioOptionB.setChecked(true);
-                    break;
-                case "C":
-                    radioOptionC.setChecked(true);
-                    break;
-                case "D":
-                    radioOptionD.setChecked(true);
-                    break;
+                case "A": radioOptionA.setChecked(true); break;
+                case "B": radioOptionB.setChecked(true); break;
+                case "C": radioOptionC.setChecked(true); break;
+                case "D": radioOptionD.setChecked(true); break;
             }
         }
         
         checkMarkReview.setChecked(userAnswer.isMarkedForReview());
         
-        // Re-attach listeners
         radioGroupOptions.setOnCheckedChangeListener(radioGroupListener);
         checkMarkReview.setOnCheckedChangeListener(checkBoxListener);
         
@@ -243,9 +253,13 @@ public class PracticeTestActivity extends AppCompatActivity {
             countDownTimer.cancel();
         }
         
-        Intent intent = new Intent(this, TestResultActivity.class);
-        intent.putExtra("exam_set_id", getIntent().getIntExtra("exam_set_id", -1));
-        intent.putExtra("total_questions", questions.size());
+        Bundle resultArgs = new Bundle();
+        Bundle args = getArguments();
+        if (args != null) {
+            resultArgs.putInt("exam_set_id", args.getInt("exam_set_id", -1));
+            resultArgs.putInt("duration", args.getInt("duration", 19));
+        }
+        resultArgs.putInt("total_questions", questions.size());
         
         ArrayList<Integer> questionIds = new ArrayList<>();
         ArrayList<String> selectedAnswers = new ArrayList<>();
@@ -261,48 +275,37 @@ public class PracticeTestActivity extends AppCompatActivity {
             isLietList.add(questions.get(i).isLiet());
         }
         
-        intent.putIntegerArrayListExtra("question_ids", questionIds);
-        intent.putStringArrayListExtra("selected_answers", selectedAnswers);
-        intent.putStringArrayListExtra("correct_answers", correctAnswers);
-        intent.putExtra("marked_for_review", markedForReview);
-        intent.putExtra("is_liet_list", isLietList);
+        resultArgs.putIntegerArrayList("question_ids", questionIds);
+        resultArgs.putStringArrayList("selected_answers", selectedAnswers);
+        resultArgs.putStringArrayList("correct_answers", correctAnswers);
+        resultArgs.putSerializable("marked_for_review", markedForReview);
+        resultArgs.putSerializable("is_liet_list", isLietList);
         
-        startActivity(intent);
-        finish();
+        NavController navController = Navigation.findNavController(requireView());
+        navController.navigate(R.id.action_practiceTestFragment_to_testResultFragment, resultArgs);
     }
     
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
+    public void onDestroyView() {
+        super.onDestroyView();
         if (countDownTimer != null) {
             countDownTimer.cancel();
         }
     }
     
-    @Override
-    public void onBackPressed() {
-        new AlertDialog.Builder(this)
-            .setTitle("Thoát bài thi")
-            .setMessage("Bạn có chắc muốn thoát? Kết quả sẽ không được lưu.")
-            .setPositiveButton(R.string.yes, (dialog, which) -> super.onBackPressed())
-            .setNegativeButton(R.string.no, null)
-            .show();
-    }
-    
     private void showQuestionOverviewDialog() {
         View dialogView = getLayoutInflater().inflate(R.layout.dialog_question_overview, null);
         RecyclerView recyclerView = dialogView.findViewById(R.id.recyclerViewQuestions);
-        recyclerView.setLayoutManager(new GridLayoutManager(this, 5));
+        recyclerView.setLayoutManager(new GridLayoutManager(requireContext(), 5));
         
         QuestionOverviewAdapter adapter = new QuestionOverviewAdapter();
         recyclerView.setAdapter(adapter);
         
-        AlertDialog dialog = new AlertDialog.Builder(this)
+        AlertDialog dialog = new AlertDialog.Builder(requireContext())
                 .setView(dialogView)
                 .create();
         
         adapter.setDialog(dialog);
-        
         dialog.show();
     }
     
@@ -348,11 +351,11 @@ public class PracticeTestActivity extends AppCompatActivity {
                 boolean isMarkedForReview = userAnswer.isMarkedForReview();
                 
                 if (isMarkedForReview) {
-                    tvNumber.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_dark, null));
+                    tvNumber.setBackgroundColor(requireContext().getResources().getColor(android.R.color.holo_orange_dark, null));
                 } else if (selectedAnswer != null && !selectedAnswer.isEmpty()) {
-                    tvNumber.setBackgroundColor(getResources().getColor(R.color.primary, null));
+                    tvNumber.setBackgroundColor(requireContext().getResources().getColor(R.color.primary, null));
                 } else {
-                    tvNumber.setBackgroundColor(getResources().getColor(R.color.text_secondary, null));
+                    tvNumber.setBackgroundColor(requireContext().getResources().getColor(R.color.text_secondary, null));
                 }
                 
                 tvNumber.setOnClickListener(v -> {

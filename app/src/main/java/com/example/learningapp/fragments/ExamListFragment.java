@@ -1,6 +1,5 @@
-package com.example.learningapp.activities;
+package com.example.learningapp.fragments;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,8 +7,11 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -19,25 +21,26 @@ import com.example.learningapp.models.ExamSet;
 
 import java.util.List;
 
-public class ExamListActivity extends AppCompatActivity {
+public class ExamListFragment extends Fragment {
     
     private RecyclerView recyclerViewExams;
     private DatabaseHelper databaseHelper;
     private List<ExamSet> examSets;
     
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_exam_list);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.activity_exam_list, container, false);
+    }
+    
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        }
+        recyclerViewExams = view.findViewById(R.id.recyclerViewExams);
+        recyclerViewExams.setLayoutManager(new LinearLayoutManager(requireContext()));
         
-        recyclerViewExams = findViewById(R.id.recyclerViewExams);
-        recyclerViewExams.setLayoutManager(new LinearLayoutManager(this));
-        
-        databaseHelper = new DatabaseHelper(this);
+        databaseHelper = new DatabaseHelper(requireContext());
         loadExamSets();
     }
     
@@ -45,12 +48,6 @@ public class ExamListActivity extends AppCompatActivity {
         examSets = databaseHelper.getAllExamSets();
         ExamSetsAdapter adapter = new ExamSetsAdapter(examSets);
         recyclerViewExams.setAdapter(adapter);
-    }
-    
-    @Override
-    public boolean onSupportNavigateUp() {
-        finish();
-        return true;
     }
     
     private class ExamSetsAdapter extends RecyclerView.Adapter<ExamSetsAdapter.ViewHolder> {
@@ -71,8 +68,7 @@ public class ExamListActivity extends AppCompatActivity {
         
         @Override
         public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-            ExamSet examSet = examSets.get(position);
-            holder.bind(examSet);
+            holder.bind(examSets.get(position));
         }
         
         @Override
@@ -106,11 +102,13 @@ public class ExamListActivity extends AppCompatActivity {
                 }
                 
                 cardView.setOnClickListener(v -> {
-                    Intent intent = new Intent(ExamListActivity.this, ExamDetailActivity.class);
-                    intent.putExtra("exam_set_id", examSet.getId());
-                    intent.putExtra("exam_name", examSet.getName());
-                    intent.putExtra("question_count", examSet.getQuestionCount());
-                    startActivity(intent);
+                    Bundle args = new Bundle();
+                    args.putInt("exam_set_id", examSet.getId());
+                    args.putString("exam_name", examSet.getName());
+                    args.putInt("question_count", examSet.getQuestionCount());
+                    
+                    NavController navController = Navigation.findNavController(v);
+                    navController.navigate(R.id.action_examListFragment_to_examDetailFragment, args);
                 });
             }
         }

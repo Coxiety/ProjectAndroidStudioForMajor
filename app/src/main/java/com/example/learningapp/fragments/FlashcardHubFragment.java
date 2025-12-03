@@ -1,4 +1,4 @@
-package com.example.learningapp.activities;
+package com.example.learningapp.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,8 +8,11 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -19,25 +22,26 @@ import com.example.learningapp.models.FlashcardTopic;
 
 import java.util.List;
 
-public class FlashcardHubActivity extends AppCompatActivity {
+public class FlashcardHubFragment extends Fragment {
     
     private RecyclerView recyclerViewTopics;
     private DatabaseHelper databaseHelper;
     private List<FlashcardTopic> topics;
     
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_flashcard_hub);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.activity_flashcard_hub, container, false);
+    }
+    
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        }
+        recyclerViewTopics = view.findViewById(R.id.recyclerViewTopics);
+        recyclerViewTopics.setLayoutManager(new LinearLayoutManager(requireContext()));
         
-        recyclerViewTopics = findViewById(R.id.recyclerViewTopics);
-        recyclerViewTopics.setLayoutManager(new LinearLayoutManager(this));
-        
-        databaseHelper = new DatabaseHelper(this);
+        databaseHelper = new DatabaseHelper(requireContext());
         loadTopics();
     }
     
@@ -45,12 +49,6 @@ public class FlashcardHubActivity extends AppCompatActivity {
         topics = databaseHelper.getAllFlashcardTopics();
         TopicsAdapter adapter = new TopicsAdapter(topics);
         recyclerViewTopics.setAdapter(adapter);
-    }
-    
-    @Override
-    public boolean onSupportNavigateUp() {
-        finish();
-        return true;
     }
     
     private class TopicsAdapter extends RecyclerView.Adapter<TopicsAdapter.ViewHolder> {
@@ -71,8 +69,7 @@ public class FlashcardHubActivity extends AppCompatActivity {
         
         @Override
         public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-            FlashcardTopic topic = topics.get(position);
-            holder.bind(topic);
+            holder.bind(topics.get(position));
         }
         
         @Override
@@ -98,11 +95,13 @@ public class FlashcardHubActivity extends AppCompatActivity {
                 tvProgress.setText(topic.getTotalCards() + " câu hỏi");
                 
                 cardView.setOnClickListener(v -> {
-                    Intent intent = new Intent(FlashcardHubActivity.this, FlashcardSessionActivity.class);
-                    intent.putExtra("topic_id", topic.getId());
-                    intent.putExtra("topic_name", topic.getName());
-                    intent.putExtra("is_image_only", topic.isImageOnly());
-                    startActivity(intent);
+                    Bundle args = new Bundle();
+                    args.putInt("topic_id", topic.getId());
+                    args.putString("topic_name", topic.getName());
+                    args.putBoolean("is_image_only", topic.isImageOnly());
+                    
+                    NavController navController = Navigation.findNavController(v);
+                    navController.navigate(R.id.action_flashcardHubFragment_to_flashcardSessionFragment, args);
                 });
             }
         }

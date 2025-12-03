@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+    
+    <!-- Default animations for all fragments -->
+    <action android:id="@+id/action_global_with_animation"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right" />
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.learningapp.fragments.HomeFragment"
+        android:label="Trang chủ" >
+        <action
+            android:id="@+id/action_homeFragment_to_flashcardHubFragment"
+            app:destination="@id/flashcardHubFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_homeFragment_to_practiceTestConfigFragment"
+            app:destination="@id/practiceTestConfigFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_homeFragment_to_examListFragment"
+            app:destination="@id/examListFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_homeFragment_to_pomodoroHubFragment"
+            app:destination="@id/pomodoroHubFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_homeFragment_to_historyFragment"
+            app:destination="@id/historyFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_homeFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/flashcardHubFragment"
+        android:name="com.example.learningapp.fragments.FlashcardHubFragment"
+        android:label="Flashcard Hub" >
+        <action
+            android:id="@+id/action_flashcardHubFragment_to_flashcardSessionFragment"
+            app:destination="@id/flashcardSessionFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/practiceTestConfigFragment"
+        android:name="com.example.learningapp.fragments.PracticeTestConfigFragment"
+        android:label="Cấu hình thi thử" >
+        <action
+            android:id="@+id/action_practiceTestConfigFragment_to_practiceTestFragment"
+            app:destination="@id/practiceTestFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/practiceTestFragment"
+        android:name="com.example.learningapp.fragments.PracticeTestFragment"
+        android:label="Thi thử" >
+        <action
+            android:id="@+id/action_practiceTestFragment_to_testResultFragment"
+            app:destination="@id/testResultFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/testResultFragment"
+        android:name="com.example.learningapp.fragments.TestResultFragment"
+        android:label="Kết quả" >
+        <action
+            android:id="@+id/action_testResultFragment_to_reviewMistakesFragment"
+            app:destination="@id/reviewMistakesFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/examHistoryFragment"
+        android:name="com.example.learningapp.fragments.ExamHistoryFragment"
+        android:label="Lịch sử thi" />
+
+    <fragment
+        android:id="@+id/flashcardListFragment"
+        android:name="com.example.learningapp.fragments.FlashcardListFragment"
+        android:label="Danh sách flashcard" />
+
+    <fragment
+        android:id="@+id/flashcardPracticeFragment"
+        android:name="com.example.learningapp.fragments.FlashcardPracticeFragment"
+        android:label="Luyện tập flashcard" />
+    
+    <fragment
+        android:id="@+id/flashcardSessionFragment"
+        android:name="com.example.learningapp.fragments.FlashcardSessionFragment"
+        android:label="Luyện flashcard" />
+    
+    <fragment
+        android:id="@+id/examListFragment"
+        android:name="com.example.learningapp.fragments.ExamListFragment"
+        android:label="Xem đề thi" >
+        <action
+            android:id="@+id/action_examListFragment_to_examDetailFragment"
+            app:destination="@id/examDetailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    
+    <fragment
+        android:id="@+id/examDetailFragment"
+        android:name="com.example.learningapp.fragments.ExamDetailFragment"
+        android:label="Chi tiết đề thi" >
+        <action
+            android:id="@+id/action_examDetailFragment_to_questionDetailFragment"
+            app:destination="@id/questionDetailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    
+    <fragment
+        android:id="@+id/questionDetailFragment"
+        android:name="com.example.learningapp.fragments.QuestionDetailFragment"
+        android:label="Chi tiết câu hỏi" />
+    
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="com.example.learningapp.fragments.HistoryFragment"
+        android:label="Lịch sử thi" >
+        <action
+            android:id="@+id/action_historyFragment_to_historyDetailFragment"
+            app:destination="@id/historyDetailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    
+    <fragment
+        android:id="@+id/historyDetailFragment"
+        android:name="com.example.learningapp.fragments.HistoryDetailFragment"
+        android:label="Chi tiết lịch sử" />
+    
+    <fragment
+        android:id="@+id/pomodoroHubFragment"
+        android:name="com.example.learningapp.fragments.PomodoroHubFragment"
+        android:label="Pomodoro" >
+        <action
+            android:id="@+id/action_pomodoroHubFragment_to_pomodoroSessionFragment"
+            app:destination="@id/pomodoroSessionFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    
+    <fragment
+        android:id="@+id/pomodoroSessionFragment"
+        android:name="com.example.learningapp.fragments.PomodoroSessionFragment"
+        android:label="Phiên Pomodoro" />
+    
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.learningapp.fragments.SettingsFragment"
+        android:label="Cài đặt" />
+    
+    <fragment
+        android:id="@+id/testResultFragment"
+        android:name="com.example.learningapp.fragments.TestResultFragment"
+        android:label="Kết quả thi" />
+    
+    <fragment
+        android:id="@+id/reviewMistakesFragment"
+        android:name="com.example.learningapp.fragments.ReviewMistakesFragment"
+        android:label="Xem lại câu sai" />
+
+</navigation>
+

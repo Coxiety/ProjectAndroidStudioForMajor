@@ -1,4 +1,4 @@
-package com.example.learningapp.activities;
+package com.example.learningapp.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,7 +9,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -21,65 +22,83 @@ import com.example.learningapp.utils.ImageHelper;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReviewMistakesActivity extends AppCompatActivity {
+public class ReviewMistakesFragment extends Fragment {
     
     private RecyclerView recyclerViewReview;
-    private Button btnFilterWrong, btnFilterMarked;
+    private Button btnFilterAll, btnFilterWrong, btnFilterCorrect, btnFilterMarked;
     private DatabaseHelper databaseHelper;
     
     private ArrayList<Integer> questionIds;
     private ArrayList<String> selectedAnswers;
     private ArrayList<String> correctAnswers;
     private ArrayList<Boolean> markedForReview;
+    private ArrayList<Boolean> isLietList;
     private List<Question> allQuestions;
     private String currentFilterMode = "wrong";
     
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_review_mistakes);
-        
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        }
-        
-        recyclerViewReview = findViewById(R.id.recyclerViewReview);
-        recyclerViewReview.setLayoutManager(new LinearLayoutManager(this));
-        btnFilterWrong = findViewById(R.id.btnFilterWrong);
-        btnFilterMarked = findViewById(R.id.btnFilterMarked);
-        
-        questionIds = getIntent().getIntegerArrayListExtra("question_ids");
-        selectedAnswers = getIntent().getStringArrayListExtra("selected_answers");
-        correctAnswers = getIntent().getStringArrayListExtra("correct_answers");
-        markedForReview = (ArrayList<Boolean>) getIntent().getSerializableExtra("marked_for_review");
-        currentFilterMode = getIntent().getStringExtra("filter_mode");
-        
-        if (currentFilterMode == null) {
-            currentFilterMode = "wrong";
-        }
-        
-        databaseHelper = new DatabaseHelper(this);
-        loadQuestions();
-        
-        btnFilterWrong.setOnClickListener(v -> {
-            currentFilterMode = "wrong";
-            displayFilteredQuestions();
-        });
-        
-        btnFilterMarked.setOnClickListener(v -> {
-            currentFilterMode = "marked";
-            displayFilteredQuestions();
-        });
-        
-        displayFilteredQuestions();
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.activity_review_mistakes, container, false);
     }
     
-    private void loadQuestions() {
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        
+        recyclerViewReview = view.findViewById(R.id.recyclerViewReview);
+        recyclerViewReview.setLayoutManager(new LinearLayoutManager(requireContext()));
+        btnFilterAll = view.findViewById(R.id.btnFilterAll);
+        btnFilterWrong = view.findViewById(R.id.btnFilterWrong);
+        btnFilterCorrect = view.findViewById(R.id.btnFilterCorrect);
+        btnFilterMarked = view.findViewById(R.id.btnFilterMarked);
+        
+        Bundle args = getArguments();
+        if (args != null) {
+            questionIds = args.getIntegerArrayList("question_ids");
+            selectedAnswers = args.getStringArrayList("selected_answers");
+            correctAnswers = args.getStringArrayList("correct_answers");
+            markedForReview = (ArrayList<Boolean>) args.getSerializable("marked_for_review");
+            isLietList = (ArrayList<Boolean>) args.getSerializable("is_liet_list");
+            currentFilterMode = args.getString("filter_mode");
+            
+            if (currentFilterMode == null) {
+                currentFilterMode = "wrong";
+            }
+            
+            databaseHelper = new DatabaseHelper(requireContext());
+            loadQuestions(args.getInt("exam_set_id", -1));
+            
+            btnFilterAll.setOnClickListener(v -> {
+                currentFilterMode = "all";
+                displayFilteredQuestions();
+            });
+            
+            btnFilterWrong.setOnClickListener(v -> {
+                currentFilterMode = "wrong";
+                displayFilteredQuestions();
+            });
+            
+            btnFilterCorrect.setOnClickListener(v -> {
+                currentFilterMode = "correct";
+                displayFilteredQuestions();
+            });
+            
+            btnFilterMarked.setOnClickListener(v -> {
+                currentFilterMode = "marked";
+                displayFilteredQuestions();
+            });
+            
+            displayFilteredQuestions();
+        }
+    }
+    
+    private void loadQuestions(int examSetId) {
         allQuestions = new ArrayList<>();
+        List<Question> allExamQuestions = databaseHelper.getQuestionsByExamSet(examSetId);
+        
         for (int questionId : questionIds) {
-            int examSetId = getIntent().getIntExtra("exam_set_id", -1);
-            List<Question> questions = databaseHelper.getQuestionsByExamSet(examSetId);
-            for (Question q : questions) {
+            for (Question q : allExamQuestions) {
                 if (q.getId() == questionId) {
                     allQuestions.add(q);
                     break;
@@ -93,24 +112,23 @@ public class ReviewMistakesActivity extends AppCompatActivity {
         
         for (int i = 0; i < allQuestions.size(); i++) {
             boolean include = false;
+            String selected = selectedAnswers.get(i);
+            String correct = correctAnswers.get(i);
+            boolean isCorrect = selected != null && selected.equals(correct);
             
             if ("all".equals(currentFilterMode)) {
                 include = true;
             } else if ("wrong".equals(currentFilterMode)) {
-                String selected = selectedAnswers.get(i);
-                String correct = correctAnswers.get(i);
-                include = selected == null || !selected.equals(correct);
+                include = !isCorrect;
+            } else if ("correct".equals(currentFilterMode)) {
+                include = isCorrect;
             } else if ("marked".equals(currentFilterMode)) {
-                include = markedForReview != null && markedForReview.get(i);
+                include = markedForReview != null && i < markedForReview.size() && markedForReview.get(i);
             }
             
             if (include) {
-                ReviewItem item = new ReviewItem();
-                item.question = allQuestions.get(i);
-                item.questionNumber = i + 1;
-                item.selectedAnswer = selectedAnswers.get(i);
-                item.correctAnswer = correctAnswers.get(i);
-                filteredItems.add(item);
+                boolean isLiet = isLietList != null && i < isLietList.size() && isLietList.get(i);
+                filteredItems.add(new ReviewItem(allQuestions.get(i), i + 1, selected, correct, isLiet));
             }
         }
         
@@ -118,17 +136,20 @@ public class ReviewMistakesActivity extends AppCompatActivity {
         recyclerViewReview.setAdapter(adapter);
     }
     
-    @Override
-    public boolean onSupportNavigateUp() {
-        finish();
-        return true;
-    }
-    
     private static class ReviewItem {
         Question question;
         int questionNumber;
         String selectedAnswer;
         String correctAnswer;
+        boolean isLiet;
+        
+        public ReviewItem(Question question, int questionNumber, String selectedAnswer, String correctAnswer, boolean isLiet) {
+            this.question = question;
+            this.questionNumber = questionNumber;
+            this.selectedAnswer = selectedAnswer;
+            this.correctAnswer = correctAnswer;
+            this.isLiet = isLiet;
+        }
     }
     
     private class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ViewHolder> {
@@ -149,8 +170,7 @@ public class ReviewMistakesActivity extends AppCompatActivity {
         
         @Override
         public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-            ReviewItem item = items.get(position);
-            holder.bind(item);
+            holder.bind(items.get(position));
         }
         
         @Override
@@ -177,26 +197,24 @@ public class ReviewMistakesActivity extends AppCompatActivity {
                 tvQuestionNumber.setText("Câu " + item.questionNumber);
                 tvQuestion.setText(item.question.getQuestionText());
                 
-                // Show LIET badge if applicable
-                if (item.question.isLiet()) {
+                if (item.isLiet) {
                     tvLietBadge.setVisibility(View.VISIBLE);
                 } else {
                     tvLietBadge.setVisibility(View.GONE);
                 }
                 
-                ImageHelper.loadQuestionImage(ReviewMistakesActivity.this, ivQuestionImage, item.question.getImagePath());
+                ImageHelper.loadQuestionImage(requireContext(), ivQuestionImage, item.question.getImagePath());
                 
-                boolean isCorrect = item.selectedAnswer != null && 
-                                   item.selectedAnswer.equals(item.correctAnswer);
+                boolean isCorrect = item.selectedAnswer != null && item.selectedAnswer.equals(item.correctAnswer);
                 
                 if (isCorrect) {
                     tvResultBadge.setText("Đúng");
-                    tvResultBadge.setBackgroundColor(getResources().getColor(R.color.success, null));
-                    tvYourAnswer.setTextColor(getResources().getColor(R.color.success, null));
+                    tvResultBadge.setBackgroundColor(requireContext().getResources().getColor(R.color.success, null));
+                    tvYourAnswer.setTextColor(requireContext().getResources().getColor(R.color.success, null));
                 } else {
                     tvResultBadge.setText("Sai");
-                    tvResultBadge.setBackgroundColor(getResources().getColor(R.color.error, null));
-                    tvYourAnswer.setTextColor(getResources().getColor(R.color.error, null));
+                    tvResultBadge.setBackgroundColor(requireContext().getResources().getColor(R.color.error, null));
+                    tvYourAnswer.setTextColor(requireContext().getResources().getColor(R.color.error, null));
                 }
                 
                 String selectedText = item.selectedAnswer != null ? item.selectedAnswer : "Không trả lời";

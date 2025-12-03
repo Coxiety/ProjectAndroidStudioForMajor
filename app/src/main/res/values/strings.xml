@@ -86,9 +86,6 @@
     
     <!-- Settings -->
     <string name="settings_title">Cài đặt</string>
-    <string name="sync_backup">Đồng bộ và Backup</string>
-    <string name="backup_now">Backup ngay</string>
-    <string name="restore_data">Khôi phục dữ liệu</string>
     <string name="notifications">Thông báo</string>
     <string name="enable_notifications">Bật thông báo</string>
     <string name="notification_time">Thời gian nhắc nhở</string>

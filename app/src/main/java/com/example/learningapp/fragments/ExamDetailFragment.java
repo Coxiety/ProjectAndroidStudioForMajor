@@ -1,6 +1,5 @@
-package com.example.learningapp.activities;
+package com.example.learningapp.fragments;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,8 +9,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -22,48 +24,46 @@ import com.example.learningapp.utils.ImageHelper;
 
 import java.util.List;
 
-public class ExamDetailActivity extends AppCompatActivity {
+public class ExamDetailFragment extends Fragment {
     
     private TextView tvExamName, tvQuestionCount;
     private RecyclerView recyclerViewQuestions;
     private DatabaseHelper databaseHelper;
     private List<Question> questions;
     
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_exam_detail);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.activity_exam_detail, container, false);
+    }
+    
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        tvExamName = view.findViewById(R.id.tvExamName);
+        tvQuestionCount = view.findViewById(R.id.tvQuestionCount);
+        recyclerViewQuestions = view.findViewById(R.id.recyclerViewQuestions);
+        recyclerViewQuestions.setLayoutManager(new LinearLayoutManager(requireContext()));
+        
+        Bundle args = getArguments();
+        if (args != null) {
+            int examSetId = args.getInt("exam_set_id", -1);
+            String examName = args.getString("exam_name");
+            int questionCount = args.getInt("question_count", 0);
+            
+            tvExamName.setText(examName);
+            tvQuestionCount.setText(questionCount + " câu hỏi");
+            
+            databaseHelper = new DatabaseHelper(requireContext());
+            loadQuestions(examSetId);
         }
-        
-        tvExamName = findViewById(R.id.tvExamName);
-        tvQuestionCount = findViewById(R.id.tvQuestionCount);
-        recyclerViewQuestions = findViewById(R.id.recyclerViewQuestions);
-        recyclerViewQuestions.setLayoutManager(new LinearLayoutManager(this));
-        
-        int examSetId = getIntent().getIntExtra("exam_set_id", -1);
-        String examName = getIntent().getStringExtra("exam_name");
-        int questionCount = getIntent().getIntExtra("question_count", 0);
-        
-        tvExamName.setText(examName);
-        tvQuestionCount.setText(questionCount + " câu hỏi");
-        
-        databaseHelper = new DatabaseHelper(this);
-        loadQuestions(examSetId);
     }
     
     private void loadQuestions(int examSetId) {
         questions = databaseHelper.getQuestionsByExamSet(examSetId);
         QuestionsAdapter adapter = new QuestionsAdapter(questions);
         recyclerViewQuestions.setAdapter(adapter);
-    }
-    
-    @Override
-    public boolean onSupportNavigateUp() {
-        finish();
-        return true;
     }
     
     private class QuestionsAdapter extends RecyclerView.Adapter<QuestionsAdapter.ViewHolder> {
@@ -84,8 +84,7 @@ public class ExamDetailActivity extends AppCompatActivity {
         
         @Override
         public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-            Question question = questions.get(position);
-            holder.bind(question, position + 1);
+            holder.bind(questions.get(position), position + 1);
         }
         
         @Override
@@ -122,7 +121,7 @@ public class ExamDetailActivity extends AppCompatActivity {
                     tvLietBadge.setVisibility(View.GONE);
                 }
                 
-                ImageHelper.loadQuestionImage(ExamDetailActivity.this, ivQuestionImage, question.getImagePath());
+                ImageHelper.loadQuestionImage(requireContext(), ivQuestionImage, question.getImagePath());
                 
                 tvOptionA.setText("A. " + question.getOptionA());
                 tvOptionB.setText("B. " + question.getOptionB());
@@ -147,33 +146,27 @@ public class ExamDetailActivity extends AppCompatActivity {
                 tvOptionD.setBackgroundColor(Color.parseColor("#F5F5F5"));
                 
                 switch (question.getCorrectAnswer()) {
-                    case "A":
-                        tvOptionA.setBackgroundColor(Color.parseColor("#C8E6C9"));
-                        break;
-                    case "B":
-                        tvOptionB.setBackgroundColor(Color.parseColor("#C8E6C9"));
-                        break;
-                    case "C":
-                        tvOptionC.setBackgroundColor(Color.parseColor("#C8E6C9"));
-                        break;
-                    case "D":
-                        tvOptionD.setBackgroundColor(Color.parseColor("#C8E6C9"));
-                        break;
+                    case "A": tvOptionA.setBackgroundColor(Color.parseColor("#C8E6C9")); break;
+                    case "B": tvOptionB.setBackgroundColor(Color.parseColor("#C8E6C9")); break;
+                    case "C": tvOptionC.setBackgroundColor(Color.parseColor("#C8E6C9")); break;
+                    case "D": tvOptionD.setBackgroundColor(Color.parseColor("#C8E6C9")); break;
                 }
                 
                 tvCorrectAnswer.setText("Đáp án đúng: " + question.getCorrectAnswer());
                 
                 cardView.setOnClickListener(v -> {
-                    Intent intent = new Intent(ExamDetailActivity.this, QuestionDetailActivity.class);
-                    intent.putExtra("question_text", question.getQuestionText());
-                    intent.putExtra("option_a", question.getOptionA());
-                    intent.putExtra("option_b", question.getOptionB());
-                    intent.putExtra("option_c", question.getOptionC());
-                    intent.putExtra("option_d", question.getOptionD());
-                    intent.putExtra("correct_answer", question.getCorrectAnswer());
-                    intent.putExtra("image_path", question.getImagePath());
-                    intent.putExtra("is_liet", question.isLiet());
-                    startActivity(intent);
+                    Bundle args = new Bundle();
+                    args.putString("question_text", question.getQuestionText());
+                    args.putString("option_a", question.getOptionA());
+                    args.putString("option_b", question.getOptionB());
+                    args.putString("option_c", question.getOptionC());
+                    args.putString("option_d", question.getOptionD());
+                    args.putString("correct_answer", question.getCorrectAnswer());
+                    args.putString("image_path", question.getImagePath());
+                    args.putBoolean("is_liet", question.isLiet());
+                    
+                    NavController navController = Navigation.findNavController(v);
+                    navController.navigate(R.id.action_examDetailFragment_to_questionDetailFragment, args);
                 });
             }
         }

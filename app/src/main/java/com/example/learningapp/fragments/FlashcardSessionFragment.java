@@ -1,15 +1,18 @@
-package com.example.learningapp.activities;
+package com.example.learningapp.fragments;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
 
 import com.example.learningapp.R;
 import com.example.learningapp.database.DatabaseHelper;
@@ -18,7 +21,7 @@ import com.example.learningapp.utils.ImageHelper;
 
 import java.util.List;
 
-public class FlashcardSessionActivity extends AppCompatActivity {
+public class FlashcardSessionFragment extends Fragment {
     
     private CardView cardFlashcard;
     private View layoutFlashcardContent;
@@ -33,35 +36,37 @@ public class FlashcardSessionActivity extends AppCompatActivity {
     private int topicId;
     private boolean isImageOnly;
     
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_flashcard_session);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.activity_flashcard_session, container, false);
+    }
+    
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         
-        topicId = getIntent().getIntExtra("topic_id", -1);
-        String topicName = getIntent().getStringExtra("topic_name");
-        isImageOnly = getIntent().getBooleanExtra("is_image_only", false);
-        
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setTitle(topicName);
+        Bundle args = getArguments();
+        if (args != null) {
+            topicId = args.getInt("topic_id", -1);
+            isImageOnly = args.getBoolean("is_image_only", false);
         }
         
-        cardFlashcard = findViewById(R.id.cardFlashcard);
-        layoutFlashcardContent = findViewById(R.id.layoutFlashcardContent);
-        tvProgress = findViewById(R.id.tvProgress);
-        tvCardContent = findViewById(R.id.tvCardContent);
-        tvFlipHint = findViewById(R.id.tvFlipHint);
-        ivFlashcardImage = findViewById(R.id.ivFlashcardImage);
-        btnKnow = findViewById(R.id.btnKnow);
-        btnNotSure = findViewById(R.id.btnNotSure);
+        cardFlashcard = view.findViewById(R.id.cardFlashcard);
+        layoutFlashcardContent = view.findViewById(R.id.layoutFlashcardContent);
+        tvProgress = view.findViewById(R.id.tvProgress);
+        tvCardContent = view.findViewById(R.id.tvCardContent);
+        tvFlipHint = view.findViewById(R.id.tvFlipHint);
+        ivFlashcardImage = view.findViewById(R.id.ivFlashcardImage);
+        btnKnow = view.findViewById(R.id.btnKnow);
+        btnNotSure = view.findViewById(R.id.btnNotSure);
         
-        databaseHelper = new DatabaseHelper(this);
+        databaseHelper = new DatabaseHelper(requireContext());
         flashcards = databaseHelper.getFlashcardsByTopic(topicId);
         
         if (flashcards.isEmpty()) {
-            Toast.makeText(this, "Không có thẻ nào trong chủ đề này", Toast.LENGTH_SHORT).show();
-            finish();
+            Toast.makeText(requireContext(), "Không có thẻ nào trong chủ đề này", Toast.LENGTH_SHORT).show();
+            requireActivity().onBackPressed();
             return;
         }
         
@@ -82,7 +87,7 @@ public class FlashcardSessionActivity extends AppCompatActivity {
                 databaseHelper.updateFlashcardLearned(flashcards.get(currentIndex).getId(), true);
                 nextCard();
             } else {
-                Toast.makeText(this, "Vui lòng lật thẻ trước", Toast.LENGTH_SHORT).show();
+                Toast.makeText(requireContext(), "Vui lòng lật thẻ trước", Toast.LENGTH_SHORT).show();
             }
         });
         
@@ -91,7 +96,7 @@ public class FlashcardSessionActivity extends AppCompatActivity {
                 databaseHelper.updateFlashcardLearned(flashcards.get(currentIndex).getId(), false);
                 nextCard();
             } else {
-                Toast.makeText(this, "Vui lòng lật thẻ trước", Toast.LENGTH_SHORT).show();
+                Toast.makeText(requireContext(), "Vui lòng lật thẻ trước", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -103,7 +108,7 @@ public class FlashcardSessionActivity extends AppCompatActivity {
         isFlipped = false;
         tvFlipHint.setVisibility(View.VISIBLE);
         
-        ImageHelper.loadFlashcardImage(this, ivFlashcardImage, card.getImagePath());
+        ImageHelper.loadFlashcardImage(requireContext(), ivFlashcardImage, card.getImagePath());
     }
     
     private void flipCard() {
@@ -117,23 +122,18 @@ public class FlashcardSessionActivity extends AppCompatActivity {
             tvCardContent.setText(card.getFront());
             isFlipped = false;
             tvFlipHint.setVisibility(View.VISIBLE);
-            ImageHelper.loadFlashcardImage(this, ivFlashcardImage, card.getImagePath());
+            ImageHelper.loadFlashcardImage(requireContext(), ivFlashcardImage, card.getImagePath());
         }
     }
     
     private void nextCard() {
         currentIndex++;
         if (currentIndex >= flashcards.size()) {
-            Toast.makeText(this, R.string.session_complete, Toast.LENGTH_LONG).show();
-            finish();
+            Toast.makeText(requireContext(), R.string.session_complete, Toast.LENGTH_LONG).show();
+            requireActivity().onBackPressed();
         } else {
             showCurrentCard();
         }
     }
-    
-    @Override
-    public boolean onSupportNavigateUp() {
-        finish();
-        return true;
-    }
 }
+

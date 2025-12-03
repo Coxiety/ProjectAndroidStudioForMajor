@@ -1,6 +1,5 @@
-package com.example.learningapp.activities;
+package com.example.learningapp.fragments;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,8 +7,11 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -22,26 +24,27 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-public class HistoryActivity extends AppCompatActivity {
+public class HistoryFragment extends Fragment {
     
     private RecyclerView recyclerViewHistory;
     private TextView tvNoHistory;
     private DatabaseHelper databaseHelper;
     
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_history);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.activity_history, container, false);
+    }
+    
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        }
+        recyclerViewHistory = view.findViewById(R.id.recyclerViewHistory);
+        tvNoHistory = view.findViewById(R.id.tvNoHistory);
+        recyclerViewHistory.setLayoutManager(new LinearLayoutManager(requireContext()));
         
-        recyclerViewHistory = findViewById(R.id.recyclerViewHistory);
-        tvNoHistory = findViewById(R.id.tvNoHistory);
-        recyclerViewHistory.setLayoutManager(new LinearLayoutManager(this));
-        
-        databaseHelper = new DatabaseHelper(this);
+        databaseHelper = new DatabaseHelper(requireContext());
         loadHistory();
     }
     
@@ -57,12 +60,6 @@ public class HistoryActivity extends AppCompatActivity {
             HistoryAdapter adapter = new HistoryAdapter(historyList);
             recyclerViewHistory.setAdapter(adapter);
         }
-    }
-    
-    @Override
-    public boolean onSupportNavigateUp() {
-        finish();
-        return true;
     }
     
     private class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHolder> {
@@ -84,8 +81,7 @@ public class HistoryActivity extends AppCompatActivity {
         
         @Override
         public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-            ExamHistory history = historyList.get(position);
-            holder.bind(history);
+            holder.bind(historyList.get(position));
         }
         
         @Override
@@ -115,22 +111,24 @@ public class HistoryActivity extends AppCompatActivity {
                 
                 if (history.isPassed()) {
                     tvResultBadge.setText(R.string.pass);
-                    tvResultBadge.setBackgroundColor(getResources().getColor(R.color.success, null));
+                    tvResultBadge.setBackgroundColor(requireContext().getResources().getColor(R.color.success, null));
                 } else {
                     tvResultBadge.setText(R.string.fail);
-                    tvResultBadge.setBackgroundColor(getResources().getColor(R.color.error, null));
+                    tvResultBadge.setBackgroundColor(requireContext().getResources().getColor(R.color.error, null));
                 }
                 
                 cardView.setOnClickListener(v -> {
-                    Intent intent = new Intent(HistoryActivity.this, HistoryDetailActivity.class);
-                    intent.putExtra("history_id", history.getId());
-                    intent.putExtra("exam_name", history.getExamName());
-                    intent.putExtra("correct_answers", history.getCorrectAnswers());
-                    intent.putExtra("wrong_answers", history.getWrongAnswers());
-                    intent.putExtra("total_questions", history.getTotalQuestions());
-                    intent.putExtra("test_date", history.getTestDate());
-                    intent.putExtra("duration", history.getDurationMinutes());
-                    startActivity(intent);
+                    Bundle args = new Bundle();
+                    args.putInt("history_id", history.getId());
+                    args.putString("exam_name", history.getExamName());
+                    args.putInt("correct_answers", history.getCorrectAnswers());
+                    args.putInt("wrong_answers", history.getWrongAnswers());
+                    args.putInt("total_questions", history.getTotalQuestions());
+                    args.putLong("test_date", history.getTestDate());
+                    args.putInt("duration", history.getDurationMinutes());
+                    
+                    NavController navController = Navigation.findNavController(v);
+                    navController.navigate(R.id.action_historyFragment_to_historyDetailFragment, args);
                 });
             }
         }
