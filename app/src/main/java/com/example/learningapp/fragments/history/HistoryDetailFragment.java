@@ -1,4 +1,4 @@
-package com.example.learningapp.fragments;
+package com.example.learningapp.fragments.history;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

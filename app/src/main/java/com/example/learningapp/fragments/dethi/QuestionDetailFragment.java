@@ -1,4 +1,4 @@
-package com.example.learningapp.fragments;
+package com.example.learningapp.fragments.dethi;
 
 import android.graphics.Typeface;
 import android.os.Bundle;

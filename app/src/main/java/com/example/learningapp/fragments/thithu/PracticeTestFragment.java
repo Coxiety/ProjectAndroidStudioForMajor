@@ -1,6 +1,5 @@
-package com.example.learningapp.fragments;
+package com.example.learningapp.fragments.thithu;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.LayoutInflater;
@@ -24,6 +23,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.learningapp.R;
+import com.example.learningapp.adapters.QuestionOverviewAdapter;
 import com.example.learningapp.database.DatabaseHelper;
 import com.example.learningapp.models.Question;
 import com.example.learningapp.models.UserAnswer;
@@ -298,7 +298,15 @@ public class PracticeTestFragment extends Fragment {
         RecyclerView recyclerView = dialogView.findViewById(R.id.recyclerViewQuestions);
         recyclerView.setLayoutManager(new GridLayoutManager(requireContext(), 5));
         
-        QuestionOverviewAdapter adapter = new QuestionOverviewAdapter();
+        QuestionOverviewAdapter adapter = new QuestionOverviewAdapter(
+                questions, 
+                userAnswers, 
+                requireContext(),
+                position -> {
+                    currentQuestionIndex = position;
+                    displayQuestion();
+                }
+        );
         recyclerView.setAdapter(adapter);
         
         AlertDialog dialog = new AlertDialog.Builder(requireContext())
@@ -307,66 +315,6 @@ public class PracticeTestFragment extends Fragment {
         
         adapter.setDialog(dialog);
         dialog.show();
-    }
-    
-    private class QuestionOverviewAdapter extends RecyclerView.Adapter<QuestionOverviewAdapter.ViewHolder> {
-        
-        private AlertDialog dialog;
-        
-        void setDialog(AlertDialog dialog) {
-            this.dialog = dialog;
-        }
-        
-        @NonNull
-        @Override
-        public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.item_question_number, parent, false);
-            return new ViewHolder(view);
-        }
-        
-        @Override
-        public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-            holder.bind(position);
-        }
-        
-        @Override
-        public int getItemCount() {
-            return questions.size();
-        }
-        
-        class ViewHolder extends RecyclerView.ViewHolder {
-            TextView tvNumber;
-            
-            ViewHolder(@NonNull View itemView) {
-                super(itemView);
-                tvNumber = itemView.findViewById(R.id.tvQuestionNumber);
-            }
-            
-            void bind(int position) {
-                tvNumber.setText(String.valueOf(position + 1));
-                
-                UserAnswer userAnswer = userAnswers.get(position);
-                String selectedAnswer = userAnswer.getSelectedAnswer();
-                boolean isMarkedForReview = userAnswer.isMarkedForReview();
-                
-                if (isMarkedForReview) {
-                    tvNumber.setBackgroundColor(requireContext().getResources().getColor(android.R.color.holo_orange_dark, null));
-                } else if (selectedAnswer != null && !selectedAnswer.isEmpty()) {
-                    tvNumber.setBackgroundColor(requireContext().getResources().getColor(R.color.primary, null));
-                } else {
-                    tvNumber.setBackgroundColor(requireContext().getResources().getColor(R.color.text_secondary, null));
-                }
-                
-                tvNumber.setOnClickListener(v -> {
-                    currentQuestionIndex = position;
-                    displayQuestion();
-                    if (dialog != null) {
-                        dialog.dismiss();
-                    }
-                });
-            }
-        }
     }
 }
 

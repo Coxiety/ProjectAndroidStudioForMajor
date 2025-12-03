@@ -61,7 +61,7 @@
 
     <fragment
         android:id="@+id/flashcardHubFragment"
-        android:name="com.example.learningapp.fragments.FlashcardHubFragment"
+        android:name="com.example.learningapp.fragments.flashcard.FlashcardHubFragment"
         android:label="Flashcard Hub" >
         <action
             android:id="@+id/action_flashcardHubFragment_to_flashcardSessionFragment"
@@ -74,7 +74,7 @@
 
     <fragment
         android:id="@+id/practiceTestConfigFragment"
-        android:name="com.example.learningapp.fragments.PracticeTestConfigFragment"
+        android:name="com.example.learningapp.fragments.thithu.PracticeTestConfigFragment"
         android:label="Cấu hình thi thử" >
         <action
             android:id="@+id/action_practiceTestConfigFragment_to_practiceTestFragment"
@@ -87,7 +87,7 @@
 
     <fragment
         android:id="@+id/practiceTestFragment"
-        android:name="com.example.learningapp.fragments.PracticeTestFragment"
+        android:name="com.example.learningapp.fragments.thithu.PracticeTestFragment"
         android:label="Thi thử" >
         <action
             android:id="@+id/action_practiceTestFragment_to_testResultFragment"
@@ -100,7 +100,7 @@
 
     <fragment
         android:id="@+id/testResultFragment"
-        android:name="com.example.learningapp.fragments.TestResultFragment"
+        android:name="com.example.learningapp.fragments.thithu.TestResultFragment"
         android:label="Kết quả" >
         <action
             android:id="@+id/action_testResultFragment_to_reviewMistakesFragment"
@@ -110,30 +110,15 @@
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
     </fragment>
-
-    <fragment
-        android:id="@+id/examHistoryFragment"
-        android:name="com.example.learningapp.fragments.ExamHistoryFragment"
-        android:label="Lịch sử thi" />
-
-    <fragment
-        android:id="@+id/flashcardListFragment"
-        android:name="com.example.learningapp.fragments.FlashcardListFragment"
-        android:label="Danh sách flashcard" />
-
-    <fragment
-        android:id="@+id/flashcardPracticeFragment"
-        android:name="com.example.learningapp.fragments.FlashcardPracticeFragment"
-        android:label="Luyện tập flashcard" />
     
     <fragment
         android:id="@+id/flashcardSessionFragment"
-        android:name="com.example.learningapp.fragments.FlashcardSessionFragment"
+        android:name="com.example.learningapp.fragments.flashcard.FlashcardSessionFragment"
         android:label="Luyện flashcard" />
     
     <fragment
         android:id="@+id/examListFragment"
-        android:name="com.example.learningapp.fragments.ExamListFragment"
+        android:name="com.example.learningapp.fragments.dethi.ExamListFragment"
         android:label="Xem đề thi" >
         <action
             android:id="@+id/action_examListFragment_to_examDetailFragment"
@@ -146,7 +131,7 @@
     
     <fragment
         android:id="@+id/examDetailFragment"
-        android:name="com.example.learningapp.fragments.ExamDetailFragment"
+        android:name="com.example.learningapp.fragments.dethi.ExamDetailFragment"
         android:label="Chi tiết đề thi" >
         <action
             android:id="@+id/action_examDetailFragment_to_questionDetailFragment"
@@ -159,12 +144,12 @@
     
     <fragment
         android:id="@+id/questionDetailFragment"
-        android:name="com.example.learningapp.fragments.QuestionDetailFragment"
+        android:name="com.example.learningapp.fragments.dethi.QuestionDetailFragment"
         android:label="Chi tiết câu hỏi" />
     
     <fragment
         android:id="@+id/historyFragment"
-        android:name="com.example.learningapp.fragments.HistoryFragment"
+        android:name="com.example.learningapp.fragments.history.HistoryFragment"
         android:label="Lịch sử thi" >
         <action
             android:id="@+id/action_historyFragment_to_historyDetailFragment"
@@ -177,12 +162,12 @@
     
     <fragment
         android:id="@+id/historyDetailFragment"
-        android:name="com.example.learningapp.fragments.HistoryDetailFragment"
+        android:name="com.example.learningapp.fragments.history.HistoryDetailFragment"
         android:label="Chi tiết lịch sử" />
     
     <fragment
         android:id="@+id/pomodoroHubFragment"
-        android:name="com.example.learningapp.fragments.PomodoroHubFragment"
+        android:name="com.example.learningapp.fragments.pomodoro.PomodoroHubFragment"
         android:label="Pomodoro" >
         <action
             android:id="@+id/action_pomodoroHubFragment_to_pomodoroSessionFragment"
@@ -195,22 +180,17 @@
     
     <fragment
         android:id="@+id/pomodoroSessionFragment"
-        android:name="com.example.learningapp.fragments.PomodoroSessionFragment"
+        android:name="com.example.learningapp.fragments.pomodoro.PomodoroSessionFragment"
         android:label="Phiên Pomodoro" />
     
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="com.example.learningapp.fragments.SettingsFragment"
+        android:name="com.example.learningapp.fragments.settings.SettingsFragment"
         android:label="Cài đặt" />
     
     <fragment
-        android:id="@+id/testResultFragment"
-        android:name="com.example.learningapp.fragments.TestResultFragment"
-        android:label="Kết quả thi" />
-    
-    <fragment
         android:id="@+id/reviewMistakesFragment"
-        android:name="com.example.learningapp.fragments.ReviewMistakesFragment"
+        android:name="com.example.learningapp.fragments.thithu.ReviewMistakesFragment"
         android:label="Xem lại câu sai" />
 
 </navigation>

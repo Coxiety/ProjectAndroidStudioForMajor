@@ -1,4 +1,4 @@
-package com.example.learningapp.fragments;
+package com.example.learningapp.fragments.thithu;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -35,6 +35,7 @@ public class TestResultFragment extends Fragment {
     private int examSetId;
     private String examName;
     private boolean failedDueToLiet = false;
+    private boolean hasCalculated = false;
     
     @Nullable
     @Override
@@ -62,16 +63,40 @@ public class TestResultFragment extends Fragment {
             examSetId = args.getInt("exam_set_id", -1);
             examName = "Đề thi thử";
             
-            calculateResults();
-            displayResults();
-            saveToHistory();
+            if (savedInstanceState != null) {
+                correctAnswers = savedInstanceState.getInt("correct_answers", 0);
+                wrongAnswers = savedInstanceState.getInt("wrong_answers", 0);
+                totalQuestions = savedInstanceState.getInt("total_questions", 0);
+                failedDueToLiet = savedInstanceState.getBoolean("failed_due_to_liet", false);
+                displayResults();
+            } else if (!hasCalculated) {
+                calculateResults();
+                displayResults();
+                saveToHistory();
+                hasCalculated = true;
+            } else {
+                displayResults();
+            }
             setupListeners();
         }
+    }
+    
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt("correct_answers", correctAnswers);
+        outState.putInt("wrong_answers", wrongAnswers);
+        outState.putInt("total_questions", totalQuestions);
+        outState.putBoolean("failed_due_to_liet", failedDueToLiet);
     }
     
     private void calculateResults() {
         Bundle args = getArguments();
         if (args == null) return;
+        
+        correctAnswers = 0;
+        wrongAnswers = 0;
+        failedDueToLiet = false;
         
         totalQuestions = args.getInt("total_questions", 0);
         ArrayList<String> selectedAnswers = args.getStringArrayList("selected_answers");
