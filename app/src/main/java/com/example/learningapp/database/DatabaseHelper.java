@@ -106,11 +106,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         android.util.Log.d("DatabaseHelper", "onUpgrade called from v" + oldVersion + " to v" + newVersion);
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_EXAM_HISTORY);
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_QUESTIONS);
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_EXAM_SETS);
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_FLASHCARDS);
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_FLASHCARD_TOPICS);
+        db.execSQL("ALTER TABLE IF EXISTS " + TABLE_EXAM_HISTORY);
+        db.execSQL("ALTER TABLE IF EXISTS " + TABLE_QUESTIONS);
+        db.execSQL("ALTER TABLE IF EXISTS " + TABLE_EXAM_SETS);
+        db.execSQL("ALTER TABLE IF EXISTS " + TABLE_FLASHCARDS);
+        db.execSQL("ALTER TABLE IF EXISTS " + TABLE_FLASHCARD_TOPICS);
         
         // Recreate tables
         String createFlashcardTopicsTable = "CREATE TABLE " + TABLE_FLASHCARD_TOPICS + " (" +
