@@ -60,15 +60,6 @@
                         android:textColor="@color/primary"
                         android:textStyle="bold" />
 
-                    <TextView
-                        style="@style/BodyText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="Giống thi thật - Không được sửa"
-                        android:textColor="@color/text_secondary"
-                        android:textAlignment="center"
-                        android:gravity="center" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 

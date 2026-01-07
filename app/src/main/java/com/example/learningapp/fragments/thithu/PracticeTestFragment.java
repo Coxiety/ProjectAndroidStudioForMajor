@@ -76,10 +76,10 @@ public class PracticeTestFragment extends Fragment {
         
         Bundle args = getArguments();
         if (args == null) return;
-        
-        int examSetId = args.getInt("exam_set_id", -1);
-        int numQuestions = args.getInt("num_questions", 25);
-        int duration = args.getInt("duration", 19);
+
+        int examSetId = args.getInt("exam_set_id");
+        int numQuestions = args.getInt("num_questions");
+        int duration = args.getInt("duration");
         
         timeLeftInMillis = duration * 60 * 1000L;
         

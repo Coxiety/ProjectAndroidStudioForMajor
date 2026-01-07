@@ -10,32 +10,34 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.example.learningapp.R;
 
-public class MainActivity extends AppCompatActivity {
-    
+public class MainActivity extends AppCompatActivity
+{
     private NavController navController;
     private AppBarConfiguration appBarConfiguration;
     
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_new);
         
-        NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.nav_host_fragment);
+        NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
         
-        if (navHostFragment != null) {
-            navController = navHostFragment.getNavController();
+        // if (navHostFragment != null)
+        // {
+        //     navController = navHostFragment.getNavController();
+
+        //     // Define top-level destinations
+        //     appBarConfiguration = new AppBarConfiguration.Builder(R.id.homeFragment).build();
             
-            // Define top-level destinations (no back button)
-            appBarConfiguration = new AppBarConfiguration.Builder(R.id.homeFragment).build();
-            
-            // Setup ActionBar with NavController
-            NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-        }
+        //     // Setup ActionBar with NavController
+        //     NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+        // }
     }
     
     @Override
-    public boolean onSupportNavigateUp() {
+    public boolean onSupportNavigateUp()
+    {
         return NavigationUI.navigateUp(navController, appBarConfiguration)
                 || super.onSupportNavigateUp();
     }

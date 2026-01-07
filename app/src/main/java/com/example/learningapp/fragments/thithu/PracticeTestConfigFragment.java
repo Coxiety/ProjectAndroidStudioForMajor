@@ -38,7 +38,7 @@ public class PracticeTestConfigFragment extends Fragment {
         btnStartTest = view.findViewById(R.id.btnStartTest);
         databaseHelper = new DatabaseHelper(requireContext());
         
-        // Get first exam set
+        // Get exam set
         List<ExamSet> examSets = databaseHelper.getAllExamSets();
         if (!examSets.isEmpty()) {
             examSetId = examSets.get(0).getId();
@@ -48,19 +48,19 @@ public class PracticeTestConfigFragment extends Fragment {
     }
     
     private void startTest() {
-        if (examSetId == -1) {
-            Toast.makeText(requireContext(), "Không tìm thấy bộ đề", Toast.LENGTH_SHORT).show();
-            return;
-        }
+        // if (examSetId == -1) {
+        //     Toast.makeText(requireContext(), "Không tìm thấy bộ đề", Toast.LENGTH_SHORT).show();
+        //     return;
+        // }
         
         // Navigate to PracticeTestFragment with arguments
-        Bundle args = new Bundle();
-        args.putInt("exam_set_id", examSetId);
-        args.putInt("num_questions", 25);
-        args.putInt("duration", 19);
+        Bundle dethi = new Bundle();
+        dethi.putInt("exam_set_id", examSetId);
+        dethi.putInt("num_questions", 25);
+        dethi.putInt("duration", 19);
         
         NavController navController = Navigation.findNavController(requireView());
-        navController.navigate(R.id.action_practiceTestConfigFragment_to_practiceTestFragment, args);
+        navController.navigate(R.id.action_practiceTestConfigFragment_to_practiceTestFragment, dethi);
     }
 }
 

@@ -156,10 +156,10 @@ public class TestResultFragment extends Fragment {
             tvResult.setTextColor(requireContext().getResources().getColor(R.color.error, null));
             
             if (failedDueToLiet) {
-                tvFailReason.setText("⚠️ Lý do: Sai câu liệt");
+                tvFailReason.setText("Lý do: Sai câu liệt");
                 tvFailReason.setVisibility(View.VISIBLE);
             } else if (wrongAnswers >= 4) {
-                tvFailReason.setText("⚠️ Lý do: Sai " + wrongAnswers + " câu (tối đa 3 câu)");
+                tvFailReason.setText("Lý do: Sai " + wrongAnswers + " câu (tối đa 3 câu)");
                 tvFailReason.setVisibility(View.VISIBLE);
             } else {
                 tvFailReason.setVisibility(View.GONE);
