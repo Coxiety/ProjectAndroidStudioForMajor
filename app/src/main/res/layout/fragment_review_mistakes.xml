@@ -33,7 +33,7 @@
 
                 <Button
                     android:id="@+id/btnFilterAll"
-                    style="@style/ButtonOutlined"
+                    style="@style/ButtonPrimary"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -43,7 +43,7 @@
 
                 <Button
                     android:id="@+id/btnFilterWrong"
-                    style="@style/ButtonOutlined"
+                    style="@style/ButtonPrimary"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -59,7 +59,7 @@
 
                 <Button
                     android:id="@+id/btnFilterCorrect"
-                    style="@style/ButtonOutlined"
+                    style="@style/ButtonPrimary"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -69,7 +69,7 @@
 
                 <Button
                     android:id="@+id/btnFilterMarked"
-                    style="@style/ButtonOutlined"
+                    style="@style/ButtonPrimary"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"

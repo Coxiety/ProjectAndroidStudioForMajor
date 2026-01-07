@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.learningapp.R;
 import com.example.learningapp.utils.ImageHelper;
+import com.example.learningapp.utils.StringUtils;
 
 public class QuestionDetailFragment extends Fragment {
     
@@ -70,7 +71,7 @@ public class QuestionDetailFragment extends Fragment {
     }
     
     private void setOptionText(TextView textView, String label, String text) {
-        if (isNullOrEmpty(text)) {
+        if (StringUtils.isNullOrEmpty(text)) {
             textView.setVisibility(View.GONE);
         } else {
             textView.setVisibility(View.VISIBLE);
@@ -78,12 +79,8 @@ public class QuestionDetailFragment extends Fragment {
         }
     }
     
-    private boolean isNullOrEmpty(String text) {
-        return text == null || text.trim().isEmpty() || text.equalsIgnoreCase("null");
-    }
-    
     private void highlightCorrectAnswer(String correctAnswer) {
-        if (isNullOrEmpty(correctAnswer)) {
+        if (StringUtils.isNullOrEmpty(correctAnswer)) {
             return;
         }
         

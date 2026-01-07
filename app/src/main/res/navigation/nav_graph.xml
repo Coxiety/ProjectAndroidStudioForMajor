@@ -3,13 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_graph"
     app:startDestination="@id/homeFragment">
-    
-    <!-- Default animations for all fragments -->
-    <action android:id="@+id/action_global_with_animation"
-        app:enterAnim="@anim/slide_in_right"
-        app:exitAnim="@anim/slide_out_left"
-        app:popEnterAnim="@anim/slide_in_left"
-        app:popExitAnim="@anim/slide_out_right" />
 
     <fragment
         android:id="@+id/homeFragment"

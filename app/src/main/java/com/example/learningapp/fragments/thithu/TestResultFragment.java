@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -47,6 +48,13 @@ public class TestResultFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         
+        if (requireActivity() instanceof androidx.appcompat.app.AppCompatActivity) {
+            androidx.appcompat.app.AppCompatActivity activity = (androidx.appcompat.app.AppCompatActivity) requireActivity();
+            if (activity.getSupportActionBar() != null) {
+                activity.getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+            }
+        }
+        
         tvScore = view.findViewById(R.id.tvScore);
         tvResult = view.findViewById(R.id.tvResult);
         tvCorrectCount = view.findViewById(R.id.tvCorrectCount);
@@ -78,7 +86,18 @@ public class TestResultFragment extends Fragment {
                 displayResults();
             }
             setupListeners();
+            disableBackButton();
         }
+    }
+    
+    private void disableBackButton() {
+        requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                NavController navController = Navigation.findNavController(requireView());
+                navController.popBackStack(R.id.homeFragment, false);
+            }
+        });
     }
     
     @Override

@@ -139,7 +139,7 @@
 
             <Button
                 android:id="@+id/btnViewAllAnswers"
-                style="@style/ButtonOutlined"
+                style="@style/ButtonPrimary"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
@@ -147,7 +147,7 @@
 
             <Button
                 android:id="@+id/btnFinish"
-                style="@style/ButtonOutlined"
+                style="@style/ButtonPrimary"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Hoàn thành" />

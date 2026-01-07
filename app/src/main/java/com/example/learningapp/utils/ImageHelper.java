@@ -39,10 +39,6 @@ public class ImageHelper {
         }
     }
     
-    public static void loadFlashcardImage(Context context, ImageView imageView, String imagePath) {
-        loadQuestionImage(context, imageView, imagePath);
-    }
-    
     public static boolean hasImage(String imagePath) {
         return imagePath != null && !imagePath.isEmpty();
     }

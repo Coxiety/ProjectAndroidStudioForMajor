@@ -1,0 +1,189 @@
+Chương 2: Các thành phần cơ bản của ứng dụng Android
+
+4 thành phần chính (Components):
+
+
+
+
+Activity: Tầng trình diễn giao diện người dùng.
+
+
+Service: Thành phần chạy ngầm cho các tác vụ dài hạn (Foreground, Background, Bound Service).
+
+
+
+ContentProvider: Quản lý và chia sẻ truy cập dữ liệu giữa các ứng dụng.
+
+
+
+BroadcastReceiver: Lắng nghe và phản hồi các sự kiện hệ thống hoặc ứng dụng phát ra qua Intent.
+
+
+Vòng đời Activity (Activity Lifecycle) : Gồm các trạng thái: Kích hoạt (Active), Tạm dừng (Pause), Dừng (Stop). Các hàm quan trọng: onCreate(), onStart(), onResume(), onPause(), onStop(), onRestart(), onDestroy().
+
+
+
+
+
+Context: Cung cấp truy cập tới chức năng và dịch vụ hệ thống.
+
+
+Truyền dữ liệu : Sử dụng Intent Extras, Bundle, Parcelable (tốc độ cao) hoặc Serializable (dễ triển khai).
+
+
+
+Chương 3: Layout và Các Widget cơ bản
+
+Cấu trúc giao diện : Cây phân cấp View (View Hierarchy) gồm View (Widget) và ViewGroup (Layout).
+
+
+
+Các loại Layout (ViewGroup):
+
+
+LinearLayout: Sắp xếp theo chiều ngang hoặc dọc (orientation).
+
+
+RelativeLayout: Sắp xếp các thành phần theo vị trí tương đối với nhau hoặc với cha.
+
+
+FrameLayout: Layout đơn giản nhất, các View thường nằm chồng lên nhau.
+
+
+
+TableLayout: Sắp xếp View theo dạng bảng (hàng và cột).
+
+
+ConstraintLayout: Tạo giao diện phức tạp, linh hoạt thông qua các ràng buộc (Constraints).
+
+
+Các Widget cơ bản : TextView, EditText (nhập liệu), Button, Image (ImageView, ImageButton), ListView và GridView (hiển thị danh sách/lưới dữ liệu qua Adapter).
+
+
+
+
+
+
+Tài nguyên Drawable : Shape Drawable (vẽ hình) và StateList Drawable (thay đổi giao diện theo trạng thái như state_pressed).
+
+
+Chương 4: Intent và Intent Filter
+
+Phân loại Intent:
+
+
+
+Explicit Intent (Tường minh): Chỉ định rõ lớp thành phần nhận (thường dùng trong nội bộ app).
+
+
+
+Implicit Intent (Không tường minh): Chỉ ra hành động (Action) và dữ liệu (Data), hệ thống tự tìm thành phần phù hợp.
+
+
+
+Các tham số chính : Action (hành động), Data (dưới dạng URI), Extra (dữ liệu bổ sung), Category.
+
+
+
+Intent Filter: Khai báo trong Manifest để thông báo loại Intent mà một thành phần có thể nhận.
+
+
+
+Hành động phổ biến : ACTION_VIEW (xem nội dung), ACTION_CALL (gọi điện), ACTION_SENDTO (gửi tin nhắn), ACTION_DIAL (quay số).
+
+
+Chương 4.1: Fragments
+
+Định nghĩa : Một phần giao diện hoặc hành vi độc lập trong Activity, hoạt động như một "sub-activity".
+
+
+
+Vòng đời Fragment : Bị ảnh hưởng bởi Activity cha. Các hàm quan trọng: onAttach(), onCreateView(), onActivityCreated(), onDestroyView(), onDetach().
+
+
+
+
+
+Quản lý Fragment:
+
+
+FragmentManager: Lớp quản lý các Fragment trong Activity.
+
+
+FragmentTransaction: Thực hiện các thao tác add(), replace(), remove() và commit().
+
+
+
+
+Back Stack: Cho phép người dùng quay lại trạng thái Fragment trước đó bằng nút Back.
+
+Chương 5: Lưu trữ dữ liệu và Shared Preferences
+
+Các tùy chọn lưu trữ:
+
+
+Internal Storage: Lưu file riêng tư trong bộ nhớ máy, bị xóa khi gỡ ứng dụng.
+
+
+External Storage: Lưu trên thẻ nhớ ngoài, dung lượng lớn hơn.
+
+
+Shared Preferences: Lưu trữ dữ liệu kiểu nguyên thủy (boolean, int, string...) dưới dạng key-value. Sử dụng Editor để ghi dữ liệu (commit()).
+
+
+SQLite Database: Cơ sở dữ liệu quan hệ cho các cấu trúc phức tạp.
+
+
+Network Connection: Lưu trữ trên máy chủ thông qua mạng.
+
+Chương 6: SQLite
+
+Đặc điểm : Gọn nhẹ, không cần máy chủ, lưu trong một file duy nhất, tuân thủ chuẩn ACID.
+
+
+
+
+Kiểu dữ liệu : NULL, INTEGER, REAL, TEXT, BLOB. Boolean được lưu dưới dạng 0 (false) và 1 (true).
+
+
+
+SQLiteOpenHelper: Hỗ trợ quản lý CSDL và phiên bản (version). Các phương thức: onCreate() (tạo bảng lần đầu) và onUpgrade() (nâng cấp cấu trúc khi đổi version).
+
+
+
+
+Thao tác dữ liệu : Thêm (insert), Sửa (update), Xóa (delete) và Truy vấn (query qua đối tượng Cursor).
+
+
+
+
+Chương 7: Network Connection (JSON & Volley)
+
+JSON : Định dạng trao đổi dữ liệu văn bản dung lượng nhẹ, dễ đọc.
+
+
+
+
+JSON Object {}: Tập hợp các cặp key/value trong dấu ngoặc nhọn.
+
+
+
+JSON Array []: Danh sách các giá trị trong dấu ngoặc vuông.
+
+
+Volley Library : Thư viện networking giúp đơn giản hóa việc kết nối và xử lý kết quả từ server.
+
+
+
+Tính năng : Tự động lập lịch request, caching response (Disk/RAM), hỗ trợ độ ưu tiên, có thể hủy request.
+
+
+
+
+
+
+Các lớp chính : RequestQueue (hàng đợi), StringRequest, JSONObjectRequest, JSONArrayRequest.
+
+
+
+Yêu cầu : Cấp quyền INTERNET trong AndroidManifest.xml

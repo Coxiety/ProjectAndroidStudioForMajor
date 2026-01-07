@@ -28,6 +28,7 @@ import com.example.learningapp.database.DatabaseHelper;
 import com.example.learningapp.models.Question;
 import com.example.learningapp.models.UserAnswer;
 import com.example.learningapp.utils.ImageHelper;
+import com.example.learningapp.utils.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,6 +52,15 @@ public class PracticeTestFragment extends Fragment {
     
     private RadioGroup.OnCheckedChangeListener radioGroupListener;
     private CheckBox.OnCheckedChangeListener checkBoxListener;
+    
+    // Utility method to convert radio button ID to answer letter
+    private String getAnswerFromRadioId(int checkedId) {
+        if (checkedId == R.id.radioOptionA) return "A";
+        if (checkedId == R.id.radioOptionB) return "B";
+        if (checkedId == R.id.radioOptionC) return "C";
+        if (checkedId == R.id.radioOptionD) return "D";
+        return null;
+    }
     
     @Nullable
     @Override
@@ -149,17 +159,7 @@ public class PracticeTestFragment extends Fragment {
         btnQuestionOverview.setOnClickListener(v -> showQuestionOverviewDialog());
         
         radioGroupListener = (group, checkedId) -> {
-            String selectedAnswer = null;
-            if (checkedId == R.id.radioOptionA) {
-                selectedAnswer = "A";
-            } else if (checkedId == R.id.radioOptionB) {
-                selectedAnswer = "B";
-            } else if (checkedId == R.id.radioOptionC) {
-                selectedAnswer = "C";
-            } else if (checkedId == R.id.radioOptionD) {
-                selectedAnswer = "D";
-            }
-            userAnswers.get(currentQuestionIndex).setSelectedAnswer(selectedAnswer);
+            userAnswers.get(currentQuestionIndex).setSelectedAnswer(getAnswerFromRadioId(checkedId));
         };
         radioGroupOptions.setOnCheckedChangeListener(radioGroupListener);
         
@@ -205,14 +205,14 @@ public class PracticeTestFragment extends Fragment {
         radioOptionA.setText("A. " + question.getOptionA());
         radioOptionB.setText("B. " + question.getOptionB());
         
-        if (question.getOptionC() != null && !question.getOptionC().isEmpty() && !question.getOptionC().equals("null")) {
+        if (StringUtils.isValidOption(question.getOptionC())) {
             radioOptionC.setVisibility(View.VISIBLE);
             radioOptionC.setText("C. " + question.getOptionC());
         } else {
             radioOptionC.setVisibility(View.GONE);
         }
         
-        if (question.getOptionD() != null && !question.getOptionD().isEmpty() && !question.getOptionD().equals("null")) {
+        if (StringUtils.isValidOption(question.getOptionD())) {
             radioOptionD.setVisibility(View.VISIBLE);
             radioOptionD.setText("D. " + question.getOptionD());
         } else {

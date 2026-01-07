@@ -87,7 +87,7 @@ public class HistoryDetailFragment extends Fragment {
     
     private void navigateToReviewMistakes(View view) {
         if (answersJson == null || answersJson.isEmpty()) {
-            Toast.makeText(requireContext(), "Khong co du lieu de on lai", Toast.LENGTH_SHORT).show();
+            Toast.makeText(requireContext(), "Không có dữ liệu để ôn lại", Toast.LENGTH_SHORT).show();
             return;
         }
         
@@ -117,7 +117,7 @@ public class HistoryDetailFragment extends Fragment {
             
         } catch (JSONException e) {
             e.printStackTrace();
-            Toast.makeText(requireContext(), "Loi doc du lieu", Toast.LENGTH_SHORT).show();
+            Toast.makeText(requireContext(), "Lỗi đọc dữ liệu", Toast.LENGTH_SHORT).show();
         }
     }
 }

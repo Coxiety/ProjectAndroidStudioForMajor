@@ -1,7 +1,6 @@
 package com.example.learningapp.adapters;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.learningapp.R;
 import com.example.learningapp.models.Question;
 import com.example.learningapp.utils.ImageHelper;
+import com.example.learningapp.utils.StringUtils;
 
 import java.util.List;
 
@@ -84,30 +84,30 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.ViewHo
             tvOptionA.setText("A. " + question.getOptionA());
             tvOptionB.setText("B. " + question.getOptionB());
             
-            if (question.getOptionC() != null && !question.getOptionC().isEmpty() && !question.getOptionC().equals("null")) {
+            if (StringUtils.isValidOption(question.getOptionC())) {
                 tvOptionC.setVisibility(View.VISIBLE);
                 tvOptionC.setText("C. " + question.getOptionC());
             } else {
                 tvOptionC.setVisibility(View.GONE);
             }
             
-            if (question.getOptionD() != null && !question.getOptionD().isEmpty() && !question.getOptionD().equals("null")) {
+            if (StringUtils.isValidOption(question.getOptionD())) {
                 tvOptionD.setVisibility(View.VISIBLE);
                 tvOptionD.setText("D. " + question.getOptionD());
             } else {
                 tvOptionD.setVisibility(View.GONE);
             }
             
-            tvOptionA.setBackgroundColor(Color.parseColor("#F5F5F5"));
-            tvOptionB.setBackgroundColor(Color.parseColor("#F5F5F5"));
-            tvOptionC.setBackgroundColor(Color.parseColor("#F5F5F5"));
-            tvOptionD.setBackgroundColor(Color.parseColor("#F5F5F5"));
+            tvOptionA.setBackgroundColor(context.getResources().getColor(R.color.option_background, null));
+            tvOptionB.setBackgroundColor(context.getResources().getColor(R.color.option_background, null));
+            tvOptionC.setBackgroundColor(context.getResources().getColor(R.color.option_background, null));
+            tvOptionD.setBackgroundColor(context.getResources().getColor(R.color.option_background, null));
             
             switch (question.getCorrectAnswer()) {
-                case "A": tvOptionA.setBackgroundColor(Color.parseColor("#C8E6C9")); break;
-                case "B": tvOptionB.setBackgroundColor(Color.parseColor("#C8E6C9")); break;
-                case "C": tvOptionC.setBackgroundColor(Color.parseColor("#C8E6C9")); break;
-                case "D": tvOptionD.setBackgroundColor(Color.parseColor("#C8E6C9")); break;
+                case "A": tvOptionA.setBackgroundColor(context.getResources().getColor(R.color.option_correct, null)); break;
+                case "B": tvOptionB.setBackgroundColor(context.getResources().getColor(R.color.option_correct, null)); break;
+                case "C": tvOptionC.setBackgroundColor(context.getResources().getColor(R.color.option_correct, null)); break;
+                case "D": tvOptionD.setBackgroundColor(context.getResources().getColor(R.color.option_correct, null)); break;
             }
             
             tvCorrectAnswer.setText("Đáp án đúng: " + question.getCorrectAnswer());

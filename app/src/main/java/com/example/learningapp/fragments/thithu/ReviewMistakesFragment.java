@@ -109,29 +109,33 @@ public class ReviewMistakesFragment extends Fragment {
         List<ReviewMistakesAdapter.ReviewItem> filteredItems = new ArrayList<>();
         
         for (int i = 0; i < allQuestions.size(); i++) {
-            boolean include = false;
-            String selected = selectedAnswers.get(i);
-            String correct = correctAnswers.get(i);
-            boolean isCorrect = selected != null && selected.equals(correct);
-            
-            if ("all".equals(currentFilterMode)) {
-                include = true;
-            } else if ("wrong".equals(currentFilterMode)) {
-                include = !isCorrect;
-            } else if ("correct".equals(currentFilterMode)) {
-                include = isCorrect;
-            } else if ("marked".equals(currentFilterMode)) {
-                include = markedForReview != null && i < markedForReview.size() && markedForReview.get(i);
-            }
-            
-            if (include) {
+            if (shouldIncludeQuestion(i)) {
                 boolean isLiet = isLietList != null && i < isLietList.size() && isLietList.get(i);
-                filteredItems.add(new ReviewMistakesAdapter.ReviewItem(allQuestions.get(i), i + 1, selected, correct, isLiet));
+                filteredItems.add(new ReviewMistakesAdapter.ReviewItem(
+                    allQuestions.get(i), 
+                    i + 1, 
+                    selectedAnswers.get(i), 
+                    correctAnswers.get(i), 
+                    isLiet
+                ));
             }
         }
         
-        ReviewMistakesAdapter adapter = new ReviewMistakesAdapter(filteredItems, requireContext());
-        recyclerViewReview.setAdapter(adapter);
+        recyclerViewReview.setAdapter(new ReviewMistakesAdapter(filteredItems, requireContext()));
+    }
+    
+    private boolean shouldIncludeQuestion(int index) {
+        String selected = selectedAnswers.get(index);
+        String correct = correctAnswers.get(index);
+        boolean isCorrect = selected != null && selected.equals(correct);
+        
+        switch (currentFilterMode) {
+            case "all": return true;
+            case "wrong": return !isCorrect;
+            case "correct": return isCorrect;
+            case "marked": return markedForReview != null && index < markedForReview.size() && markedForReview.get(index);
+            default: return false;
+        }
     }
 }
 

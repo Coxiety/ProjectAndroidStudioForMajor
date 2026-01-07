@@ -18,6 +18,9 @@
     
     <color name="pomodoro_work">#D32F2F</color>
     <color name="pomodoro_break">#388E3C</color>
+    
+    <color name="option_background">#F5F5F5</color>
+    <color name="option_correct">#C8E6C9</color>
 
 </resources>
 

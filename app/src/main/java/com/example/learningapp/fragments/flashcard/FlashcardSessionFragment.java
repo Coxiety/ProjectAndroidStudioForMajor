@@ -108,7 +108,7 @@ public class FlashcardSessionFragment extends Fragment {
         isFlipped = false;
         tvFlipHint.setVisibility(View.VISIBLE);
         
-        ImageHelper.loadFlashcardImage(requireContext(), ivFlashcardImage, card.getImagePath());
+        ImageHelper.loadQuestionImage(requireContext(), ivFlashcardImage, card.getImagePath());
     }
     
     private void flipCard() {
@@ -122,7 +122,7 @@ public class FlashcardSessionFragment extends Fragment {
             tvCardContent.setText(card.getFront());
             isFlipped = false;
             tvFlipHint.setVisibility(View.VISIBLE);
-            ImageHelper.loadFlashcardImage(requireContext(), ivFlashcardImage, card.getImagePath());
+            ImageHelper.loadQuestionImage(requireContext(), ivFlashcardImage, card.getImagePath());
         }
     }
     
