@@ -82,12 +82,14 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
             cardView.setOnClickListener(v -> {
                 Bundle args = new Bundle();
                 args.putInt("history_id", history.getId());
+                args.putInt("exam_set_id", history.getExamSetId());
                 args.putString("exam_name", history.getExamName());
                 args.putInt("correct_answers", history.getCorrectAnswers());
                 args.putInt("wrong_answers", history.getWrongAnswers());
                 args.putInt("total_questions", history.getTotalQuestions());
                 args.putLong("test_date", history.getTestDate());
                 args.putInt("duration", history.getDurationMinutes());
+                args.putString("answers_json", history.getAnswersJson());
                 navController.navigate(R.id.action_historyFragment_to_historyDetailFragment, args);
             });
         }

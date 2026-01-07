@@ -37,7 +37,7 @@ public class ReviewMistakesFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.activity_review_mistakes, container, false);
+        return inflater.inflate(R.layout.fragment_review_mistakes, container, false);
     }
     
     @Override

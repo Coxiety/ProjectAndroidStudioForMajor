@@ -28,7 +28,7 @@ public class PracticeTestConfigFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.activity_practice_test_config, container, false);
+        return inflater.inflate(R.layout.fragment_practice_test_config, container, false);
     }
     
     @Override

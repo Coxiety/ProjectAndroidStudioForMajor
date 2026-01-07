@@ -163,7 +163,15 @@
     <fragment
         android:id="@+id/historyDetailFragment"
         android:name="com.example.learningapp.fragments.history.HistoryDetailFragment"
-        android:label="Chi tiết lịch sử" />
+        android:label="Chi tiết lịch sử" >
+        <action
+            android:id="@+id/action_historyDetailFragment_to_reviewMistakesFragment"
+            app:destination="@id/reviewMistakesFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
     
     <fragment
         android:id="@+id/pomodoroHubFragment"

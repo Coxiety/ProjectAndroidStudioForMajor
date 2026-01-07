@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="primary">#1976D2</color>
-    <color name="primary_dark">#1565C0</color>
+    <color name="primary">#026DFA</color>
+    <color name="primary_dark">#025DFA</color>
     <color name="accent">#FF4081</color>
     
     <color name="text_primary">#212121</color>
     <color name="text_secondary">#757575</color>
     <color name="text_white">#FFFFFF</color>
     
-    <color name="background">#FAFAFA</color>
+    <color name="background">#FFEB3B</color>
     <color name="card_background">#FFFFFF</color>
 
     <color name="success">#4CAF50</color>

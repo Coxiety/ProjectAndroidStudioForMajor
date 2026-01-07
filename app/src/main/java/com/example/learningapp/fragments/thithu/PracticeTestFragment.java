@@ -55,7 +55,7 @@ public class PracticeTestFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.activity_practice_test, container, false);
+        return inflater.inflate(R.layout.fragment_practice_test, container, false);
     }
     
     @Override
@@ -68,8 +68,8 @@ public class PracticeTestFragment extends Fragment {
         if (args == null) return;
         
         int examSetId = args.getInt("exam_set_id", -1);
-        int numQuestions = args.getInt("num_questions", 30);
-        int duration = args.getInt("duration", 45);
+        int numQuestions = args.getInt("num_questions", 25);
+        int duration = args.getInt("duration", 19);
         
         timeLeftInMillis = duration * 60 * 1000L;
         
