@@ -1,6 +1,7 @@
 package com.example.learningapp.adapters;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,21 +15,20 @@ import com.example.learningapp.R;
 import com.example.learningapp.models.Question;
 import com.example.learningapp.models.UserAnswer;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class QuestionOverviewAdapter extends RecyclerView.Adapter<QuestionOverviewAdapter.ViewHolder> {
-    
+
     private List<Question> questions;
     private List<UserAnswer> userAnswers;
     private Context context;
-    private AlertDialog dialog;
     private OnQuestionClickListener listener;
-    
+    private AlertDialog dialog;
+
     public interface OnQuestionClickListener {
         void onQuestionClick(int position);
     }
-    
+
     public QuestionOverviewAdapter(List<Question> questions, List<UserAnswer> userAnswers, 
                                    Context context, OnQuestionClickListener listener) {
         this.questions = questions;
@@ -36,11 +36,11 @@ public class QuestionOverviewAdapter extends RecyclerView.Adapter<QuestionOvervi
         this.context = context;
         this.listener = listener;
     }
-    
+
     public void setDialog(AlertDialog dialog) {
         this.dialog = dialog;
     }
-    
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -48,49 +48,48 @@ public class QuestionOverviewAdapter extends RecyclerView.Adapter<QuestionOvervi
                 .inflate(R.layout.item_question_number, parent, false);
         return new ViewHolder(view);
     }
-    
+
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.bind(position);
+        UserAnswer userAnswer = userAnswers.get(position);
+        holder.tvQuestionNumber.setText(String.valueOf(position + 1));
+
+        // Màu sắc theo trạng thái
+        if (userAnswer.isMarkedForReview()) {
+            // Câu đánh dấu xem lại: Cam
+            holder.tvQuestionNumber.setBackgroundColor(Color.parseColor("#FF9800"));
+            holder.tvQuestionNumber.setTextColor(Color.WHITE);
+        } else if (userAnswer.getSelectedAnswer() != null) {
+            // Câu đã trả lời: Xanh dương
+            holder.tvQuestionNumber.setBackgroundColor(Color.parseColor("#2196F3"));
+            holder.tvQuestionNumber.setTextColor(Color.WHITE);
+        } else {
+            // Câu chưa trả lời: Xám
+            holder.tvQuestionNumber.setBackgroundColor(Color.parseColor("#E0E0E0"));
+            holder.tvQuestionNumber.setTextColor(Color.parseColor("#757575"));
+        }
+
+        holder.itemView.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onQuestionClick(position);
+            }
+            if (dialog != null) {
+                dialog.dismiss();
+            }
+        });
     }
-    
+
     @Override
     public int getItemCount() {
         return questions.size();
     }
-    
-    class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvNumber;
-        
-        ViewHolder(@NonNull View itemView) {
+
+    static class ViewHolder extends RecyclerView.ViewHolder {
+        TextView tvQuestionNumber;
+
+        public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvNumber = itemView.findViewById(R.id.tvQuestionNumber);
-        }
-        
-        void bind(int position) {
-            tvNumber.setText(String.valueOf(position + 1));
-            
-            UserAnswer userAnswer = userAnswers.get(position);
-            String selectedAnswer = userAnswer.getSelectedAnswer();
-            boolean isMarkedForReview = userAnswer.isMarkedForReview();
-            
-            if (isMarkedForReview) {
-                tvNumber.setBackgroundColor(context.getResources().getColor(android.R.color.holo_orange_dark, null));
-            } else if (selectedAnswer != null && !selectedAnswer.isEmpty()) {
-                tvNumber.setBackgroundColor(context.getResources().getColor(R.color.primary, null));
-            } else {
-                tvNumber.setBackgroundColor(context.getResources().getColor(R.color.text_secondary, null));
-            }
-            
-            tvNumber.setOnClickListener(v -> {
-                if (listener != null) {
-                    listener.onQuestionClick(position);
-                }
-                if (dialog != null) {
-                    dialog.dismiss();
-                }
-            });
+            tvQuestionNumber = itemView.findViewById(R.id.tvQuestionNumber);
         }
     }
 }
-

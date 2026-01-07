@@ -10,46 +10,22 @@
         android:label="Trang chủ" >
         <action
             android:id="@+id/action_homeFragment_to_flashcardHubFragment"
-            app:destination="@id/flashcardHubFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            app:destination="@id/flashcardHubFragment" />
         <action
             android:id="@+id/action_homeFragment_to_practiceTestConfigFragment"
-            app:destination="@id/practiceTestConfigFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            app:destination="@id/practiceTestConfigFragment" />
         <action
             android:id="@+id/action_homeFragment_to_examListFragment"
-            app:destination="@id/examListFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            app:destination="@id/examListFragment" />
         <action
             android:id="@+id/action_homeFragment_to_pomodoroHubFragment"
-            app:destination="@id/pomodoroHubFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            app:destination="@id/pomodoroHubFragment" />
         <action
             android:id="@+id/action_homeFragment_to_historyFragment"
-            app:destination="@id/historyFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            app:destination="@id/historyFragment" />
         <action
             android:id="@+id/action_homeFragment_to_settingsFragment"
-            app:destination="@id/settingsFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            app:destination="@id/settingsFragment" />
     </fragment>
 
     <fragment
@@ -58,11 +34,7 @@
         android:label="Flashcard Hub" >
         <action
             android:id="@+id/action_flashcardHubFragment_to_flashcardSessionFragment"
-            app:destination="@id/flashcardSessionFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            app:destination="@id/flashcardSessionFragment" />
     </fragment>
 
     <fragment
@@ -71,11 +43,7 @@
         android:label="Cấu hình thi thử" >
         <action
             android:id="@+id/action_practiceTestConfigFragment_to_practiceTestFragment"
-            app:destination="@id/practiceTestFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            app:destination="@id/practiceTestFragment" />
     </fragment>
 
     <fragment
@@ -84,11 +52,7 @@
         android:label="Thi thử" >
         <action
             android:id="@+id/action_practiceTestFragment_to_testResultFragment"
-            app:destination="@id/testResultFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            app:destination="@id/testResultFragment" />
     </fragment>
 
     <fragment
@@ -97,11 +61,7 @@
         android:label="Kết quả" >
         <action
             android:id="@+id/action_testResultFragment_to_reviewMistakesFragment"
-            app:destination="@id/reviewMistakesFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            app:destination="@id/reviewMistakesFragment" />
     </fragment>
     
     <fragment
@@ -115,11 +75,7 @@
         android:label="Xem đề thi" >
         <action
             android:id="@+id/action_examListFragment_to_examDetailFragment"
-            app:destination="@id/examDetailFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            app:destination="@id/examDetailFragment" />
     </fragment>
     
     <fragment
@@ -128,11 +84,7 @@
         android:label="Chi tiết đề thi" >
         <action
             android:id="@+id/action_examDetailFragment_to_questionDetailFragment"
-            app:destination="@id/questionDetailFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            app:destination="@id/questionDetailFragment" />
     </fragment>
     
     <fragment
@@ -146,11 +98,7 @@
         android:label="Lịch sử thi" >
         <action
             android:id="@+id/action_historyFragment_to_historyDetailFragment"
-            app:destination="@id/historyDetailFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            app:destination="@id/historyDetailFragment" />
     </fragment>
     
     <fragment
@@ -159,11 +107,7 @@
         android:label="Chi tiết lịch sử" >
         <action
             android:id="@+id/action_historyDetailFragment_to_reviewMistakesFragment"
-            app:destination="@id/reviewMistakesFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            app:destination="@id/reviewMistakesFragment" />
     </fragment>
     
     <fragment
@@ -172,11 +116,7 @@
         android:label="Pomodoro" >
         <action
             android:id="@+id/action_pomodoroHubFragment_to_pomodoroSessionFragment"
-            app:destination="@id/pomodoroSessionFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            app:destination="@id/pomodoroSessionFragment" />
     </fragment>
     
     <fragment
