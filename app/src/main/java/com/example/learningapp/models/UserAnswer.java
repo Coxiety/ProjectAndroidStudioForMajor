@@ -10,13 +10,13 @@ public class UserAnswer {
     public UserAnswer() {
     }
 
-    public UserAnswer(int questionId, String selectedAnswer, String correctAnswer) {
-        this.questionId = questionId;
-        this.selectedAnswer = selectedAnswer;
-        this.correctAnswer = correctAnswer;
-        this.isCorrect = selectedAnswer != null && selectedAnswer.equals(correctAnswer);
-        this.isMarkedForReview = false;
-    }
+//    public UserAnswer(int questionId, String selectedAnswer, String correctAnswer) {
+//        this.questionId = questionId;
+//        this.selectedAnswer = selectedAnswer;
+//        this.correctAnswer = correctAnswer;
+//        this.isCorrect = selectedAnswer != null && selectedAnswer.equals(correctAnswer);
+//        this.isMarkedForReview = false;
+//    }
 
     public int getQuestionId() {
         return questionId;

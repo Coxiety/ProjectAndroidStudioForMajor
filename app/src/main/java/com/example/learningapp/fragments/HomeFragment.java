@@ -8,10 +8,9 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 
 import com.example.learningapp.R;
+import com.example.learningapp.activities.MainActivity;
 
 public class HomeFragment extends Fragment {
     
@@ -25,25 +24,23 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         
-        NavController navController = Navigation.findNavController(view);
-        
         view.findViewById(R.id.cardFlashcard).setOnClickListener(v ->
-            navController.navigate(R.id.action_homeFragment_to_flashcardHubFragment));
-        
-        view.findViewById(R.id.cardPomodoro).setOnClickListener(v ->
-            navController.navigate(R.id.action_homeFragment_to_pomodoroHubFragment));
+            navigateFromViewPager(R.id.action_homeFragment_to_flashcardHubFragment, null));
         
         view.findViewById(R.id.cardViewExams).setOnClickListener(v ->
-            navController.navigate(R.id.action_homeFragment_to_examListFragment));
+            navigateFromViewPager(R.id.action_homeFragment_to_examListFragment, null));
         
         view.findViewById(R.id.cardPracticeTest).setOnClickListener(v ->
-            navController.navigate(R.id.action_homeFragment_to_practiceTestConfigFragment));
+            navigateFromViewPager(R.id.action_homeFragment_to_practiceTestConfigFragment, null));
         
         view.findViewById(R.id.cardHistory).setOnClickListener(v ->
-            navController.navigate(R.id.action_homeFragment_to_historyFragment));
-        
-        view.findViewById(R.id.cardSettings).setOnClickListener(v ->
-            navController.navigate(R.id.action_homeFragment_to_settingsFragment));
+            navigateFromViewPager(R.id.action_homeFragment_to_historyFragment, null));
+    }
+    
+    private void navigateFromViewPager(int actionId, Bundle args) {
+        if (getActivity() instanceof MainActivity) {
+            ((MainActivity) getActivity()).navigateFromViewPager(actionId, args);
+        }
     }
 }
 

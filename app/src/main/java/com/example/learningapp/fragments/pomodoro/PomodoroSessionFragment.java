@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import com.example.learningapp.R;
 import com.example.learningapp.models.PomodoroSession;
@@ -72,7 +73,12 @@ public class PomodoroSessionFragment extends Fragment {
             new AlertDialog.Builder(requireContext())
                 .setTitle("Kết thúc phiên")
                 .setMessage("Bạn có chắc muốn kết thúc phiên Pomodoro?")
-                .setPositiveButton(R.string.yes, (dialog, which) -> requireActivity().onBackPressed())
+                .setPositiveButton(R.string.yes, (dialog, which) -> {
+                    if (countDownTimer != null) {
+                        countDownTimer.cancel();
+                    }
+                    Navigation.findNavController(v).navigateUp();
+                })
                 .setNegativeButton(R.string.no, null)
                 .show();
         });

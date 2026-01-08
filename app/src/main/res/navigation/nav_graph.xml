@@ -18,14 +18,8 @@
             android:id="@+id/action_homeFragment_to_examListFragment"
             app:destination="@id/examListFragment" />
         <action
-            android:id="@+id/action_homeFragment_to_pomodoroHubFragment"
-            app:destination="@id/pomodoroHubFragment" />
-        <action
             android:id="@+id/action_homeFragment_to_historyFragment"
             app:destination="@id/historyFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_settingsFragment"
-            app:destination="@id/settingsFragment" />
     </fragment>
 
     <fragment
@@ -126,7 +120,7 @@
     
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="com.example.learningapp.fragments.settings.SettingsFragment"
+        android:name="com.example.learningapp.fragments.SettingsFragment"
         android:label="Cài đặt" />
     
     <fragment

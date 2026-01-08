@@ -113,6 +113,16 @@ public class PracticeTestFragment extends Fragment {
             }
         });
     }
+
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        if (countDownTimer != null) {
+            countDownTimer.cancel();
+            countDownTimer = null;
+        }
+    }
     
     private void initializeViews(View view) {
         tvTimeRemaining = view.findViewById(R.id.tvTimeRemaining);
@@ -283,14 +293,6 @@ public class PracticeTestFragment extends Fragment {
         
         NavController navController = Navigation.findNavController(requireView());
         navController.navigate(R.id.action_practiceTestFragment_to_testResultFragment, resultArgs);
-    }
-    
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        if (countDownTimer != null) {
-            countDownTimer.cancel();
-        }
     }
     
     private void showQuestionOverviewDialog() {

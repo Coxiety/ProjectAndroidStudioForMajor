@@ -11,10 +11,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 
 import com.example.learningapp.R;
+import com.example.learningapp.activities.MainActivity;
 
 public class PomodoroHubFragment extends Fragment {
     
@@ -66,8 +65,12 @@ public class PomodoroHubFragment extends Fragment {
         args.putInt("long_break", longBreak);
         args.putInt("cycles", cycles);
         
-        NavController navController = Navigation.findNavController(requireView());
-        navController.navigate(R.id.action_pomodoroHubFragment_to_pomodoroSessionFragment, args);
+        if (getActivity() instanceof MainActivity) {
+            ((MainActivity) getActivity()).navigateFromViewPager(
+                R.id.pomodoroSessionFragment, 
+                args
+            );
+        }
     }
 }
 
